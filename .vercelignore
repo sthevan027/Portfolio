@@ -1,0 +1,17 @@
+# Excluir backend do deploy do frontend
+backend/
+backend/**/*
+doc/
+doc/**/*
+
+# Manter apenas o frontend
+!src/
+!public/
+!package.json
+!package-lock.json
+!tsconfig.json
+!next.config.ts
+!postcss.config.mjs
+!eslint.config.mjs
+!vercel.json
+!.gitignore 
