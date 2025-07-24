@@ -9,36 +9,36 @@ export const translations = {
     },
     hero: {
       greeting: 'Olá, eu sou',
-      title: 'CEO da DevLoop | Engenheiro de Software Full Stack',
-      description: 'Transformo ideias em soluções digitais inovadoras. Especialista em desenvolvimento full stack, automação e criação de produtos que geram impacto real no mercado.',
+      title: 'Frontend Developer | Especialista em React & Next.js',
+      description: 'Transformo designs em interfaces incríveis com React e Next.js. Especialista em criar experiências digitais modernas, responsivas e performáticas. Apaixonado por frontend e sempre em busca da melhor UX.',
       whatsapp: 'Falar no WhatsApp',
       projects: 'Ver Projetos',
       cv: 'Download CV'
     },
     about: {
       title: 'Sobre Mim',
-      description: 'Sou um desenvolvedor apaixonado por criar soluções que fazem a diferença. Com experiência em desenvolvimento full stack e liderança de projetos, busco sempre entregar excelência técnica aliada a resultados de negócio.',
+      description: 'Sou um desenvolvedor frontend apaixonado por criar interfaces que fazem a diferença. Especialista em React e Next.js, busco sempre entregar experiências digitais excepcionais com foco na performance e na experiência do usuário.',
       mission: 'Missão',
-      missionText: 'Transformar ideias em soluções digitais que geram impacto real no mercado e na vida das pessoas.',
+      missionText: 'Criar interfaces excepcionais que proporcionam experiências digitais memoráveis e funcionais.',
       vision: 'Visão',
-      visionText: 'Ser referência em desenvolvimento de software e inovação tecnológica no cenário internacional.',
+      visionText: 'Ser referência em desenvolvimento frontend, especialmente em React e Next.js no cenário brasileiro.',
       values: 'Valores',
-      valuesText: 'Excelência técnica, inovação constante, transparência e foco no resultado do cliente.',
+      valuesText: 'Excelência em UX/UI, código limpo, performance e foco na experiência do usuário.',
       impact: 'Impacto',
-      impactText: 'Mais de 50 projetos entregues, ajudando empresas a crescer através da tecnologia.',
+      impactText: 'Mais de 30 projetos frontend entregues, criando interfaces que encantam usuários.',
       journey: 'Minha Jornada',
       cta: 'Vamos Conversar?',
-      ctaText: 'Estou sempre aberto a novos desafios e oportunidades de colaboração. Vamos transformar sua ideia em realidade!'
+      ctaText: 'Estou sempre aberto a novos projetos frontend e oportunidades de colaboração. Vamos criar interfaces incríveis juntos!'
     },
     skills: {
       title: 'Stack & Skills',
-      description: 'Tecnologias e ferramentas que domino para criar soluções completas e inovadoras. Sempre em constante aprendizado e evolução.',
+      description: 'Tecnologias e ferramentas que domino para criar interfaces incríveis. Especialista em React e Next.js, sempre em constante aprendizado.',
       tools: 'Ferramentas Favoritas',
       soft: 'Soft Skills'
     },
     projects: {
       title: 'Meus Projetos',
-      description: 'Uma seleção dos meus trabalhos mais recentes, demonstrando expertise em desenvolvimento full stack, automação e criação de soluções inovadoras.',
+      description: 'Uma seleção dos meus trabalhos mais recentes, demonstrando expertise em React, Next.js e criação de interfaces modernas e responsivas.',
       featured: 'Projetos em Destaque',
       all: 'Todos',
       fullstack: 'Full Stack',
@@ -48,7 +48,7 @@ export const translations = {
     },
     contact: {
       title: 'Vamos Conversar?',
-      description: 'Estou sempre aberto a novos projetos, oportunidades de colaboração e conversas interessantes. Entre em contato e vamos transformar sua ideia em realidade!',
+      description: 'Estou sempre aberto a novos projetos frontend, oportunidades de colaboração e conversas interessantes. Entre em contato e vamos criar interfaces incríveis juntos!',
       form: 'Envie uma Mensagem',
       name: 'Nome',
       email: 'Email',
@@ -66,7 +66,7 @@ export const translations = {
     },
     footer: {
       tagline: 'Do conceito ao código. Do código ao resultado.',
-      description: 'Transformando ideias em soluções digitais inovadoras que geram impacto real no mercado.',
+      description: 'Transformando designs em interfaces digitais inovadoras que encantam usuários.',
       navigation: 'Navegação',
       contact: 'Contato',
       copyright: 'Sthevan Santos. Feito com',
@@ -86,36 +86,36 @@ export const translations = {
     },
     hero: {
       greeting: 'Hello, I am',
-      title: 'CEO of DevLoop | Full Stack Software Engineer',
-      description: 'I transform ideas into innovative digital solutions. Specialist in full stack development, automation and creating products that generate real market impact.',
+      title: 'Frontend Developer | React & Next.js Specialist',
+      description: 'I transform designs into amazing interfaces with React and Next.js. Specialist in creating modern, responsive and performant digital experiences. Passionate about frontend and always seeking the best UX.',
       whatsapp: 'WhatsApp Chat',
       projects: 'View Projects',
       cv: 'Download CV'
     },
     about: {
       title: 'About Me',
-      description: 'I am a developer passionate about creating solutions that make a difference. With experience in full stack development and project leadership, I always seek to deliver technical excellence combined with business results.',
+      description: 'I am a frontend developer passionate about creating interfaces that make a difference. Specialist in React and Next.js, I always seek to deliver exceptional digital experiences with focus on performance and user experience.',
       mission: 'Mission',
-      missionText: 'Transform ideas into digital solutions that generate real impact in the market and in people\'s lives.',
+      missionText: 'Create exceptional interfaces that provide memorable and functional digital experiences.',
       vision: 'Vision',
-      visionText: 'Be a reference in software development and technological innovation on the international scene.',
+      visionText: 'Be a reference in frontend development, especially in React and Next.js in the Brazilian scenario.',
       values: 'Values',
-      valuesText: 'Technical excellence, constant innovation, transparency and focus on client results.',
+      valuesText: 'Excellence in UX/UI, clean code, performance and focus on user experience.',
       impact: 'Impact',
-      impactText: 'More than 50 projects delivered, helping companies grow through technology.',
+      impactText: 'More than 30 frontend projects delivered, creating interfaces that delight users.',
       journey: 'My Journey',
       cta: 'Let\'s Talk?',
-      ctaText: 'I am always open to new challenges and collaboration opportunities. Let\'s turn your idea into reality!'
+      ctaText: 'I\'m always open to new frontend projects and collaboration opportunities. Let\'s create amazing interfaces together!'
     },
     skills: {
       title: 'Stack & Skills',
-      description: 'Technologies and tools I master to create complete and innovative solutions. Always in constant learning and evolution.',
+      description: 'Technologies and tools I master to create amazing interfaces. Specialist in React and Next.js, always learning.',
       tools: 'Favorite Tools',
       soft: 'Soft Skills'
     },
     projects: {
       title: 'My Projects',
-      description: 'A selection of my most recent work, demonstrating expertise in full stack development, automation and creating innovative solutions.',
+      description: 'A selection of my most recent work, demonstrating expertise in React, Next.js and creation of modern and responsive interfaces.',
       featured: 'Featured Projects',
       all: 'All',
       fullstack: 'Full Stack',
@@ -125,7 +125,7 @@ export const translations = {
     },
     contact: {
       title: 'Let\'s Talk?',
-      description: 'I am always open to new projects, collaboration opportunities and interesting conversations. Get in touch and let\'s turn your idea into reality!',
+      description: 'I\'m always open to new frontend projects, collaboration opportunities and interesting conversations. Get in touch and let\'s create amazing interfaces together!',
       form: 'Send a Message',
       name: 'Name',
       email: 'Email',
@@ -134,7 +134,7 @@ export const translations = {
       send: 'Send Message',
       sending: 'Sending...',
       success: 'Message Sent!',
-      successText: 'Thank you for contacting! I will respond soon.',
+      successText: 'Thank you for contacting! I\'ll respond soon.',
       info: 'Contact Information',
       quick: 'Quick Contact',
       social: 'Social Media',
@@ -142,8 +142,8 @@ export const translations = {
       response: 'I usually respond within 24 hours'
     },
     footer: {
-      tagline: 'From concept to code. From code to results.',
-      description: 'Transforming ideas into innovative digital solutions that generate real market impact.',
+      tagline: 'From concept to code. From code to result.',
+      description: 'Transforming designs into innovative digital interfaces that delight users.',
       navigation: 'Navigation',
       contact: 'Contact',
       copyright: 'Sthevan Santos. Made with',
@@ -160,13 +160,16 @@ export type TranslationKey = keyof typeof translations.pt
 
 export const getTranslation = (lang: Language, key: string): string => {
   const keys = key.split('.')
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let value: any = translations[lang]
   
   for (const k of keys) {
-    value = value?.[k]
+    if (value && typeof value === 'object' && k in value) {
+      value = value[k]
+    } else {
+      return key // Return the key if translation not found
+    }
   }
   
-  return value || key
+  return typeof value === 'string' ? value : key
 }
 

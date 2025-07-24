@@ -9,51 +9,56 @@ export default function About() {
     {
       icon: Target,
       title: 'Missão',
-      description: 'Transformar ideias em soluções digitais que geram impacto real no mercado e na vida das pessoas.'
+      description: 'Criar interfaces excepcionais que proporcionam experiências digitais memoráveis e funcionais.'
     },
     {
       icon: Eye,
       title: 'Visão',
-      description: 'Ser referência em desenvolvimento de software e inovação tecnológica no cenário internacional.'
+      description: 'Ser referência em desenvolvimento frontend, especialmente em React e Next.js no cenário brasileiro.'
     },
     {
       icon: Heart,
       title: 'Valores',
-      description: 'Excelência técnica, inovação constante, transparência e foco no resultado do cliente.'
+      description: 'Excelência em UX/UI, código limpo, performance e foco na experiência do usuário.'
     },
     {
       icon: Users,
       title: 'Impacto',
-      description: 'Mais de 50 projetos entregues, ajudando empresas a crescer através da tecnologia.'
+      description: 'Mais de 30 projetos frontend entregues, criando interfaces que encantam usuários.'
     }
   ]
 
   const timeline = [
     {
+      year: '2025',
+      title: 'CEO da DevLoop & Engenheiro de Software',
+      description: 'Liderança da DevLoop e atuação como engenheiro de software especializado em soluções frontend.'
+    },
+    {
       year: '2024',
-      title: 'CEO da DevLoop',
-      description: 'Fundação da DevLoop, focada em soluções full stack e automação para empresas.'
+      title: 'Especialista React & Next.js',
+      description: 'Foco total em React, Next.js e TypeScript. Desenvolvimento de interfaces modernas e performáticas.'
     },
     {
       year: '2023',
-      title: 'Especialização em IA',
-      description: 'Aprofundamento em inteligência artificial e machine learning aplicados ao desenvolvimento.'
+      title: 'Full Stack Developer',
+      description: 'Consolidação como desenvolvedor full stack, com foco crescente no frontend e React.'
     },
     {
       year: '2022',
-      title: 'Full Stack Developer',
-      description: 'Consolidação como desenvolvedor full stack, dominando tecnologias front e backend.'
+      title: 'Frontend Developer',
+      description: 'Especialização em desenvolvimento frontend com React, Tailwind CSS e Framer Motion.'
     },
     {
       year: '2021',
       title: 'Início da Jornada',
-      description: 'Primeiros passos no desenvolvimento de software e descoberta da paixão pela tecnologia.'
+      description: 'Primeiros passos no desenvolvimento web, descoberta da paixão por criar interfaces.'
     }
   ]
 
   return (
     <section id="about" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,10 +70,10 @@ export default function About() {
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             Sobre <span className="gradient-text">Mim</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Sou um desenvolvedor apaixonado por criar soluções que fazem a diferença. 
-            Com experiência em desenvolvimento full stack e liderança de projetos, 
-            busco sempre entregar excelência técnica aliada a resultados de negócio.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Sou um engenheiro de software apaixonado por criar interfaces que fazem a diferença. 
+            Especialista em React e Next.js, busco sempre entregar experiências digitais excepcionais 
+            com foco na performance e na experiência do usuário.
           </p>
         </motion.div>
 
@@ -159,8 +164,8 @@ export default function About() {
                 Vamos <span className="gradient-text">Conversar?</span>
               </h3>
               <p className="text-muted-foreground mb-6">
-                Estou sempre aberto a novos desafios e oportunidades de colaboração. 
-                Vamos transformar sua ideia em realidade!
+                Estou sempre aberto a novos projetos frontend e oportunidades de colaboração. 
+                Vamos criar interfaces incríveis juntos!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a

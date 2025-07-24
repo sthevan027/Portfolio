@@ -94,7 +94,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -106,9 +106,9 @@ export default function Projects() {
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             Meus <span className="gradient-text">Projetos</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Uma seleção dos meus trabalhos mais recentes, demonstrando expertise em 
-            desenvolvimento full stack, automação e criação de soluções inovadoras.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Uma seleção dos meus trabalhos mais recentes, demonstrando expertise em desenvolvimento full stack, 
+            automação e criação de soluções inovadoras.
           </p>
         </motion.div>
 
@@ -123,66 +123,47 @@ export default function Projects() {
           <h3 className="text-2xl font-heading font-bold mb-8 text-center">
             Projetos em <span className="gradient-text">Destaque</span>
           </h3>
-          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="glass hover:glow transition-all duration-300 overflow-hidden group">
-                  <div className="relative overflow-hidden">
-                    <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <span className="text-4xl font-bold gradient-text">{project.title.charAt(0)}</span>
-                    </div>
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                      {project.github && (
-                        <Button size="sm" variant="secondary">
-                          <Github className="h-4 w-4 mr-2" />
-                          Código
-                        </Button>
-                      )}
-                      {project.demo && (
-                        <Button size="sm">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Demo
-                        </Button>
-                      )}
-                    </div>
+                <Card className="glass hover:glow transition-all duration-300 h-full">
+                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center">
+                    <span className="text-4xl">🚀</span>
                   </div>
-                  
                   <CardHeader>
                     <CardTitle className="text-xl">{project.title}</CardTitle>
+                    <p className="text-muted-foreground">{project.description}</p>
                   </CardHeader>
-                  
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">{project.description}</p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-4">
+                  <CardContent className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full"
+                          className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
-                    
-                    <div className="flex space-x-2">
-                      {project.github && (
-                        <Button size="sm" variant="outline" className="flex-1">
+                    <div className="flex gap-2">
+                      <Button size="sm" variant="outline" asChild>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
                           <Github className="h-4 w-4 mr-2" />
-                          GitHub
-                        </Button>
-                      )}
+                          Código
+                        </a>
+                      </Button>
                       {project.demo && (
-                        <Button size="sm" className="flex-1">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Ver Demo
+                        <Button size="sm" asChild>
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            Demo
+                          </a>
                         </Button>
                       )}
                     </div>
@@ -199,20 +180,21 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="flex justify-center mb-8"
         >
-          <Filter className="h-5 w-5 text-muted-foreground mr-2 mt-2" />
-          {categories.map((category) => (
-            <Button
-              key={category.id}
-              variant={filter === category.id ? "default" : "outline"}
-              size="sm"
-              onClick={() => setFilter(category.id)}
-              className={filter === category.id ? "glow" : ""}
-            >
-              {category.label}
-            </Button>
-          ))}
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <Button
+                key={category.id}
+                variant={filter === category.id ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setFilter(category.id)}
+                className="transition-all duration-200"
+              >
+                {category.label}
+              </Button>
+            ))}
+          </div>
         </motion.div>
 
         {/* All Projects Grid */}
@@ -231,45 +213,39 @@ export default function Projects() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="glass hover:glow transition-all duration-300 overflow-hidden group h-full">
-                <div className="relative overflow-hidden">
-                  <div className="w-full h-32 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <span className="text-2xl font-bold gradient-text">{project.title.charAt(0)}</span>
-                  </div>
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-2">
-                    {project.github && (
-                      <Button size="sm" variant="secondary">
-                        <Github className="h-4 w-4" />
-                      </Button>
-                    )}
-                    {project.demo && (
-                      <Button size="sm">
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
-                    )}
-                  </div>
+              <Card className="glass hover:glow transition-all duration-300 h-full">
+                <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-t-lg flex items-center justify-center">
+                  <span className="text-2xl">💻</span>
                 </div>
-                
-                <CardHeader className="pb-2">
+                <CardHeader>
                   <CardTitle className="text-lg">{project.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground">{project.description}</p>
                 </CardHeader>
-                
-                <CardContent className="flex-1 flex flex-col">
-                  <p className="text-sm text-muted-foreground mb-4 flex-1">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-1 mb-4">
+                <CardContent className="space-y-4">
+                  <div className="flex flex-wrap gap-1">
                     {project.technologies.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full"
+                        className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md"
                       >
                         {tech}
                       </span>
                     ))}
-                    {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
-                        +{project.technologies.length - 3}
-                      </span>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline" asChild>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="h-4 w-4 mr-2" />
+                        Código
+                      </a>
+                    </Button>
+                    {project.demo && (
+                      <Button size="sm" asChild>
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Demo
+                        </a>
+                      </Button>
                     )}
                   </div>
                 </CardContent>

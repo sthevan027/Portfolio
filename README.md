@@ -1,36 +1,192 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Portfolio Backend API
 
-## Getting Started
+Backend profissional para o portfólio de Sthevan Santos, com sistema de envio de emails e validações robustas.
 
-First, run the development server:
+## 🛠️ Tecnologias
 
+- **Node.js** - Runtime JavaScript
+- **Express.js** - Framework web
+- **TypeScript** - Tipagem estática
+- **Nodemailer** - Envio de emails
+- **Joi** - Validação de dados
+- **Helmet** - Segurança
+- **CORS** - Cross-origin resource sharing
+- **Rate Limiting** - Proteção contra spam
+
+## 📋 Funcionalidades
+
+### ✅ Implementadas
+- ✅ **API RESTful** com endpoints organizados
+- ✅ **Sistema de email** com template HTML profissional
+- ✅ **Validação robusta** de formulários
+- ✅ **Rate limiting** para prevenir spam
+- ✅ **Logging profissional** com emojis e detalhes
+- ✅ **Segurança** com Helmet e CORS
+- ✅ **Compressão** de respostas
+- ✅ **Error handling** global
+- ✅ **Health checks** para monitoramento
+- ✅ **Sanitização** de inputs
+
+## 🚀 Instalação
+
+1. **Instalar dependências:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Configurar variáveis de ambiente:**
+```bash
+cp env.example .env
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Editar `.env` com suas configurações:**
+```env
+# Email Configuration (Gmail)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+EMAIL_FROM=your-email@gmail.com
+EMAIL_TO=sthevan@devloop.com.br
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Security
+CORS_ORIGIN=http://localhost:3000
+```
 
-## Learn More
+## 🔧 Configuração do Gmail
 
-To learn more about Next.js, take a look at the following resources:
+Para usar Gmail, você precisa:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Ativar autenticação de 2 fatores**
+2. **Gerar senha de app:**
+   - Acesse: https://myaccount.google.com/apppasswords
+   - Gere uma senha para "Mail"
+   - Use essa senha no `EMAIL_PASS`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🏃‍♂️ Execução
 
-## Deploy on Vercel
+### Desenvolvimento
+```bash
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Produção
+```bash
+npm run build
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📡 Endpoints
+
+### Health Check
+```
+GET /
+GET /api/health
+```
+
+### Email
+```
+POST /api/contact
+GET /api/email/status
+```
+
+## 📧 Exemplo de Uso
+
+### Enviar Email de Contato
+```bash
+curl -X POST http://localhost:3001/api/contact \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "João Silva",
+    "email": "joao@example.com",
+    "message": "Olá! Gostaria de trabalhar com você."
+  }'
+```
+
+### Resposta de Sucesso
+```json
+{
+  "success": true,
+  "message": "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+  "timestamp": "2024-01-15T10:30:00.000Z"
+}
+```
+
+## 🔒 Segurança
+
+- **Rate Limiting**: 5 tentativas por 15 minutos
+- **Validação**: Todos os inputs são validados
+- **Sanitização**: Inputs são limpos automaticamente
+- **CORS**: Configurado para frontend específico
+- **Helmet**: Headers de segurança
+
+## 📊 Logs
+
+O sistema gera logs detalhados:
+
+```
+📨 POST /api/contact - 192.168.1.1 - Mozilla/5.0...
+✅ POST /api/contact - 200 (150ms)
+📧 EMAIL TENTATIVA_ENVIO - 2024-01-15T10:30:00.000Z
+✅ Email enviado com sucesso para: sthevan@devloop.com.br
+```
+
+## 🧪 Testes
+
+```bash
+npm test
+```
+
+## 📁 Estrutura
+
+```
+src/
+├── config/          # Configurações
+├── middleware/      # Middlewares
+├── routes/          # Rotas da API
+├── services/        # Serviços (email)
+├── types/           # Tipos TypeScript
+└── index.ts         # Servidor principal
+```
+
+## 🔧 Variáveis de Ambiente
+
+| Variável | Descrição | Padrão |
+|----------|-----------|--------|
+| `PORT` | Porta do servidor | `3001` |
+| `NODE_ENV` | Ambiente | `development` |
+| `EMAIL_HOST` | Host SMTP | `smtp.gmail.com` |
+| `EMAIL_PORT` | Porta SMTP | `587` |
+| `EMAIL_USER` | Usuário email | - |
+| `EMAIL_PASS` | Senha email | - |
+| `EMAIL_FROM` | Email remetente | - |
+| `EMAIL_TO` | Email destinatário | - |
+| `CORS_ORIGIN` | Origem permitida | `http://localhost:3000` |
+
+## 🚀 Deploy
+
+### Vercel
+```bash
+vercel --prod
+```
+
+### Railway
+```bash
+railway up
+```
+
+### Heroku
+```bash
+heroku create
+git push heroku main
+```
+
+## 📞 Suporte
+
+Para dúvidas ou problemas, entre em contato:
+- **Email**: sthevan@devloop.com.br
+- **LinkedIn**: [Sthevan Santos](https://linkedin.com/in/sthevan)
+
+---
+
+**Desenvolvido com ❤️ por Sthevan Santos - CEO da DevLoop** 

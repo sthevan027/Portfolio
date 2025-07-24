@@ -1,5 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
 
 :root {
   --background: 18 18 18;
@@ -24,50 +27,44 @@
   --radius: 0.5rem;
 }
 
-@theme inline {
-  --color-background: rgb(var(--background));
-  --color-foreground: rgb(var(--foreground));
-  --color-primary: rgb(var(--primary));
-  --color-secondary: rgb(var(--secondary));
-  --font-sans: 'Inter', var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: 'Montserrat', var(--font-geist-sans);
+@layer base {
+  * {
+    border-color: rgb(var(--border));
+  }
+
+  body {
+    color: rgb(var(--foreground));
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
 }
 
-* {
-  border-color: rgb(var(--border));
-}
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
-body {
-  color: rgb(var(--foreground));
-  background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
-  font-family: 'Inter', sans-serif;
-  min-height: 100vh;
-}
+  .gradient-text {
+    background: linear-gradient(135deg, #6C63FF 0%, #2D2FDC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-}
+  .glow {
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+  }
 
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #6C63FF 0%, #2D2FDC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.glow {
-  box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
-}
-
-.hero-bg {
-  background: radial-gradient(ellipse at center, rgba(108, 99, 255, 0.1) 0%, transparent 70%);
+  .hero-bg {
+    background: radial-gradient(ellipse at center, rgba(108, 99, 255, 0.1) 0%, transparent 70%);
+  }
 }
 

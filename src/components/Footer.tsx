@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart, ArrowUp } from 'lucide-react'
+import { Heart, ArrowUp, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export default function Footer() {
@@ -20,8 +20,8 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-muted/20 border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-black border-t border-gray-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <motion.div
@@ -29,17 +29,23 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-6"
           >
-            <h3 className="text-2xl font-heading font-bold gradient-text">
-              DevLoop
-            </h3>
-            <p className="text-muted-foreground max-w-md">
-              Do conceito ao código. Do código ao resultado.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Transformando ideias em soluções digitais inovadoras que geram impacto real no mercado.
-            </p>
+            <div className="flex items-center space-x-2">
+              <Sparkles className="h-6 w-6 text-primary" />
+              <h3 className="text-2xl font-heading font-bold gradient-text">
+                DevLoop
+              </h3>
+            </div>
+            <div className="space-y-4">
+              <p className="text-lg font-medium text-white">
+                Do conceito ao código. Do código ao resultado.
+              </p>
+              <p className="text-muted-foreground max-w-md leading-relaxed">
+                Transformando ideias em soluções digitais inovadoras que geram impacto real no mercado. 
+                Especialistas em React, Next.js e automações que revolucionam negócios.
+              </p>
+            </div>
           </motion.div>
 
           {/* Navigation */}
@@ -50,13 +56,13 @@ export default function Footer() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-lg font-heading font-semibold">Navegação</h4>
-            <nav className="flex flex-col space-y-2">
+            <h4 className="text-lg font-heading font-semibold text-white">Navegação</h4>
+            <nav className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 w-fit hover:translate-x-1 transform"
                 >
                   {link.label}
                 </a>
@@ -72,11 +78,11 @@ export default function Footer() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-lg font-heading font-semibold">Contato</h4>
-            <div className="space-y-2">
+            <h4 className="text-lg font-heading font-semibold text-white">Contato</h4>
+            <div className="space-y-3">
               <a
                 href="mailto:sthevan@devloop.com.br"
-                className="block text-muted-foreground hover:text-primary transition-colors"
+                className="block text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 sthevan@devloop.com.br
               </a>
@@ -84,26 +90,26 @@ export default function Footer() {
                 href="https://wa.me/5527988772784"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-muted-foreground hover:text-primary transition-colors"
+                className="block text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 +55 (27) 98877-2784
               </a>
             </div>
             
-            <div className="flex space-x-4 pt-2">
+            <div className="flex space-x-4 pt-4">
               <a
                 href="https://linkedin.com/in/sthevan-santos"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-blue-500 transition-colors"
+                className="text-muted-foreground hover:text-blue-500 transition-colors duration-200"
               >
                 LinkedIn
               </a>
               <a
-                href="https://github.com/sthevan"
+                href="https://github.com/sthevan-santos"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-gray-400 transition-colors"
+                className="text-muted-foreground hover:text-gray-300 transition-colors duration-200"
               >
                 GitHub
               </a>
@@ -111,7 +117,7 @@ export default function Footer() {
                 href="https://instagram.com/sthevan.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-pink-500 transition-colors"
+                className="text-muted-foreground hover:text-pink-500 transition-colors duration-200"
               >
                 Instagram
               </a>
@@ -119,48 +125,31 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-border my-8"></div>
-
-        {/* Bottom */}
+        {/* Bottom Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+          className="border-t border-gray-800 mt-12 pt-8"
         >
-          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <span>© {currentYear} Sthevan Santos. Feito com</span>
-            <Heart className="h-4 w-4 text-red-500 fill-current" />
-            <span>e muito café ☕</span>
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-2 text-muted-foreground">
+              <span>© {currentYear} DevLoop. Feito com</span>
+              <Heart className="h-4 w-4 text-red-500" />
+              <span>por Sthevan Santos</span>
+            </div>
+            
+            <Button
+              onClick={scrollToTop}
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ArrowUp className="h-4 w-4 mr-2" />
+              Voltar ao topo
+            </Button>
           </div>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={scrollToTop}
-            className="flex items-center space-x-2"
-          >
-            <ArrowUp className="h-4 w-4" />
-            <span>Voltar ao topo</span>
-          </Button>
-        </motion.div>
-
-        {/* Inspirational Quote */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-8 pt-8 border-t border-border"
-        >
-          <blockquote className="text-lg font-medium gradient-text italic">
-            &ldquo;A tecnologia é melhor quando aproxima as pessoas.&rdquo;
-          </blockquote>
-          <cite className="text-sm text-muted-foreground mt-2 block">
-            - Matt Mullenweg
-          </cite>
         </motion.div>
       </div>
     </footer>
