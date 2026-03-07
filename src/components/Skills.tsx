@@ -80,13 +80,16 @@ export default function Skills() {
                         <span className="text-gray-300 font-medium">{skill.name}</span>
                         <span className="text-gray-400">{skill.level}%</span>
                       </div>
-                      <div className="w-full bg-gray-800 rounded-full h-2">
+                      <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
                           transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
                           viewport={{ once: true }}
-                          className={`h-2 bg-gradient-to-r ${category.color} rounded-full`}
+                          className="h-2 rounded-full"
+                          style={{
+                            background: 'linear-gradient(90deg, #2563EB 0%, #06B6D4 100%)',
+                          }}
                         />
                       </div>
                     </div>
