@@ -30,29 +30,34 @@ export default function About() {
 
   const timeline = [
     {
-      year: '2025',
-      title: 'CEO da DevLoop & Engenheiro de Software',
-      description: 'Liderança da DevLoop e atuação como engenheiro de software especializado em soluções frontend.'
+      year: '2026',
+      title: 'CEO da Virex & Engenheiro de Software',
+      description: 'Liderança da Virex e atuação como engenheiro de software especializado em soluções frontend.'
     },
     {
-      year: '2024',
+      year: '2025',
       title: 'Especialista React & Next.js',
       description: 'Foco total em React, Next.js e TypeScript. Desenvolvimento de interfaces modernas e performáticas.'
     },
     {
-      year: '2023',
+      year: '2024',
       title: 'Full Stack Developer',
       description: 'Consolidação como desenvolvedor full stack, com foco crescente no frontend e React.'
     },
     {
-      year: '2022',
+      year: '2023',
       title: 'Frontend Developer',
       description: 'Especialização em desenvolvimento frontend com React, Tailwind CSS e Framer Motion.'
     },
     {
-      year: '2021',
+      year: '2022',
       title: 'Início da Jornada',
       description: 'Primeiros passos no desenvolvimento web, descoberta da paixão por criar interfaces.'
+    },
+    {
+      year: '2021',
+      title: 'Descoberta',
+      description: 'Primeiro contato com programação e desenvolvimento de software.'
     }
   ]
 

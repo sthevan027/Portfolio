@@ -70,14 +70,20 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      value: 'sthevan@devloop.com.br',
-      link: 'mailto:sthevan@devloop.com.br'
+      value: 'sthevan.ssantos@gmail.com',
+      link: 'mailto:sthevan.ssantos@gmail.com'
     },
     {
       icon: Phone,
       title: 'WhatsApp',
       value: '+55 (27) 98877-2784',
       link: 'https://wa.me/5527988772784'
+    },
+    {
+      icon: Phone,
+      title: 'WhatsApp Empresarial',
+      value: '+55 (27) 998962-8554',
+      link: 'https://wa.me/55279989628554'
     },
     {
       icon: MapPin,

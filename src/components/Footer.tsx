@@ -34,7 +34,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2">
               <Sparkles className="h-6 w-6 text-primary" />
               <h3 className="text-2xl font-heading font-bold gradient-text">
-                DevLoop
+                Virex
               </h3>
             </div>
             <div className="space-y-4">
@@ -81,10 +81,10 @@ export default function Footer() {
             <h4 className="text-lg font-heading font-semibold text-white">Contato</h4>
             <div className="space-y-3">
               <a
-                href="mailto:sthevan@devloop.com.br"
+                href="mailto:sthevan@virex.com.br"
                 className="block text-muted-foreground hover:text-primary transition-colors duration-200"
               >
-                sthevan@devloop.com.br
+                sthevan@virex.com.br
               </a>
               <a
                 href="https://wa.me/5527988772784"
@@ -106,7 +106,7 @@ export default function Footer() {
                 LinkedIn
               </a>
               <a
-                href="https://github.com/sthevan-santos"
+                href="https://github.com/sthevan027"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-gray-300 transition-colors duration-200"
@@ -135,7 +135,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-muted-foreground">
-              <span>© {currentYear} DevLoop. Feito com</span>
+              <span>© {currentYear} Virex. Feito com</span>
               <Heart className="h-4 w-4 text-red-500" />
               <span>por Sthevan Santos</span>
             </div>

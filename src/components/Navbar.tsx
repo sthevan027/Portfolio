@@ -28,7 +28,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="#home" className="text-xl font-heading font-bold gradient-text">
-              DevLoop
+              Virex
             </a>
           </div>
 

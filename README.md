@@ -47,7 +47,7 @@ EMAIL_PORT=587
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-app-password
 EMAIL_FROM=your-email@gmail.com
-EMAIL_TO=sthevan@devloop.com.br
+EMAIL_TO=sthevan.ssantos@gmail.com
 
 # Security
 CORS_ORIGIN=http://localhost:3000
@@ -128,7 +128,7 @@ O sistema gera logs detalhados:
 📨 POST /api/contact - 192.168.1.1 - Mozilla/5.0...
 ✅ POST /api/contact - 200 (150ms)
 📧 EMAIL TENTATIVA_ENVIO - 2024-01-15T10:30:00.000Z
-✅ Email enviado com sucesso para: sthevan@devloop.com.br
+✅ Email enviado com sucesso para: sthevan.ssantos@gmail.com
 ```
 
 ## 🧪 Testes
@@ -184,9 +184,11 @@ git push heroku main
 ## 📞 Suporte
 
 Para dúvidas ou problemas, entre em contato:
-- **Email**: sthevan@devloop.com.br
-- **LinkedIn**: [Sthevan Santos](https://linkedin.com/in/sthevan)
+- **Email**: sthevan.ssantos@gmail.com
+- **WhatsApp Pessoal**: +55 (27) 98877-2784
+- **WhatsApp Empresarial**: +55 (27) 998962-8554
+- **LinkedIn**: [Sthevan Santos](https://linkedin.com/in/sthevan-santos)
 
 ---
 
-**Desenvolvido com ❤️ por Sthevan Santos - CEO da DevLoop** 
+**Desenvolvido com ❤️ por Sthevan Santos - CEO da Virex** 

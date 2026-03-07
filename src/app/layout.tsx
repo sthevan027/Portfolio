@@ -13,14 +13,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sthevan Santos - Frontend Developer & CEO da DevLoop",
-  description: "Portfólio de Sthevan Santos - Especialista em React, Next.js e automações. CEO da DevLoop. Transformando ideias em soluções digitais inovadoras.",
+  title: "Sthevan Santos - Frontend Developer & CEO da Virex",
+  description: "Portfólio de Sthevan Santos - Especialista em React, Next.js e automações. CEO da Virex. Transformando ideias em soluções digitais inovadoras.",
   keywords: [
     "Sthevan Santos",
     "Frontend Developer",
     "React Developer",
     "Next.js Developer",
-    "DevLoop",
+    "Virex",
     "TypeScript",
     "Tailwind CSS",
     "Framer Motion",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Sthevan Santos" }],
   creator: "Sthevan Santos",
-  publisher: "DevLoop",
+  publisher: "Virex",
   formatDetection: {
     email: false,
     address: false,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Sthevan Santos - Frontend Developer & CEO da DevLoop",
+    title: "Sthevan Santos - Frontend Developer & CEO da Virex",
     description: "Especialista em React, Next.js e automações. Transformando ideias em soluções digitais inovadoras.",
     url: 'https://sthevan-santos.vercel.app',
     siteName: 'Sthevan Santos Portfolio',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Sthevan Santos - Frontend Developer & CEO da DevLoop",
+    title: "Sthevan Santos - Frontend Developer & CEO da Virex",
     description: "Especialista em React, Next.js e automações. Transformando ideias em soluções digitais inovadoras.",
     images: ['/sthevan.jpg'],
     creator: '@sthevan_dev',
@@ -90,7 +90,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#6C63FF" />
+        <meta name="theme-color" content="#2563EB" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         {/* Preconnect para performance */}
@@ -108,7 +108,7 @@ export default function RootLayout({
               "jobTitle": "Frontend Developer & CEO",
               "worksFor": {
                 "@type": "Organization",
-                "name": "DevLoop"
+                "name": "Virex"
               },
               "description": "Especialista em React, Next.js e automações",
               "url": "https://sthevan-santos.vercel.app",
@@ -118,7 +118,7 @@ export default function RootLayout({
                 "https://instagram.com/sthevan.dev"
               ],
               "image": "/sthevan.jpg",
-              "email": "sthevan@devloop.com.br",
+              "email": "sthevan@virex.com.br",
               "telephone": "+55-27-98877-2784"
             })
           }}

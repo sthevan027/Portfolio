@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
 
     // 1. Email para Sthevan (notificação)
     const emailToSthevan = {
-      to: 'sthevan@devloop.com.br',
+      to: 'sthevan@virex.com.br',
       subject: `🚀 Novo contato do portfólio: ${subject}`,
       html: `
         <h2>Novo contato recebido!</h2>
@@ -52,23 +52,23 @@ export async function POST(req: NextRequest) {
     // 2. Email de resposta automática para o cliente
     const autoReplyToClient = {
       to: email,
-      subject: '✅ Recebemos sua mensagem! - DevLoop',
+      subject: '✅ Recebemos sua mensagem! - Virex',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #6C63FF;">Olá, ${name}! 👋</h2>
+          <h2 style="color: #2563EB;">Olá, ${name}! 👋</h2>
           
           <p>Obrigado por entrar em contato comigo através do meu portfólio!</p>
           
           <p>Recebi sua mensagem sobre <strong>"${subject}"</strong> e vou analisar com atenção.</p>
           
-          <h3 style="color: #6C63FF;">📧 O que acontece agora?</h3>
+          <h3 style="color: #2563EB;">📧 O que acontece agora?</h3>
           <ul>
             <li>Vou analisar sua solicitação nos próximos 24 horas</li>
             <li>Entrarei em contato com uma proposta personalizada</li>
             <li>Podemos agendar uma conversa para alinhar os detalhes</li>
           </ul>
           
-          <h3 style="color: #6C63FF;">💬 Prefere falar direto?</h3>
+          <h3 style="color: #2563EB;">💬 Prefere falar direto?</h3>
           <p>Se quiser uma resposta mais rápida, pode me chamar no WhatsApp:</p>
           <p style="background: #25D366; color: white; padding: 10px; border-radius: 5px; text-align: center;">
             <a href="https://wa.me/5527988772784?text=Olá! Vi sua mensagem no portfólio sobre ${encodeURIComponent(subject)}" 
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
           <hr style="margin: 30px 0;">
           
           <p><strong>Sthevan Santos</strong></p>
-          <p>CEO da DevLoop | Frontend Developer</p>
+          <p>CEO da Virex | Frontend Developer</p>
           <p>Especialista em React, Next.js e automações</p>
           
           <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 20px;">
