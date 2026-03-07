@@ -11,9 +11,9 @@
   --card-foreground: 245 245 245;
   --popover: 24 24 27;
   --popover-foreground: 245 245 245;
-  --primary: 212 175 55;
-  --primary-foreground: 18 18 18;
-  --secondary: 37 99 235;
+  --primary: 37 99 235;
+  --primary-foreground: 245 245 245;
+  --secondary: 29 78 216;
   --secondary-foreground: 245 245 245;
   --muted: 39 39 42;
   --muted-foreground: 161 161 170;
@@ -23,7 +23,7 @@
   --destructive-foreground: 245 245 245;
   --border: 39 39 42;
   --input: 39 39 42;
-  --ring: 212 175 55;
+  --ring: 37 99 235;
   --radius: 0.5rem;
 }
 
@@ -53,18 +53,22 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #D4AF37 0%, #2563EB 100%);
+    background: linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  .virex-brand {
+    color: #8B6914;
+  }
+
   .glow {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
   }
 
   .hero-bg {
-    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
   }
 }
 

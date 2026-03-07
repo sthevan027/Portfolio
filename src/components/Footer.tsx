@@ -33,7 +33,7 @@ export default function Footer() {
           >
             <div className="flex items-center space-x-2">
               <Sparkles className="h-6 w-6 text-primary" />
-              <h3 className="text-2xl font-heading font-bold gradient-text">
+              <h3 className="text-2xl font-heading font-bold virex-brand">
                 Virex
               </h3>
             </div>

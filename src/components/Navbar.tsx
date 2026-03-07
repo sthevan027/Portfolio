@@ -27,7 +27,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="#home" className="text-xl font-heading font-bold gradient-text">
+            <a href="#home" className="text-xl font-heading font-bold virex-brand">
               Virex
             </a>
           </div>
