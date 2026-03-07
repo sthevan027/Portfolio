@@ -10,89 +10,22 @@ import {
   Smartphone, 
   Settings 
 } from 'lucide-react'
+import { skillCategories as skillCategoriesData } from '@/data/skills'
+
+const ICON_MAP = {
+  Monitor,
+  Server,
+  Database,
+  Cloud,
+  Smartphone,
+  Settings,
+} as const
 
 export default function Skills() {
-  const skillCategories = [
-    {
-      title: 'Frontend',
-      icon: Monitor,
-      color: 'from-blue-500 to-cyan-500',
-      iconColor: 'text-blue-400',
-      skills: [
-        { name: 'React/Next.js', level: 95 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'Tailwind CSS', level: 95 },
-        { name: 'vite.js', level: 85 },
-        { name: 'Vue.js', level: 80 },
-        { name: 'HTML', level: 90 },
-        { name: 'CSS', level: 85 },
-        { name: 'JavaScript', level: 90 }
-      ]
-    },
-    {
-      title: 'Backend',
-      icon: Server,
-      color: 'from-green-500 to-emerald-500',
-      iconColor: 'text-green-400',
-      skills: [
-        { name: 'Node.js', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'Java', level: 75 },
-        { name: 'PHP', level: 75 },
-        { name: 'GO', level: 75 }
-      ]
-    },
-    {
-      title: 'Database',
-      icon: Database,
-      color: 'from-purple-500 to-pink-500',
-      iconColor: 'text-purple-400',
-      skills: [
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'MongoDB', level: 75 },
-        { name: 'Redis', level: 75 },
-        { name: 'Prisma ORM', level: 80 },
-        { name: 'SQL', level: 85 }
-      ]
-    },
-    {
-      title: 'DevOps & Cloud',
-      icon: Cloud,
-      color: 'from-orange-500 to-red-500',
-      iconColor: 'text-orange-400',
-      skills: [
-        { name: 'Docker', level: 80 },
-        { name: 'AWS', level: 75 },
-        { name: 'Vercel', level: 85 },
-        { name: 'GitHub Actions', level: 80 }
-      ]
-    },
-    {
-      title: 'Mobile',
-      icon: Smartphone,
-      color: 'from-indigo-500 to-purple-500',
-      iconColor: 'text-indigo-400',
-      skills: [
-        { name: 'React Native', level: 80 },
-        { name: 'Expo', level: 85 },
-        { name: 'Flutter', level: 75 },
-        { name: 'PWA', level: 85 },
-        { name: 'App Store', level: 75 }
-      ]
-    },
-    {
-      title: 'Automação',
-      icon: Settings,
-      color: 'from-yellow-500 to-orange-500',
-      iconColor: 'text-yellow-400',
-      skills: [
-        { name: 'Python', level: 80 },
-        { name: 'N8N', level: 85 },
-        { name: 'Make', level: 80 },
-        { name: 'Node.js', level: 85 }
-      ]
-    }
-  ]
+  const skillCategories = skillCategoriesData.map((cat) => ({
+    ...cat,
+    icon: ICON_MAP[cat.icon as keyof typeof ICON_MAP] || Monitor,
+  }))
 
   return (
     <section id="skills" className="py-20 bg-black">
