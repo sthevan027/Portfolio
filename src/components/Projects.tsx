@@ -4,79 +4,11 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ExternalLink, Github, Filter } from 'lucide-react'
+import { ExternalLink, Github } from 'lucide-react'
+import { projects } from '@/data/projects'
 
 export default function Projects() {
   const [filter, setFilter] = useState('all')
-
-  const projects = [
-    {
-      id: 1,
-      title: 'Sistema de Gestão Industrial',
-      description: 'Plataforma completa para gestão industrial com dashboard analytics, CRM, Kanban e monitoramento de redes sociais.',
-      image: '/api/placeholder/400/250',
-      category: 'fullstack',
-      technologies: ['React', 'Node.js', 'TypeScript', 'Tailwind CSS'],
-      github: 'https://github.com/sthevan',
-      demo: 'https://demo.com',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'E-commerce Automation Bot',
-      description: 'Bot inteligente para automação de vendas em e-commerce, com integração WhatsApp e análise de dados.',
-      image: '/api/placeholder/400/250',
-      category: 'automation',
-      technologies: ['Python', 'Selenium', 'WhatsApp API', 'MongoDB'],
-      github: 'https://github.com/sthevan',
-      demo: 'https://demo.com',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'DevLoop Landing Page',
-      description: 'Landing page moderna e responsiva para a DevLoop, com animações e design glassmorphism.',
-      image: '/api/placeholder/400/250',
-      category: 'frontend',
-      technologies: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
-      github: 'https://github.com/sthevan',
-      demo: 'https://devloop.com.br',
-      featured: false
-    },
-    {
-      id: 4,
-      title: 'API de Gestão Financeira',
-      description: 'API RESTful para gestão financeira com autenticação JWT, relatórios e integração bancária.',
-      image: '/api/placeholder/400/250',
-      category: 'backend',
-      technologies: ['Node.js', 'Express', 'PostgreSQL', 'JWT'],
-      github: 'https://github.com/sthevan',
-      demo: null,
-      featured: false
-    },
-    {
-      id: 5,
-      title: 'Dashboard Analytics',
-      description: 'Dashboard interativo para análise de dados com gráficos em tempo real e relatórios customizados.',
-      image: '/api/placeholder/400/250',
-      category: 'frontend',
-      technologies: ['React', 'Chart.js', 'Material-UI', 'WebSocket'],
-      github: 'https://github.com/sthevan',
-      demo: 'https://demo.com',
-      featured: false
-    },
-    {
-      id: 6,
-      title: 'Microserviços Architecture',
-      description: 'Arquitetura de microserviços escalável com Docker, Kubernetes e monitoramento.',
-      image: '/api/placeholder/400/250',
-      category: 'backend',
-      technologies: ['Docker', 'Kubernetes', 'Node.js', 'Redis'],
-      github: 'https://github.com/sthevan',
-      demo: null,
-      featured: false
-    }
-  ]
 
   const categories = [
     { id: 'all', label: 'Todos' },
