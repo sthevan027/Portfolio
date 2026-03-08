@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 /**
  * Script para sincronizar projetos do GitHub com o portfólio
+ * Inclui links de demo da Vercel quando disponíveis
+ * 
  * Uso: node scripts/sync-projects.mjs
  * Ou: pnpm run sync:projects
  * 
  * Requer: gh CLI instalado e autenticado (gh auth login)
+ * Opcional: VERCEL_TOKEN para buscar demos na Vercel
+ *   Obtenha em: https://vercel.com/account/tokens
  */
 
 import { execSync } from 'child_process'
@@ -15,8 +19,32 @@ import { dirname, join } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
 
+function loadEnv() {
+  for (const file of ['.env.local', '.env']) {
+    const path = join(ROOT, file)
+    if (existsSync(path)) {
+      const content = readFileSync(path, 'utf-8')
+      for (const line of content.split('\n')) {
+        const m = line.match(/^([^#=]+)=(.*)$/)
+        if (m) process.env[m[1].trim()] = m[2].trim().replace(/^["']|["']$/g, '')
+      }
+      break
+    }
+  }
+}
+loadEnv()
+
 const GITHUB_USER = 'sthevan027'
 const GH_FIELDS = 'name,description,url,primaryLanguage,isFork,updatedAt,homepageUrl,languages'
+const VERCEL_TOKEN = process.env.VERCEL_TOKEN
+
+const FEATURED_REPOS = [
+  'codefocus',
+  'ceo-os',
+  'gh-dev-analyzer',
+  'eletrolab',
+  'system-control',
+]
 
 const categoryMap = {
   fullstack: ['typescript', 'javascript', 'react', 'node', 'gestao', 'dashboard', 'fullstack'],
@@ -78,27 +106,103 @@ function runGh(command) {
   }
 }
 
-function main() {
+async function fetchVercelDemos() {
+  if (!VERCEL_TOKEN) {
+    console.log('   ℹ️  VERCEL_TOKEN não definido — demos virão só do GitHub (homepageUrl)')
+    console.log('      Defina em: https://vercel.com/account/tokens')
+    return {}
+  }
+
+  const map = {}
+  const headers = { Authorization: `Bearer ${VERCEL_TOKEN}` }
+
+  try {
+    const listRes = await fetch('https://api.vercel.com/v9/projects?limit=100', { headers })
+    if (!listRes.ok) throw new Error(`Vercel API: ${listRes.status} ${await listRes.text()}`)
+    const listData = await listRes.json()
+    const projects = listData.projects || listData
+
+    for (const p of projects) {
+      const repo = (p.link?.repo || p.name || '').replace(/^.+\//, '').toLowerCase()
+      if (!repo) continue
+
+      let url = null
+
+      function setUrl(v) {
+        if (v && !url) url = v.startsWith('http') ? v : `https://${v}`
+      }
+
+      if (p.targets?.production?.alias) {
+        const a = p.targets.production.alias
+        setUrl(Array.isArray(a) ? a[0] : a)
+      }
+      if (p.alias?.length) {
+        const prod = p.alias.find((a) => (a.target || a.deployment?.target) === 'production')
+        setUrl(prod?.domain || prod?.deployment?.url)
+      }
+      if (p.latestDeployments?.production) {
+        const d = p.latestDeployments.production
+        setUrl(d.url || d.domain)
+      }
+
+      if (!url && p.name) {
+        const detailRes = await fetch(
+          `https://api.vercel.com/v9/projects/${encodeURIComponent(p.name)}`,
+          { headers }
+        )
+        if (detailRes.ok) {
+          const detail = await detailRes.json()
+          const alias = detail.targets?.production?.alias ?? detail.alias
+          if (alias?.length) {
+            const prod = alias.find((a) => (a.target || a.deployment?.target) === 'production')
+            setUrl(prod?.domain || prod?.deployment?.url)
+          }
+          if (!url && detail.latestDeployments?.production) {
+            const d = detail.latestDeployments.production
+            setUrl(d?.url || d?.domain)
+          }
+        }
+      }
+
+      if (url) map[repo] = url
+    }
+    console.log(`   ✅ ${Object.keys(map).length} demos encontrados na Vercel`)
+  } catch (e) {
+    console.warn('   ⚠️  Erro ao buscar Vercel:', e.message)
+  }
+  return map
+}
+
+async function main() {
   console.log('🔄 Sincronizando projetos do GitHub...\n')
 
-  const repos = runGh(
-    `gh repo list ${GITHUB_USER} --limit 30 --json ${GH_FIELDS} --source`
-  )
+  const [repos, vercelDemos] = await Promise.all([
+    Promise.resolve(
+      runGh(`gh repo list ${GITHUB_USER} --limit 30 --json ${GH_FIELDS} --source`)
+    ),
+    fetchVercelDemos(),
+  ])
 
   const exclude = ['portiflio', 'Config', 'Curriculo', 'sthevan027', 'Strivo', 'ResolveJa', 'FORGE', 'organizador', 'Converso']
   const filtered = repos.filter(r => !exclude.includes(r.name) && !r.isFork && r.description)
 
-  const projects = filtered.map((repo, i) => ({
-    id: i + 1,
-    title: formatTitle(repo.name),
-    description: repo.description || 'Projeto no GitHub',
-    image: '/api/placeholder/400/250',
-    category: mapToCategory(repo),
-    technologies: formatTechnologies(repo),
-    github: repo.url,
-    demo: repo.homepageUrl || null,
-    featured: i < 3
-  }))
+  const projects = filtered.map((repo, i) => {
+    const repoKey = repo.name.toLowerCase()
+    const demo = vercelDemos[repoKey] || null
+    const featured = FEATURED_REPOS.includes(repoKey)
+
+    return {
+      id: i + 1,
+      title: formatTitle(repo.name),
+      description: repo.description || 'Projeto no GitHub',
+      image: '/api/placeholder/400/250',
+      category: mapToCategory(repo),
+      technologies: formatTechnologies(repo),
+      github: repo.url,
+      demo,
+      featured
+    }
+  })
 
   const output = `/**
  * Dados dos projetos - sincronizados com GitHub (${GITHUB_USER})
@@ -128,6 +232,8 @@ export const projects: Project[] = ${JSON.stringify(projects, null, 2)}
 
   console.log(`✅ ${projects.length} projetos sincronizados em src/data/projects.ts`)
   console.log(`   Destaques: ${projects.filter(p => p.featured).map(p => p.title).join(', ')}`)
+  const withDemo = projects.filter(p => p.demo).length
+  console.log(`   Com demo: ${withDemo} projetos`)
 }
 
-main()
+main().catch(console.error)

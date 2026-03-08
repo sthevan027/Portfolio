@@ -1,6 +1,6 @@
 /**
  * Dados dos projetos - sincronizados com GitHub (sthevan027)
- * Última sincronização: 2026-03-07T16:44:50.068Z
+ * Última sincronização: 2026-03-08T02:10:26.937Z
  * Execute: pnpm run sync:projects para atualizar
  */
 
@@ -21,6 +21,38 @@ export interface Project {
 export const projects: Project[] = [
   {
     "id": 1,
+    "title": "DraftVision",
+    "description": "Plataforma de análise de draft e partidas do League of Legends",
+    "image": "/api/placeholder/400/250",
+    "category": "automation",
+    "technologies": [
+      "Python",
+      "PowerShell",
+      "TypeScript",
+      "Shell",
+      "JavaScript"
+    ],
+    "github": "https://github.com/sthevan027/DraftVision",
+    "demo": null,
+    "featured": false
+  },
+  {
+    "id": 2,
+    "title": "Nossa Historia",
+    "description": "App para casais registrarem e construírem sua história juntos - timeline, memórias, metas e cartas digitais",
+    "image": "/api/placeholder/400/250",
+    "category": "automation",
+    "technologies": [
+      "TypeScript",
+      "PLpgSQL",
+      "JavaScript"
+    ],
+    "github": "https://github.com/sthevan027/Nossa-Historia",
+    "demo": null,
+    "featured": false
+  },
+  {
+    "id": 3,
     "title": "CEO OS",
     "description": "Sistema de gestão executiva para CEOs",
     "image": "/api/placeholder/400/250",
@@ -37,7 +69,7 @@ export const projects: Project[] = [
     "featured": true
   },
   {
-    "id": 2,
+    "id": 4,
     "title": "CodeFocus",
     "description": "Aplicação de foco e produtividade",
     "image": "/api/placeholder/400/250",
@@ -48,11 +80,11 @@ export const projects: Project[] = [
       "CSS"
     ],
     "github": "https://github.com/sthevan027/CodeFocus",
-    "demo": "https://code-focus-ten.vercel.app",
+    "demo": "https://code-focus-beta.vercel.app",
     "featured": true
   },
   {
-    "id": 3,
+    "id": 5,
     "title": "Gh Dev Analyzer",
     "description": "CLI que analisa perfis do GitHub e gera relatórios HTML detalhados com métricas, estatísticas e insights",
     "image": "/api/placeholder/400/250",
@@ -65,7 +97,7 @@ export const projects: Project[] = [
     "featured": true
   },
   {
-    "id": 4,
+    "id": 6,
     "title": "Medicao De Obra",
     "description": "Sistema de medição de obras",
     "image": "/api/placeholder/400/250",
@@ -81,7 +113,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 5,
+    "id": 7,
     "title": "Sistema Gestao Industrial",
     "description": "Sistema de gestão industrial",
     "image": "/api/placeholder/400/250",
@@ -96,7 +128,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 6,
+    "id": 8,
     "title": "EletroLab",
     "description": "Sistema para laboratório de eletrônica",
     "image": "/api/placeholder/400/250",
@@ -109,10 +141,10 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/EletroLab",
     "demo": "https://eletro-lab.vercel.app",
-    "featured": false
+    "featured": true
   },
   {
-    "id": 7,
+    "id": 9,
     "title": "Dashboard Jl Construtora",
     "description": "Dashboard para JL Construtora",
     "image": "/api/placeholder/400/250",
@@ -123,11 +155,11 @@ export const projects: Project[] = [
       "HTML"
     ],
     "github": "https://github.com/sthevan027/dashboard-jl-construtora",
-    "demo": "https://dashboard-jl-construtora.vercel.app",
+    "demo": null,
     "featured": false
   },
   {
-    "id": 8,
+    "id": 10,
     "title": "Clary IA",
     "description": "Assistente de IA - Clary",
     "image": "/api/placeholder/400/250",
@@ -140,7 +172,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 9,
+    "id": 11,
     "title": "Sistema De Propostas Por E Mail",
     "description": "Sistema de propostas por e-mail",
     "image": "/api/placeholder/400/250",
@@ -155,7 +187,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 10,
+    "id": 12,
     "title": "Proposta 99 Auto",
     "description": "Sistema de propostas para 99 Auto",
     "image": "/api/placeholder/400/250",
@@ -169,7 +201,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 11,
+    "id": 13,
     "title": "MeuSalario",
     "description": "Gestão de salários e folha de pagamento",
     "image": "/api/placeholder/400/250",
@@ -181,11 +213,11 @@ export const projects: Project[] = [
       "CSS"
     ],
     "github": "https://github.com/sthevan027/MeuSalario",
-    "demo": "https://meu-salario-lime.vercel.app",
+    "demo": "https://www.meusalario.app",
     "featured": false
   },
   {
-    "id": 12,
+    "id": 14,
     "title": "System Control",
     "description": "Sistema de controle geral",
     "image": "/api/placeholder/400/250",
@@ -198,13 +230,13 @@ export const projects: Project[] = [
       "HTML"
     ],
     "github": "https://github.com/sthevan027/System-control",
-    "demo": "https://system-control.vercel.app",
-    "featured": false
+    "demo": "https://sthex-systens.vercel.app",
+    "featured": true
   },
   {
-    "id": 13,
-    "title": "Craig Virex Bot",
-    "description": "Bot para Virex",
+    "id": 15,
+    "title": "Craig_devloop_bot",
+    "description": "Bot para DevLoop",
     "image": "/api/placeholder/400/250",
     "category": "automation",
     "technologies": [
@@ -216,7 +248,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 14,
+    "id": 16,
     "title": "Proposta JL",
     "description": "Sistema de propostas JL",
     "image": "/api/placeholder/400/250",
@@ -231,7 +263,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 15,
+    "id": 17,
     "title": "Cardapio",
     "description": "Sistema de cardápio digital",
     "image": "/api/placeholder/400/250",
@@ -246,7 +278,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 16,
+    "id": 18,
     "title": "Virex",
     "description": "Sistema Virex",
     "image": "/api/placeholder/400/250",
@@ -261,7 +293,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 17,
+    "id": 19,
     "title": "Gestaofinanceira",
     "description": "Gestão financeira",
     "image": "/api/placeholder/400/250",
@@ -277,7 +309,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 18,
+    "id": 20,
     "title": "ERP   Galp O",
     "description": "ERP para galpão",
     "image": "/api/placeholder/400/250",
@@ -293,7 +325,7 @@ export const projects: Project[] = [
     "featured": false
   },
   {
-    "id": 19,
+    "id": 21,
     "title": "Gravacao",
     "description": "Este e um repositorio feito para testas as coisa, para grava e posta no instagram.",
     "image": "/api/placeholder/400/250",
@@ -305,51 +337,6 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/Gravacao",
     "demo": null,
-    "featured": false
-  },
-  {
-    "id": 20,
-    "title": "Fiscalfy",
-    "description": "Sistema fiscal",
-    "image": "/api/placeholder/400/250",
-    "category": "automation",
-    "technologies": [
-      "Python",
-      "TypeScript",
-      "Makefile",
-      "CSS",
-      "JavaScript"
-    ],
-    "github": "https://github.com/sthevan027/Fiscalfy",
-    "demo": null,
-    "featured": false
-  },
-  {
-    "id": 21,
-    "title": "Super Trunfo Csharp",
-    "description": "Jogo Super Trunfo em C#",
-    "image": "/api/placeholder/400/250",
-    "category": "fullstack",
-    "technologies": [
-      "C#"
-    ],
-    "github": "https://github.com/sthevan027/super-trunfo-csharp",
-    "demo": null,
-    "featured": false
-  },
-  {
-    "id": 22,
-    "title": "Site De Rifa",
-    "description": "Site de rifas",
-    "image": "/api/placeholder/400/250",
-    "category": "frontend",
-    "technologies": [
-      "CSS",
-      "JavaScript",
-      "HTML"
-    ],
-    "github": "https://github.com/sthevan027/site-de-Rifa",
-    "demo": "https://site-de-rifa.vercel.app",
     "featured": false
   }
 ]

@@ -144,21 +144,13 @@ export const skillCategories: SkillCategory[] = [
         "level": 95
       },
       {
-        "name": "PowerShell",
-        "level": 71
-      },
-      {
-        "name": "Shell",
+        "name": "Node.js",
         "level": 70
       },
       {
         "name": "N8N",
         "level": 85
       },
-      {
-        "name": "Make",
-        "level": 80
-      }
     ]
   }
 ]
