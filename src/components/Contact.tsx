@@ -175,7 +175,7 @@ export default function Contact() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-3 py-3 min-h-[44px] bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base"
                         placeholder="Seu nome"
                       />
                     </div>
@@ -191,7 +191,7 @@ export default function Contact() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-3 py-3 min-h-[44px] bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base"
                         placeholder="seu@email.com"
                       />
                     </div>
@@ -207,7 +207,7 @@ export default function Contact() {
                         required
                         value={formData.subject}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-3 py-3 min-h-[44px] bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base"
                         placeholder="Assunto da mensagem"
                       />
                     </div>
@@ -223,7 +223,7 @@ export default function Contact() {
                         rows={4}
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                        className="w-full px-3 py-3 min-h-[120px] bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-none text-base"
                         placeholder="Sua mensagem..."
                       />
                     </div>
@@ -272,7 +272,7 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex items-center space-x-4 p-4 glass rounded-lg"
+                    className="flex items-center space-x-4 p-4 glass rounded-lg min-h-[60px]"
                   >
                     <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
                       <info.icon className="h-5 w-5 text-primary" />
@@ -313,7 +313,7 @@ export default function Contact() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className={`w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${social.color}`}
+                    className={`w-12 h-12 min-h-[48px] min-w-[48px] bg-primary/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${social.color}`}
                   >
                     <social.icon className="h-5 w-5" />
                   </motion.a>

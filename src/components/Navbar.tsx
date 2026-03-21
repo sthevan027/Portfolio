@@ -65,7 +65,8 @@ export default function Navbar() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(!isOpen)}
-                className="hover:bg-primary/10"
+                className="hover:bg-primary/10 min-h-[44px] min-w-[44px] p-0"
+                aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
@@ -82,7 +83,7 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-foreground hover:text-primary block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 hover:bg-primary/10"
+                className="text-foreground hover:text-primary block px-4 py-3 min-h-[44px] flex items-center rounded-md text-base font-medium transition-colors duration-200 hover:bg-primary/10"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}

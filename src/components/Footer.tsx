@@ -62,7 +62,7 @@ export default function Footer() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 w-fit hover:translate-x-1 transform"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 w-fit py-2 min-h-[44px] flex items-center hover:translate-x-1 transform"
                 >
                   {link.label}
                 </a>
@@ -82,7 +82,7 @@ export default function Footer() {
             <div className="space-y-3">
               <a
                 href="mailto:sthevan@virex.com.br"
-                className="block text-muted-foreground hover:text-primary transition-colors duration-200"
+                className="block py-2 min-h-[44px] text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 sthevan@virex.com.br
               </a>
@@ -90,18 +90,18 @@ export default function Footer() {
                 href="https://wa.me/5527988772784"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-muted-foreground hover:text-primary transition-colors duration-200"
+                className="block py-2 min-h-[44px] text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 +55 (27) 98877-2784
               </a>
             </div>
             
-            <div className="flex space-x-4 pt-4">
+            <div className="flex flex-wrap gap-3 pt-4">
               <a
                 href="https://linkedin.com/in/sthevan-santos"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-blue-500 transition-colors duration-200"
+                className="py-2 min-h-[44px] flex items-center text-muted-foreground hover:text-blue-500 transition-colors duration-200"
               >
                 LinkedIn
               </a>
@@ -109,7 +109,7 @@ export default function Footer() {
                 href="https://github.com/sthevan027"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-gray-300 transition-colors duration-200"
+                className="py-2 min-h-[44px] flex items-center text-muted-foreground hover:text-gray-300 transition-colors duration-200"
               >
                 GitHub
               </a>
@@ -117,7 +117,7 @@ export default function Footer() {
                 href="https://instagram.com/sthevan.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-pink-500 transition-colors duration-200"
+                className="py-2 min-h-[44px] flex items-center text-muted-foreground hover:text-pink-500 transition-colors duration-200"
               >
                 Instagram
               </a>
