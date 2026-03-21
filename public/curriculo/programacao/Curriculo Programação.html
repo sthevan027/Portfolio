@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sthevan Santos | Desenvolvedor Web</title>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #020617;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 32px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--card);
+      padding: 40px;
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: var(--accent);
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      page-break-after: avoid;
+    }
+
+    p, li {
+      font-size: 14.5px;
+      color: var(--text);
+    }
+
+    .header {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .header-content {
+      flex: 1;
+    }
+
+    .header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .header a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .header a:hover {
+      text-decoration: underline;
+    }
+
+    .projects a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .projects a:hover {
+      opacity: 0.8;
+    }
+
+    .profile-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      flex-shrink: 0;
+    }
+
+    ul {
+      margin-left: 18px;
+      margin-top: 8px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .job {
+      margin-bottom: 22px;
+      page-break-inside: avoid;
+    }
+
+    .job-title {
+      font-weight: bold;
+    }
+
+    .job-period {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ===== IMPRESSÃO / PDF ===== */
+    @media print {
+      :root {
+        --text: #000;
+        --muted: #444;
+        --accent: #1e40af;
+      }
+
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+        font-size: 11.5pt;
+      }
+
+      .container {
+        background: white;
+        padding: 0;
+        border-radius: 0;
+        max-width: 100%;
+      }
+
+      h1 { font-size: 20pt; }
+      h2 { font-size: 12pt; }
+
+      p, li { font-size: 11.5pt; }
+
+      .header {
+        display: flex;
+        gap: 16px;
+      }
+
+      .profile-image {
+        width: 100px;
+        height: 100px;
+        border: 2px solid var(--accent);
+      }
+
+      .header p,
+      .job-period,
+      .footer {
+        font-size: 10.5pt;
+        color: var(--muted);
+      }
+
+      .header a {
+        color: var(--accent);
+      }
+
+      .projects a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+      <h1>Sthevan das Virgens dos Santos</h1>
+      <p>Desenvolvedor Web | Fullstack Júnior–Pleno | Sistemas & Automação</p>
+      <p>Serra – ES • (27) 98877-2784 • sthevan.ssantos@gmail.com</p>
+      <p>GitHub: <a href="https://github.com/sthevan027" target="_blank" rel="noopener noreferrer">sthevan027</a> • LinkedIn: <a href="https://www.linkedin.com/in/sthevanssantos/" target="_blank" rel="noopener noreferrer">sthevanssantos</a></p>
+      </div>
+      <img src="../Foto/Sthevan.jpeg" alt="Sthevan Santos" class="profile-image">
+    </div>
+
+    <!-- OBJETIVO -->
+    <h2>Objetivo Profissional</h2>
+    <p>
+      Atuar como <strong>Desenvolvedor Web ou Fullstack Júnior–Pleno</strong>,
+      contribuindo no desenvolvimento de sistemas, automações e aplicações web,
+      com foco em código limpo, organização, boas práticas e evolução contínua.
+    </p>
+
+    <!-- RESUMO -->
+    <h2>Resumo Profissional</h2>
+    <p>
+      Desenvolvedor web com experiência prática no desenvolvimento de <strong>sistemas de gestão</strong>,
+      <strong>aplicações web</strong> e <strong>automações</strong>, atuando no frontend e backend.
+      Fundador de uma empresa de soluções digitais, participando diretamente do desenvolvimento técnico,
+      estruturação de regras de negócio, manutenção de sistemas em produção e entrega de soluções escaláveis para empresas.
+    </p>
+
+    <!-- STACK -->
+    <h2>Competências Técnicas</h2>
+    <ul>
+      <li><strong>Linguagens:</strong> JavaScript, TypeScript, Python, HTML, CSS</li>
+      <li><strong>Frontend:</strong> React, Next.js, consumo e integração com APIs REST</li>
+      <li><strong>Backend:</strong> Node.js, APIs REST, lógica de negócio e validações</li>
+      <li><strong>Bancos de Dados:</strong> MongoDB, PostgreSQL</li>
+      <li><strong>Ferramentas & Conceitos:</strong> Git, GitHub, Docker (básico), Arquitetura básica de sistemas, UX/UI aplicado, Sistemas de gestão (ERP, Dashboard, CRM, Landing Pages)</li>
+    </ul>
+
+    <!-- EXPERIÊNCIA -->
+    <h2>Experiência em Tecnologia</h2>
+
+    <div class="job">
+      <p class="job-title">Sthex Systems / DevLoop — Fundador & Desenvolvedor</p>
+      <p class="job-period">2025 – Atual</p>
+      <ul>
+        <li>Desenvolvimento fullstack de sistemas de gestão, dashboards e CRMs utilizando React, Next.js, Node.js, MongoDB e PostgreSQL</li>
+        <li>Criação de automações e integrações via APIs REST, reduzindo processos manuais e aumentando eficiência operacional</li>
+        <li>Desenvolvimento de Landing Pages responsivas, com foco em performance e conversão</li>
+        <li>Estruturação de regras de negócio e organização de código com boas práticas</li>
+        <li>Manutenção e evolução contínua de sistemas em produção</li>
+        <li>Atendimento direto a clientes, levantamento de requisitos e tradução de necessidades em soluções técnicas</li>
+        <li>Gestão técnica dos projetos desde a concepção até a entrega e suporte pós-implantação</li>
+      </ul>
+    </div>
+
+    <!-- IDIOMAS -->
+    <h2>Idiomas</h2>
+    <ul>
+      <li>Português — Nativo</li>
+      <li>Inglês — Intermediário/Avançado (em evolução)</li>
+    </ul>
+
+    <!-- FORMAÇÃO -->
+    <h2>Formação</h2>
+    <ul>
+      <li>Engenharia de Software — Em andamento</li>
+      <li>Técnico em Automação — CEDTEC (Concluído)</li>
+    </ul>
+
+    <!-- FORMAÇÃO TÉCNICA / CURSOS -->
+    <h2>Formação Técnica & Cursos</h2>
+    <ul>
+      <li><strong>Desenvolvimento Web & Fullstack:</strong> Desenvolvimento Web Completo (20+ módulos), Curso Web Moderno Completo — JavaScript, React, Node.js, Express, Vue.js, MySQL, Formação Front-end — HTML, CSS, JavaScript, React, TypeScript, Web Frontend Fundamentos — HTML, CSS, JavaScript</li>
+      <li><strong>React & Next.js:</strong> React 19 Completo — React e Next.js (em andamento)</li>
+      <li><strong>Lógica & Programação:</strong> Algoritmos e Lógica de Programação — Python, Java, C, C++, C#</li>
+    </ul>
+
+    <!-- PROJETOS / PORTFÓLIO -->
+    <h2>Projetos & Portfólio</h2>
+    <div class="projects">
+      <p><strong>GitHub:</strong> <a href="https://github.com/sthevan027" target="_blank" rel="noopener noreferrer">sthevan027</a></p>
+      <p>Projetos de sistemas de gestão, dashboards, CRMs e aplicações web desenvolvidas com foco em organização, escalabilidade e boas práticas.</p>
+    </div>
+
+    <div class="footer">
+      Currículo de Programação • Desenvolvedor Web 
+    </div>
+
+  </div>
+</body>
+</html>

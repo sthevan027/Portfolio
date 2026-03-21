@@ -18,6 +18,7 @@ export default function Navbar() {
     { href: '#about', label: t('nav.about') },
     { href: '#projects', label: t('nav.projects') },
     { href: '#experience', label: t('nav.experience') },
+    { href: '/curriculo', label: t('nav.curriculo') },
     { href: '#contact', label: t('nav.contact') },
   ]
 

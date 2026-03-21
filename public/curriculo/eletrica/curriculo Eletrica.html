@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sthevan Santos | Eletricista FC</title>
+
+  <style>
+    /* =========================
+    VARIÁVEIS (TELA)
+    ========================== */
+    :root {
+      --bg: #0f172a;
+      --card: #020617;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 32px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+  
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--card);
+      padding: 40px;
+      border-radius: 12px;
+    }
+  
+    /* =========================
+       HEADER
+    ========================== */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .header-content {
+      flex: 1;
+    }
+  
+    .profile-image {
+      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      flex-shrink: 0;
+    }
+  
+    h1 {
+      font-size: 32px;
+      color: var(--accent);
+    }
+  
+    h2 {
+      font-size: 18px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      page-break-after: avoid;
+    }
+  
+    p, li {
+      font-size: 14.5px;
+      color: var(--text);
+    }
+  
+    .header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .header a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .header a:hover {
+      text-decoration: underline;
+    }
+  
+    ul {
+      margin-left: 18px;
+      margin-top: 8px;
+    }
+  
+    li {
+      margin-bottom: 6px;
+    }
+  
+    .job {
+      margin-bottom: 22px;
+      page-break-inside: avoid;
+    }
+  
+    .job-title {
+      font-weight: bold;
+    }
+  
+    .job-period {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+  
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+  
+    /* =========================
+       IMPRESSÃO / PDF (A4)
+    ========================== */
+    @media print {
+      :root {
+        --text: #000000;
+        --muted: #444444;
+        --accent: #1e40af;
+      }
+  
+      body {
+        background: white;
+        color: var(--text);
+        padding: 0;
+        font-size: 11.5pt;
+        line-height: 1.5;
+      }
+  
+      .container {
+        background: white;
+        padding: 0;
+        border-radius: 0;
+        max-width: 100%;
+      }
+  
+      h1 {
+        font-size: 20pt;
+        color: var(--accent);
+      }
+  
+      h2 {
+        font-size: 12pt;
+        margin-top: 18px;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+  
+      p, li {
+        font-size: 11.5pt;
+        color: var(--text);
+      }
+  
+      .header p,
+      .job-period,
+      .footer {
+        color: var(--muted);
+        font-size: 10.5pt;
+      }
+
+      .header a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+  
+      .profile-image {
+        width: 110px;
+        height: 110px;
+        border: 2px solid var(--accent);
+      }
+    }
+  
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1>Sthevan das Virgens dos Santos</h1>
+        <p>Eletricista FC | Técnico em Automação | Liderança em Campo</p>
+        <p>Serra – ES • (27) 98877-2784 • sthevan.ssantos@gmail.com</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/sthevanssantos/" target="_blank" rel="noopener noreferrer">sthevanssantos</a></p>
+      </div>
+      <img src="../Foto/Sthevan.jpeg" alt="Sthevan Santos" class="profile-image">
+    </div>
+
+    <!-- OBJETIVO -->
+    <h2>Objetivo Profissional</h2>
+    <p>
+      Atuar como <strong>Eletricista FC, Técnico em Automação e Elétrica ou Encarregado Júnior</strong>, com foco em liderança de equipes em campo, comissionamento, apoio à engenharia e planejamento de obra, garantindo qualidade, segurança e cumprimento dos cronogramas industriais.
+    </p>
+
+    <!-- RESUMO -->
+    <h2>Resumo Profissional</h2>
+    <p>
+      Eletricista FC com formação técnica em automação, experiência em obras e ambientes industriais de grande porte e atuação direta em liderança operacional em campo. Vivência em comissionamento elétrico, planejamento, apoio à engenharia, relatórios de qualidade e coordenação de equipes elétricas, com participação em projetos integrados com a Vale e atuação em áreas industriais da ArcelorMittal. Perfil técnico, organizado e orientado a resultados.
+    </p>
+
+    <!-- EXPERIÊNCIA -->
+    <h2>Experiência Profissional</h2>
+
+    <div class="job">
+      <p class="job-title">JL Construtora — Eletricista FC</p>
+      <p class="job-period">Ago/2024 – Atual</p>
+      <ul>
+        <li>Atuação como referência técnica da disciplina elétrica em campo, apoiando engenharia e planejamento da obra</li>
+        <li>Organização e acompanhamento das equipes elétricas, distribuindo atividades conforme planejamento</li>
+        <li>Execução e acompanhamento do planejamento da JL em conjunto com a Vale, garantindo alinhamento com cronograma e segurança</li>
+        <li>Elaboração, acompanhamento e controle de relatórios de qualidade da disciplina de elétrica</li>
+        <li>Atuação em comissionamento elétrico, realizando testes, verificações, liberações e apoio técnico às equipes</li>
+        <li>Responsável pela documentação de comissionamento da obra, assegurando rastreabilidade e conformidade</li>
+        <li>Repasse de informações técnicas sobre equipamentos e instrumentos liberados para comissionamento</li>
+        <li>Atuação em painéis elétricos, comandos elétricos, ligações industriais e testes operacionais</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <p class="job-title">SGS Industrial – Instalações, Testes e Comissionamentos LTDA — Eletricista de Manutenção Eletroeletrônica</p>
+      <p class="job-period">Jan/2023 – Jul/2024</p>
+      <ul>
+        <li>Liderança de equipe elétrica nas áreas de CDQ e Aciaria da ArcelorMittal</li>
+        <li>Organização das frentes de trabalho e acompanhamento das atividades em campo</li>
+        <li>Participação em reuniões de planejamento com a ArcelorMittal, atuando na separação de equipes e controle de efetivo</li>
+        <li>Atuação no controle, execução, baixa e fechamento de OMs (Ordens de Manutenção)</li>
+        <li>Execução de manutenção corretiva e preventiva de máquinas e equipamentos industriais</li>
+        <li>Montagem de painéis elétricos, leitura e interpretação de diagramas elétricos</li>
+        <li>Calibração de instrumentos industriais e apoio técnico a testes e comissionamentos</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <p class="job-title">Jota Ele Construções Civis S/A — Auxiliar de Eletricista</p>
+      <p class="job-period">Jul/2021 – Jan/2023</p>
+      <ul>
+        <li>Montagem de leitos e eletrodutos</li>
+        <li>Apoio em painéis elétricos e iluminação industrial</li>
+        <li>Manutenção em sistemas elétricos, motores e bombas</li>
+      </ul>
+    </div>
+
+    <!-- FORMAÇÃO -->
+    <h2>Formação</h2>
+    <ul>
+      <li>Técnico em Automação — CEDTEC (Concluído)</li>
+      <li>Engenharia de Software — Em andamento (formação complementar)</li>
+      <li>Ensino Médio Completo</li>
+    </ul>
+
+    <!-- CURSOS -->
+    <h2>Cursos & Certificações</h2>
+    <ul>
+      <li>NR10 — Segurança em Instalações Elétricas</li>
+      <li>Máquinas e Comandos Elétricos</li>
+      <li>CLP — Controladores Lógicos Programáveis</li>
+      <li>Lógica de Programação — IFES</li>
+      <li>CNH — Categoria A e B</li>
+    </ul>
+
+    <div class="footer">
+      Currículo técnico • Eletricista FC • Atualizado
+    </div>
+
+  </div>
+</body>
+</html>
