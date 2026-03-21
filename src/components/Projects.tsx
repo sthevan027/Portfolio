@@ -55,7 +55,7 @@ export default function Projects() {
           <h3 className="text-2xl font-heading font-bold mb-8 text-center">
             Projetos em <span className="gradient-text">Destaque</span>
           </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {featuredProjects.map((project, index) => (
               <ProjectCard
                 key={project.id}
