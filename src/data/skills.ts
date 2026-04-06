@@ -32,15 +32,15 @@ export const skillCategories: SkillCategory[] = [
       },
       {
         "name": "JavaScript",
-        "level": 84
+        "level": 92
       },
       {
         "name": "CSS",
-        "level": 71
+        "level": 90
       },
       {
         "name": "HTML",
-        "level": 71
+        "level": 90
       },
       {
         "name": "React/Next.js",
@@ -48,7 +48,7 @@ export const skillCategories: SkillCategory[] = [
       },
       {
         "name": "Tailwind CSS",
-        "level": 85
+        "level": 90
       }
     ]
   },
@@ -69,7 +69,7 @@ export const skillCategories: SkillCategory[] = [
       },
       {
         "name": "Node.js",
-        "level": 85
+        "level": 90
       }
     ]
   },
@@ -145,7 +145,7 @@ export const skillCategories: SkillCategory[] = [
       },
       {
         "name": "Node.js",
-        "level": 70
+        "level": 85
       },
       {
         "name": "N8N",

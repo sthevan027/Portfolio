@@ -46,6 +46,15 @@ const FEATURED_REPOS = [
   'system-control',
 ]
 
+/** Pré-visualizações em public/projects/ — mantém após cada sync */
+const PREVIEW_IMAGES = {
+  'ceo-os': '/projects/ceo-os.svg',
+  codefocus: '/projects/codefocus.svg',
+  'gh-dev-analyzer': '/projects/gh-dev-analyzer.svg',
+  eletrolab: '/projects/eletrolab.svg',
+  'system-control': '/projects/system-control.svg',
+}
+
 const categoryMap = {
   fullstack: ['typescript', 'javascript', 'react', 'node', 'gestao', 'dashboard', 'fullstack'],
   frontend: ['typescript', 'javascript', 'react', 'html', 'css'],
@@ -191,6 +200,8 @@ async function main() {
     const demo = vercelDemos[repoKey] || null
     const featured = FEATURED_REPOS.includes(repoKey)
 
+    const previewImage = PREVIEW_IMAGES[repoKey]
+
     return {
       id: i + 1,
       title: formatTitle(repo.name),
@@ -200,7 +211,8 @@ async function main() {
       technologies: formatTechnologies(repo),
       github: repo.url,
       demo,
-      featured
+      featured,
+      ...(previewImage ? { previewImage } : {}),
     }
   })
 
@@ -217,6 +229,7 @@ export interface Project {
   title: string
   description: string
   image: string
+  previewImage?: string
   category: ProjectCategory
   technologies: string[]
   github: string

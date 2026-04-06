@@ -29,9 +29,9 @@ module.exports = {
         ring: 'rgb(var(--ring))',
       },
       fontFamily: {
-        sans: ['var(--font-sans)'],
-        mono: ['var(--font-mono)'],
-        heading: ['var(--font-heading)'],
+        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        heading: ['var(--font-heading)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },

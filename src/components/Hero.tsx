@@ -1,11 +1,72 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowRight, MessageCircle, Download } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, MessageCircle, Download, X, Code2, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 
+const CV_OPTIONS = [
+  {
+    id: 'web' as const,
+    label: 'Desenvolvimento Web',
+    description: 'Desenvolvedor Web — React, Next.js e frontend',
+    icon: Code2,
+    fileName: 'Sthevan Santos _ Desenvolvedor Web.pdf',
+    folder: 'programacao' as const,
+    downloadAs: 'Sthevan-Santos-Desenvolvedor-Web.pdf',
+  },
+  {
+    id: 'eletrica' as const,
+    label: 'Elétrica',
+    description: 'Eletricista FC',
+    icon: Zap,
+    fileName: 'Sthevan Santos _ Eletricista FC.pdf',
+    folder: 'eletrica' as const,
+    downloadAs: 'Sthevan-Santos-Eletricista-FC.pdf',
+  },
+]
+
+function downloadPdf(folder: string, fileName: string, downloadAs: string) {
+  const href = `/curriculo/${folder}/${encodeURIComponent(fileName)}`
+  const link = document.createElement('a')
+  link.href = href
+  link.download = downloadAs
+  link.rel = 'noopener'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+
 export default function Hero() {
+  const [cvModalOpen, setCvModalOpen] = useState(false)
+
+  useEffect(() => {
+    const openCvFromHash = () => {
+      if (window.location.hash === '#curriculo') {
+        setCvModalOpen(true)
+      }
+    }
+    openCvFromHash()
+    window.addEventListener('hashchange', openCvFromHash)
+    return () => window.removeEventListener('hashchange', openCvFromHash)
+  }, [])
+
+  const clearCurriculoHash = () => {
+    if (typeof window !== 'undefined' && window.location.hash === '#curriculo') {
+      window.history.replaceState(
+        null,
+        '',
+        `${window.location.pathname}${window.location.search}`
+      )
+    }
+  }
+
+  const closeCvModal = () => {
+    setCvModalOpen(false)
+    clearCurriculoHash()
+  }
+
   const handleWhatsAppClick = () => {
     const phoneNumber = '5527988772784'
     const message = encodeURIComponent('Olá! Vi seu portfólio e gostaria de conversar sobre um projeto.')
@@ -20,19 +81,25 @@ export default function Hero() {
     }
   }
 
-  const handleDownloadCV = () => {
-    // Criar um link temporário para download
-    const link = document.createElement('a')
-    link.href = '/cv-sthevan-santos.pdf' // Assumindo que o CV está na pasta public
-    link.download = 'Sthevan-Santos-CV.pdf'
-    link.target = '_blank'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+  const handleDownloadCVClick = () => {
+    setCvModalOpen(true)
+  }
+
+  const handlePickCv = (option: (typeof CV_OPTIONS)[number]) => {
+    downloadPdf(option.folder, option.fileName, option.downloadAs)
+    closeCvModal()
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden scroll-mt-20"
+    >
+      <div
+        id="curriculo"
+        className="absolute left-0 top-0 h-px w-px overflow-hidden pointer-events-none"
+        aria-hidden
+      />
       <div className="hero-bg absolute inset-0"></div>
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -100,7 +167,7 @@ export default function Hero() {
               <Button 
                 variant="ghost" 
                 size="lg"
-                onClick={handleDownloadCV}
+                onClick={handleDownloadCVClick}
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download CV
@@ -149,6 +216,71 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {cvModalOpen && (
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cv-modal-title"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+            onClick={closeCvModal}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 8 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-md rounded-2xl border border-border bg-card/95 p-6 shadow-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                className="absolute right-4 top-4 rounded-md p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                onClick={closeCvModal}
+                aria-label="Fechar"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <h2
+                id="cv-modal-title"
+                className="font-heading text-xl font-semibold pr-10 mb-1"
+              >
+                Qual currículo baixar?
+              </h2>
+              <p className="text-sm text-muted-foreground mb-6">
+                Escolha a versão que combina com a vaga ou o contato.
+              </p>
+              <div className="flex flex-col gap-3">
+                {CV_OPTIONS.map((option) => {
+                  const Icon = option.icon
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => handlePickCv(option)}
+                      className="flex w-full items-start gap-4 rounded-xl border border-border bg-background/50 p-4 text-left transition-colors hover:border-primary/50 hover:bg-muted/50"
+                    >
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span>
+                        <span className="block font-medium">{option.label}</span>
+                        <span className="text-sm text-muted-foreground">
+                          {option.description}
+                        </span>
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* Scroll indicator */}
       <motion.div

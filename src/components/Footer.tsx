@@ -15,8 +15,9 @@ export default function Footer() {
     { href: '#home', label: 'Início' },
     { href: '#about', label: 'Sobre' },
     { href: '#projects', label: 'Projetos' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#contact', label: 'Contato' }
+    { href: '#experience', label: 'Experiência' },
+    { href: '#curriculo', label: 'Currículo' },
+    { href: '#contact', label: 'Contato' },
   ]
 
   return (

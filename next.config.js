@@ -1,14 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'pageshot.site',
-        pathname: '/v1/screenshot',
-      },
-    ],
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;

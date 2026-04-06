@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
-
 :root {
   --background: 18 18 18;
   --foreground: 245 245 245;
@@ -32,16 +30,29 @@
     border-color: rgb(var(--border));
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     color: rgb(var(--foreground));
     background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
-    font-family: 'Inter', sans-serif;
     min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
     font-weight: 700;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 }
 

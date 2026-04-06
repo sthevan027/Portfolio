@@ -16,8 +16,6 @@ const GRADIENTS = [
   'from-indigo-600 to-blue-500',
 ]
 
-const SCREENSHOT_PARAMS = 'width=640&height=360&format=webp&block_ads=true'
-
 function getProjectPreview(project: { title: string }, index: number) {
   const gradient = GRADIENTS[index % GRADIENTS.length]
   const words = project.title.split(/\s+/)
@@ -32,10 +30,6 @@ function getProjectPreview(project: { title: string }, index: number) {
   return { gradient, initials: initials || '?' }
 }
 
-function getScreenshotUrl(demoUrl: string) {
-  return `https://pageshot.site/v1/screenshot?url=${encodeURIComponent(demoUrl)}&${SCREENSHOT_PARAMS}`
-}
-
 interface ProjectCardProps {
   project: Project
   index: number
@@ -43,10 +37,10 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index, size = 'compact' }: ProjectCardProps) {
-  const [screenshotError, setScreenshotError] = useState(false)
+  const [previewFailed, setPreviewFailed] = useState(false)
   const preview = getProjectPreview(project, index)
   const isFeatured = size === 'featured'
-  const showScreenshot = project.demo && !screenshotError
+  const showImage = project.previewImage && !previewFailed
 
   return (
     <motion.div
@@ -57,12 +51,16 @@ export default function ProjectCard({ project, index, size = 'compact' }: Projec
     >
       <Card className="glass hover:glow transition-all duration-300 h-full overflow-hidden flex flex-col min-h-0">
         <div className="aspect-video rounded-t-lg overflow-hidden bg-muted relative shrink-0">
-          {showScreenshot ? (
+          {showImage ? (
             <img
-              src={getScreenshotUrl(project.demo!)}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-              onError={() => setScreenshotError(true)}
+              src={project.previewImage}
+              alt={`Pré-visualização de ${project.title}`}
+              width={640}
+              height={360}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+              onError={() => setPreviewFailed(true)}
             />
           ) : (
             <div

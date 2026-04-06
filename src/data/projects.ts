@@ -11,6 +11,7 @@ export interface Project {
   title: string
   description: string
   image: string
+  previewImage?: string
   category: ProjectCategory
   technologies: string[]
   github: string
@@ -66,7 +67,8 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/CEO-OS",
     "demo": "https://ceo-os-ochre.vercel.app",
-    "featured": true
+    "featured": true,
+    "previewImage": "/projects/ceo-os.svg"
   },
   {
     "id": 4,
@@ -81,7 +83,8 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/CodeFocus",
     "demo": "https://code-focus-beta.vercel.app",
-    "featured": true
+    "featured": true,
+    "previewImage": "/projects/codefocus.svg"
   },
   {
     "id": 5,
@@ -94,7 +97,8 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/gh-dev-analyzer",
     "demo": null,
-    "featured": true
+    "featured": true,
+    "previewImage": "/projects/gh-dev-analyzer.svg"
   },
   {
     "id": 6,
@@ -141,7 +145,8 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/EletroLab",
     "demo": "https://eletro-lab.vercel.app",
-    "featured": true
+    "featured": true,
+    "previewImage": "/projects/eletrolab.svg"
   },
   {
     "id": 9,
@@ -231,7 +236,8 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/System-control",
     "demo": "https://sthex-systens.vercel.app",
-    "featured": true
+    "featured": true,
+    "previewImage": "/projects/system-control.svg"
   },
   {
     "id": 15,
