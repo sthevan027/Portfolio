@@ -1,5 +1,9 @@
 # 🚀 Portfolio - Sthevan Santos
 
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+
+![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=nextdotjs&logoColor=white) ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white) ![Tailwind](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwindcss&logoColor=white) ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-12-0055FF?logo=framer&logoColor=white)
+
 Portfólio pessoal unificado com projetos, currículos e informações de contato.
 
 ## 📋 Conteúdo
