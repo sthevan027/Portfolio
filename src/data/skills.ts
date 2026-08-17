@@ -1,7 +1,10 @@
 /**
- * Skills - dados reais do GitHub (sthevan027)
- * Última sincronização: 2026-03-07T17:05:00.687Z
- * Execute: pnpm run sync:skills para atualizar
+ * Skills - dados reais do GitHub (sthevan027) + curadoria manual (currículo)
+ * Última sincronização automática: 2026-08-17T13:01:10.372Z
+ * Ajustes manuais (2026-08-17): Node.js à frente de C#/Java (repos de estudo),
+ * Supabase no lugar de Prisma, PWA único item de Mobile, OCR em Automação,
+ * remoção de N8N/Make/React Native/Expo sem evidência de uso real.
+ * Execute: pnpm run sync:skills para atualizar (sobrescreve os ajustes acima)
  */
 
 export interface Skill {
@@ -31,16 +34,16 @@ export const skillCategories: SkillCategory[] = [
         "level": 95
       },
       {
-        "name": "JavaScript",
-        "level": 92
+        "name": "HTML",
+        "level": 72
       },
       {
         "name": "CSS",
-        "level": 90
+        "level": 72
       },
       {
-        "name": "HTML",
-        "level": 90
+        "name": "JavaScript",
+        "level": 71
       },
       {
         "name": "React/Next.js",
@@ -48,7 +51,7 @@ export const skillCategories: SkillCategory[] = [
       },
       {
         "name": "Tailwind CSS",
-        "level": 90
+        "level": 85
       }
     ]
   },
@@ -60,16 +63,16 @@ export const skillCategories: SkillCategory[] = [
     "iconColor": "text-green-400",
     "skills": [
       {
+        "name": "Node.js",
+        "level": 90
+      },
+      {
         "name": "C#",
-        "level": 95
+        "level": 75
       },
       {
         "name": "Java",
-        "level": 77
-      },
-      {
-        "name": "Node.js",
-        "level": 90
+        "level": 70
       }
     ]
   },
@@ -85,8 +88,8 @@ export const skillCategories: SkillCategory[] = [
         "level": 95
       },
       {
-        "name": "Prisma ORM",
-        "level": 80
+        "name": "Supabase",
+        "level": 90
       }
     ]
   },
@@ -119,14 +122,6 @@ export const skillCategories: SkillCategory[] = [
     "iconColor": "text-indigo-400",
     "skills": [
       {
-        "name": "React Native",
-        "level": 80
-      },
-      {
-        "name": "Expo",
-        "level": 85
-      },
-      {
         "name": "PWA",
         "level": 85
       }
@@ -144,13 +139,21 @@ export const skillCategories: SkillCategory[] = [
         "level": 95
       },
       {
-        "name": "Node.js",
-        "level": 85
+        "name": "OCR (Tesseract)",
+        "level": 88
       },
       {
-        "name": "N8N",
-        "level": 85
+        "name": "PowerShell",
+        "level": 71
       },
+      {
+        "name": "Shell",
+        "level": 70
+      },
+      {
+        "name": "VBScript",
+        "level": 70
+      }
     ]
   }
 ]
