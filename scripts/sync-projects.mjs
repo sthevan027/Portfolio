@@ -39,21 +39,59 @@ const GH_FIELDS = 'name,description,url,primaryLanguage,isFork,updatedAt,homepag
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN
 
 const FEATURED_REPOS = [
-  'codefocus',
+  'gerador-de-relatorio',
+  'gerador-de-art',
   'ceo-os',
-  'gh-dev-analyzer',
-  'eletrolab',
   'system-control',
+  'devradar',
+  'laudofacil',
 ]
 
 /** Pré-visualizações em public/projects/ — mantém após cada sync */
 const PREVIEW_IMAGES = {
   'ceo-os': '/projects/ceo-os.svg',
-  codefocus: '/projects/codefocus.svg',
-  'gh-dev-analyzer': '/projects/gh-dev-analyzer.svg',
-  eletrolab: '/projects/eletrolab.svg',
+  devradar: '/projects/gh-dev-analyzer.svg',
+  laudofacil: '/projects/eletrolab.svg',
   'system-control': '/projects/system-control.svg',
 }
+
+/**
+ * Ganho de produtividade medido pelo autor (antes → depois).
+ * Só entram números reais informados, não estimativas.
+ */
+const IMPACT_METRICS = {
+  'gerador-de-relatorio': 'De 1 para 3 relatórios processados por dia',
+  'gerador-de-art': 'De 5 dias para meio dia por ART',
+  'painel-gerencial': 'Acelera a tomada de decisão com dados sempre atualizados',
+  'painel-gerencial-jl': 'Acelera a tomada de decisão com dados sempre atualizados',
+}
+
+/**
+ * Projetos locais que ainda não têm repositório no GitHub — mantidos aqui
+ * porque o sync sobrescreve todo o projects.ts a cada execução.
+ */
+const MANUAL_PROJECTS = [
+  {
+    title: 'RDO Fotos',
+    description:
+      'App desktop que organiza as fotos do RDO (WhatsApp) direto nas pastas de cada ativo, com fluxo de 1 clique por foto e checagem de duplicidade por conteúdo.',
+    category: 'automation',
+    technologies: ['Python', 'Tkinter'],
+    github: null,
+    demo: null,
+    featured: false,
+  },
+  {
+    title: 'CopyAutomity',
+    description:
+      'Automação que copia e renomeia os tickets de medição todo dia às 07h, organizando por mês sem intervenção manual.',
+    category: 'automation',
+    technologies: ['Python'],
+    github: null,
+    demo: null,
+    featured: false,
+  },
+]
 
 const categoryMap = {
   fullstack: ['typescript', 'javascript', 'react', 'node', 'gestao', 'dashboard', 'fullstack'],
@@ -195,12 +233,13 @@ async function main() {
   const exclude = ['portiflio', 'Config', 'Curriculo', 'sthevan027', 'Strivo', 'ResolveJa', 'FORGE', 'organizador', 'Converso']
   const filtered = repos.filter(r => !exclude.includes(r.name) && !r.isFork && r.description)
 
-  const projects = filtered.map((repo, i) => {
+  const syncedProjects = filtered.map((repo, i) => {
     const repoKey = repo.name.toLowerCase()
     const demo = vercelDemos[repoKey] || null
     const featured = FEATURED_REPOS.includes(repoKey)
 
     const previewImage = PREVIEW_IMAGES[repoKey]
+    const impact = IMPACT_METRICS[repoKey]
 
     return {
       id: i + 1,
@@ -213,8 +252,18 @@ async function main() {
       demo,
       featured,
       ...(previewImage ? { previewImage } : {}),
+      ...(impact ? { impact } : {}),
     }
   })
+
+  const projects = [
+    ...syncedProjects,
+    ...MANUAL_PROJECTS.map((p, i) => ({
+      id: syncedProjects.length + i + 1,
+      image: '/api/placeholder/400/250',
+      ...p,
+    })),
+  ]
 
   const output = `/**
  * Dados dos projetos - sincronizados com GitHub (${GITHUB_USER})
@@ -232,9 +281,10 @@ export interface Project {
   previewImage?: string
   category: ProjectCategory
   technologies: string[]
-  github: string
+  github: string | null
   demo: string | null
   featured: boolean
+  impact?: string
 }
 
 export const projects: Project[] = ${JSON.stringify(projects, null, 2)}

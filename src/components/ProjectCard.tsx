@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, TrendingUp } from 'lucide-react'
 import type { Project } from '@/data/projects'
 
 const GRADIENTS = [
@@ -83,6 +83,12 @@ export default function ProjectCard({ project, index, size = 'compact' }: Projec
           >
             {project.description}
           </p>
+          {project.impact && (
+            <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-sm font-medium">
+              <TrendingUp className="h-4 w-4 shrink-0" />
+              <span>{project.impact}</span>
+            </div>
+          )}
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-wrap gap-2">
@@ -98,12 +104,14 @@ export default function ProjectCard({ project, index, size = 'compact' }: Projec
             )}
           </div>
           <div className="flex gap-2">
-            <Button size="sm" variant="outline" asChild>
-              <a href={project.github} target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
-                Código
-              </a>
-            </Button>
+            {project.github && (
+              <Button size="sm" variant="outline" asChild>
+                <a href={project.github} target="_blank" rel="noopener noreferrer">
+                  <Github className="h-4 w-4 mr-2" />
+                  Código
+                </a>
+              </Button>
+            )}
             {project.demo && (
               <Button size="sm" asChild>
                 <a href={project.demo} target="_blank" rel="noopener noreferrer">

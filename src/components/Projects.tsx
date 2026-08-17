@@ -8,14 +8,21 @@ import { ArrowRight } from 'lucide-react'
 import { projects } from '@/data/projects'
 import ProjectCard from '@/components/ProjectCard'
 
-const FEATURED_ORDER = ['codefocus', 'ceo-os', 'gh-dev-analyzer', 'eletrolab', 'system-control']
+const FEATURED_ORDER = [
+  'gerador-de-relatorio',
+  'gerador-de-art',
+  'ceo-os',
+  'system-control',
+  'devradar',
+  'laudofacil',
+]
 
 export default function Projects() {
   const featuredProjects = useMemo(() => {
     const featured = projects.filter((p) => p.featured)
     return featured.sort((a, b) => {
-      const repoA = a.github.split('/').pop()?.toLowerCase().replace(/\s+/g, '-') ?? ''
-      const repoB = b.github.split('/').pop()?.toLowerCase().replace(/\s+/g, '-') ?? ''
+      const repoA = a.github?.split('/').pop()?.toLowerCase().replace(/\s+/g, '-') ?? ''
+      const repoB = b.github?.split('/').pop()?.toLowerCase().replace(/\s+/g, '-') ?? ''
       const iA = FEATURED_ORDER.indexOf(repoA)
       const iB = FEATURED_ORDER.indexOf(repoB)
       if (iA === -1) return 1
