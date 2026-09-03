@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { Language, getTranslation } from '@/lib/i18n'
 
 interface LanguageContextType {
@@ -9,10 +9,28 @@ interface LanguageContextType {
   t: (key: string) => string
 }
 
+const STORAGE_KEY = 'portfolio-language'
+
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('pt')
+  const [language, setLanguageState] = useState<Language>('pt')
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem(STORAGE_KEY)
+    if (stored === 'pt' || stored === 'en') {
+      setLanguageState(stored)
+    }
+  }, [])
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang)
+    try {
+      window.localStorage.setItem(STORAGE_KEY, lang)
+    } catch {
+      // localStorage indisponível (modo privado etc.) — segue só em memória
+    }
+  }
 
   const t = (key: string) => getTranslation(language, key)
 

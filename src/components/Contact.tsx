@@ -4,19 +4,22 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { 
-  Mail, 
-  MessageCircle, 
-  Linkedin, 
-  Github, 
+import {
+  Mail,
+  MessageCircle,
+  Linkedin,
+  Github,
   Instagram,
   MapPin,
   Phone,
   Send,
-  CheckCircle
+  CheckCircle,
+  AlertCircle
 } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Contact() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,11 +28,13 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+    setErrorMessage(null)
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -49,11 +54,11 @@ export default function Contact() {
           setFormData({ name: '', email: '', subject: '', message: '' })
         }, 3000)
       } else {
-        alert(data.error || 'Erro ao enviar mensagem')
+        setErrorMessage(data.error || t('contact.errorGeneric'))
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao enviar mensagem. Tente novamente.')
+      setErrorMessage(t('contact.errorRetry'))
     } finally {
       setIsSubmitting(false)
     }
@@ -66,29 +71,34 @@ export default function Contact() {
     })
   }
 
-  const contactInfo = [
+  const contactInfo: {
+    icon: typeof Mail
+    titleKey: string
+    value: string
+    link: string | null
+  }[] = [
     {
       icon: Mail,
-      title: 'Email',
+      titleKey: 'contact.labelEmail',
       value: 'sthevan.ssantos@gmail.com',
       link: 'mailto:sthevan.ssantos@gmail.com'
     },
     {
       icon: Phone,
-      title: 'WhatsApp',
+      titleKey: 'contact.labelWhatsapp',
       value: '+55 (27) 98877-2784',
       link: 'https://wa.me/5527988772784'
     },
     {
       icon: Phone,
-      title: 'WhatsApp Empresarial',
+      titleKey: 'contact.labelWhatsappBiz',
       value: '+55 (27) 998962-8554',
       link: 'https://wa.me/55279989628554'
     },
     {
       icon: MapPin,
-      title: 'Localização',
-      value: 'Vitória, ES - Brasil',
+      titleKey: 'contact.labelLocation',
+      value: t('contact.locationValue'),
       link: null
     }
   ]
@@ -119,34 +129,33 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Vamos <span className="gradient-text">Conversar?</span>
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Estou sempre aberto a novos projetos, oportunidades de colaboração e conversas interessantes. 
-            Entre em contato e vamos transformar sua ideia em realidade!
+            {t('contact.description')}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             <Card className="glass">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <MessageCircle className="h-5 w-5 text-primary" />
-                  <span>Envie uma Mensagem</span>
+                  <span>{t('contact.form')}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -157,16 +166,22 @@ export default function Contact() {
                     className="text-center py-8"
                   >
                     <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">Mensagem Enviada!</h3>
+                    <h3 className="text-xl font-semibold mb-2">{t('contact.success')}</h3>
                     <p className="text-muted-foreground">
-                      Obrigado pelo contato! Responderei em breve.
+                      {t('contact.successText')}
                     </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {errorMessage && (
+                      <div className="flex items-center gap-2 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+                        <AlertCircle className="h-4 w-4 shrink-0" />
+                        <span>{errorMessage}</span>
+                      </div>
+                    )}
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
-                        Nome
+                        {t('contact.name')}
                       </label>
                       <input
                         type="text"
@@ -176,13 +191,13 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         className="w-full px-3 py-3 min-h-[44px] bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base"
-                        placeholder="Seu nome"
+                        placeholder={t('contact.namePlaceholder')}
                       />
                     </div>
-                    
+
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2">
-                        Email
+                        {t('contact.email')}
                       </label>
                       <input
                         type="email"
@@ -192,13 +207,13 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-3 py-3 min-h-[44px] bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base"
-                        placeholder="seu@email.com"
+                        placeholder={t('contact.emailPlaceholder')}
                       />
                     </div>
-                    
+
                     <div>
                       <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                        Assunto
+                        {t('contact.subject')}
                       </label>
                       <input
                         type="text"
@@ -208,13 +223,13 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         className="w-full px-3 py-3 min-h-[44px] bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base"
-                        placeholder="Assunto da mensagem"
+                        placeholder={t('contact.subjectPlaceholder')}
                       />
                     </div>
-                    
+
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium mb-2">
-                        Mensagem
+                        {t('contact.message')}
                       </label>
                       <textarea
                         id="message"
@@ -224,24 +239,24 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handleChange}
                         className="w-full px-3 py-3 min-h-[120px] bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-none text-base"
-                        placeholder="Sua mensagem..."
+                        placeholder={t('contact.messagePlaceholder')}
                       />
                     </div>
-                    
-                    <Button 
-                      type="submit" 
+
+                    <Button
+                      type="submit"
                       disabled={isSubmitting}
                       className="w-full bg-primary hover:bg-primary/90 glow"
                     >
                       {isSubmitting ? (
                         <>
                           <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                          Enviando...
+                          {t('contact.sending')}
                         </>
                       ) : (
                         <>
                           <Send className="mr-2 h-4 w-4" />
-                          Enviar Mensagem
+                          {t('contact.send')}
                         </>
                       )}
                     </Button>
@@ -253,24 +268,24 @@ export default function Contact() {
 
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             className="space-y-8"
           >
             {/* Contact Information */}
             <div>
               <h3 className="text-xl font-heading font-semibold mb-6">
-                Informações de <span className="gradient-text">Contato</span>
+                {t('contact.info')}
               </h3>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <motion.div
-                    key={info.title}
-                    initial={{ opacity: 0, y: 20 }}
+                    key={info.titleKey}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
                     viewport={{ once: true }}
                     className="flex items-center space-x-4 p-4 glass rounded-lg min-h-[60px]"
                   >
@@ -278,11 +293,11 @@ export default function Contact() {
                       <info.icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-medium">{info.title}</h4>
+                      <h4 className="font-medium">{t(info.titleKey)}</h4>
                       {info.link ? (
-                        <a 
-                          href={info.link} 
-                          target="_blank" 
+                        <a
+                          href={info.link}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="text-muted-foreground hover:text-primary transition-colors"
                         >
@@ -300,7 +315,7 @@ export default function Contact() {
             {/* Social Links */}
             <div>
               <h3 className="text-xl font-heading font-semibold mb-6">
-                Redes <span className="gradient-text">Sociais</span>
+                {t('contact.social')}
               </h3>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
@@ -309,9 +324,9 @@ export default function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.85 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.35, delay: index * 0.05 }}
                     viewport={{ once: true }}
                     className={`w-12 h-12 min-h-[48px] min-w-[48px] bg-primary/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${social.color}`}
                   >
@@ -323,12 +338,12 @@ export default function Contact() {
 
             {/* Status */}
             <div className="p-6 glass rounded-lg">
-              <h4 className="font-semibold mb-2">Status</h4>
+              <h4 className="font-semibold mb-2">{t('contact.status')}</h4>
               <p className="text-sm text-muted-foreground mb-2">
-                Disponível para novos projetos
+                {t('contact.available')}
               </p>
               <p className="text-xs text-muted-foreground">
-                Respondo geralmente em até 24 horas
+                {t('contact.response')}
               </p>
             </div>
           </motion.div>

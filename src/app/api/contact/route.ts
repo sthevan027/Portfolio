@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
 
     // 1. Email para Sthevan (notificação)
     const emailToSthevan = {
-      to: 'sthevan@virex.com.br',
+      to: 'sthevan.ssantos@gmail.com',
       subject: `🚀 Novo contato do portfólio: ${subject}`,
       html: `
         <h2>Novo contato recebido!</h2>

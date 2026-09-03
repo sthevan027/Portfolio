@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion'
 import { Heart, ArrowUp, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
+  const { t } = useLanguage()
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -12,12 +14,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const navLinks = [
-    { href: '#home', label: 'Início' },
-    { href: '#about', label: 'Sobre' },
-    { href: '#projects', label: 'Projetos' },
-    { href: '#experience', label: 'Experiência' },
-    { href: '#curriculo', label: 'Currículo' },
-    { href: '#contact', label: 'Contato' },
+    { href: '#home', labelKey: 'nav.home' },
+    { href: '#about', labelKey: 'nav.about' },
+    { href: '#projects', labelKey: 'nav.projects' },
+    { href: '#experience', labelKey: 'nav.experience' },
+    { href: '#curriculo', labelKey: 'nav.curriculo' },
+    { href: '#contact', labelKey: 'nav.contact' },
   ]
 
   return (
@@ -34,17 +36,16 @@ export default function Footer() {
           >
             <div className="flex items-center space-x-2">
               <Sparkles className="h-6 w-6 text-primary" />
-              <h3 className="text-2xl font-heading font-bold virex-brand">
-                Virex
+              <h3 className="text-2xl font-heading font-bold text-white">
+                Sthevan Santos
               </h3>
             </div>
             <div className="space-y-4">
-              <p className="text-lg font-medium text-white">
-                Do conceito ao código. Do código ao resultado.
+              <p className="text-lg font-medium brand-mark">
+                {t('footer.tagline')}
               </p>
               <p className="text-muted-foreground max-w-md leading-relaxed">
-                Transformando ideias em soluções digitais inovadoras que geram impacto real no mercado. 
-                Especialistas em React, Next.js e automações que revolucionam negócios.
+                {t('footer.description')}
               </p>
             </div>
           </motion.div>
@@ -57,7 +58,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-lg font-heading font-semibold text-white">Navegação</h4>
+            <h4 className="text-lg font-heading font-semibold text-white">{t('footer.navigation')}</h4>
             <nav className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <a
@@ -65,7 +66,7 @@ export default function Footer() {
                   href={link.href}
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 w-fit py-2 min-h-[44px] flex items-center hover:translate-x-1 transform"
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </a>
               ))}
             </nav>
@@ -79,13 +80,13 @@ export default function Footer() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-lg font-heading font-semibold text-white">Contato</h4>
+            <h4 className="text-lg font-heading font-semibold text-white">{t('footer.contact')}</h4>
             <div className="space-y-3">
               <a
-                href="mailto:sthevan@virex.com.br"
+                href="mailto:sthevan.ssantos@gmail.com"
                 className="block py-2 min-h-[44px] text-muted-foreground hover:text-primary transition-colors duration-200"
               >
-                sthevan@virex.com.br
+                sthevan.ssantos@gmail.com
               </a>
               <a
                 href="https://wa.me/5527988772784"
@@ -136,11 +137,11 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-muted-foreground">
-              <span>© {currentYear} Virex. Feito com</span>
+              <span>© {currentYear} {t('footer.copyright')}</span>
               <Heart className="h-4 w-4 text-red-500" />
-              <span>por Sthevan Santos</span>
+              <span>{t('footer.coffee')}</span>
             </div>
-            
+
             <Button
               onClick={scrollToTop}
               variant="ghost"
@@ -148,7 +149,7 @@ export default function Footer() {
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <ArrowUp className="h-4 w-4 mr-2" />
-              Voltar ao topo
+              {t('footer.backToTop')}
             </Button>
           </div>
         </motion.div>

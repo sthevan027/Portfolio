@@ -6,14 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ExternalLink, Github, TrendingUp } from 'lucide-react'
 import type { Project } from '@/data/projects'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const GRADIENTS = [
   'from-blue-600 to-cyan-500',
-  'from-violet-600 to-purple-500',
-  'from-amber-500 to-orange-600',
-  'from-emerald-600 to-teal-500',
-  'from-rose-600 to-pink-500',
+  'from-blue-700 to-indigo-600',
+  'from-cyan-600 to-blue-500',
   'from-indigo-600 to-blue-500',
+  'from-blue-600 to-sky-500',
+  'from-sky-600 to-cyan-500',
 ]
 
 function getProjectPreview(project: { title: string }, index: number) {
@@ -37,6 +38,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index, size = 'compact' }: ProjectCardProps) {
+  const { t } = useLanguage()
   const [previewFailed, setPreviewFailed] = useState(false)
   const preview = getProjectPreview(project, index)
   const isFeatured = size === 'featured'
@@ -44,9 +46,9 @@ export default function ProjectCard({ project, index, size = 'compact' }: Projec
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * (isFeatured ? 0.2 : 0.1) }}
+      transition={{ duration: 0.4, delay: index * (isFeatured ? 0.08 : 0.05) }}
       viewport={{ once: true }}
     >
       <Card className="glass hover:glow transition-all duration-300 h-full overflow-hidden flex flex-col min-h-0">
@@ -108,7 +110,7 @@ export default function ProjectCard({ project, index, size = 'compact' }: Projec
               <Button size="sm" variant="outline" asChild>
                 <a href={project.github} target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4 mr-2" />
-                  Código
+                  {t('projects.code')}
                 </a>
               </Button>
             )}
@@ -116,7 +118,7 @@ export default function ProjectCard({ project, index, size = 'compact' }: Projec
               <Button size="sm" asChild>
                 <a href={project.demo} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="h-4 w-4 mr-2" />
-                  Demo
+                  {t('projects.demo')}
                 </a>
               </Button>
             )}

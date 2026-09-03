@@ -126,7 +126,7 @@ export default function RootLayout({
                 "https://instagram.com/sthevan.dev",
               ],
               image: "/sthevan.jpg",
-              email: "sthevan@virex.com.br",
+              email: "sthevan.ssantos@gmail.com",
               telephone: "+55-27-98877-2784",
             }),
           }}

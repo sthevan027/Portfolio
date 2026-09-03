@@ -28,8 +28,8 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="#home" className="text-xl font-heading font-bold virex-brand">
-              Virex
+            <a href="#home" className="text-xl font-heading font-bold brand-mark">
+              Sthevan
             </a>
           </div>
 
@@ -66,7 +66,7 @@ export default function Navbar() {
                 size="sm"
                 onClick={() => setIsOpen(!isOpen)}
                 className="hover:bg-primary/10 min-h-[44px] min-w-[44px] p-0"
-                aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+                aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>

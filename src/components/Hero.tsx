@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, MessageCircle, Download, X, Code2, Zap } from 'lucide-react'
+import { ArrowRight, MessageCircle, Download, X, Code2, Zap, Rocket } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useLanguage } from '@/contexts/LanguageContext'
 import Image from 'next/image'
 
 const CV_OPTIONS = [
   {
     id: 'web' as const,
-    label: 'Desenvolvimento Web',
-    description: 'Desenvolvedor Web — React, Next.js e frontend',
+    labelKey: 'hero.cvOptionWebLabel',
+    descriptionKey: 'hero.cvOptionWebDescription',
     icon: Code2,
     fileName: 'Sthevan Santos _ Desenvolvedor Web.pdf',
     folder: 'programacao' as const,
@@ -18,8 +19,8 @@ const CV_OPTIONS = [
   },
   {
     id: 'eletrica' as const,
-    label: 'Elétrica',
-    description: 'Eletricista FC',
+    labelKey: 'hero.cvOptionEletricaLabel',
+    descriptionKey: 'hero.cvOptionEletricaDescription',
     icon: Zap,
     fileName: 'Sthevan Santos _ Eletricista FC.pdf',
     folder: 'eletrica' as const,
@@ -39,6 +40,7 @@ function downloadPdf(folder: string, fileName: string, downloadAs: string) {
 }
 
 export default function Hero() {
+  const { t } = useLanguage()
   const [cvModalOpen, setCvModalOpen] = useState(false)
 
   useEffect(() => {
@@ -69,7 +71,7 @@ export default function Hero() {
 
   const handleWhatsAppClick = () => {
     const phoneNumber = '5527988772784'
-    const message = encodeURIComponent('Olá! Vi seu portfólio e gostaria de conversar sobre um projeto.')
+    const message = encodeURIComponent(t('hero.whatsappMessage'))
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
     window.open(whatsappUrl, '_blank')
   }
@@ -106,80 +108,59 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             className="text-center lg:text-left"
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight"
-            >
-              Olá, eu sou{' '}
-              <span className="gradient-text">Sthevan Santos</span>
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium"
-            >
-              Frontend Developer | Especialista em React & Next.js
-            </motion.p>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed"
-            >
-              Transformo designs em interfaces incríveis com React e Next.js. Especialista em criar experiências 
-              digitais modernas, responsivas e performáticas. Apaixonado por frontend e sempre em busca da melhor UX.
-            </motion.p>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
-            >
-              <Button 
-                size="lg" 
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
+              {t('hero.greeting')}{' '}
+              <span className="text-primary">Sthevan Santos</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium">
+              {t('hero.title')}
+            </p>
+
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
+              {t('hero.description')}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+              <Button
+                size="lg"
                 className="bg-primary hover:bg-primary/90 glow"
                 onClick={handleWhatsAppClick}
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
-                Falar no WhatsApp
+                {t('hero.whatsapp')}
               </Button>
-              
-              <Button 
-                variant="outline" 
+
+              <Button
+                variant="outline"
                 size="lg"
                 onClick={handleProjectsClick}
               >
-                Ver Projetos
+                {t('hero.projects')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              
-              <Button 
-                variant="ghost" 
+
+              <Button
+                variant="ghost"
                 size="lg"
                 onClick={handleDownloadCVClick}
               >
                 <Download className="mr-2 h-5 w-5" />
-                Download CV
+                {t('hero.cv')}
               </Button>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Profile Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
@@ -195,22 +176,24 @@ export default function Hero() {
                   />
                 </div>
               </div>
-              
+
               {/* Floating elements */}
               <motion.div
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 3, repeat: Infinity }}
                 className="absolute -top-4 -right-4 w-14 h-14 lg:w-16 lg:h-16 bg-primary/20 rounded-full flex items-center justify-center glass"
+                aria-hidden
               >
-                <span className="text-xl lg:text-2xl">⚡</span>
+                <Zap className="h-6 w-6 lg:h-7 lg:w-7 text-primary" />
               </motion.div>
-              
+
               <motion.div
                 animate={{ y: [10, -10, 10] }}
                 transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                 className="absolute -bottom-4 -left-4 w-10 h-10 lg:w-12 lg:h-12 bg-secondary/20 rounded-full flex items-center justify-center glass"
+                aria-hidden
               >
-                <span className="text-lg lg:text-xl">🚀</span>
+                <Rocket className="h-5 w-5 lg:h-6 lg:w-6 text-secondary-foreground" />
               </motion.div>
             </div>
           </motion.div>
@@ -241,7 +224,7 @@ export default function Hero() {
                 type="button"
                 className="absolute right-4 top-4 rounded-md p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 onClick={closeCvModal}
-                aria-label="Fechar"
+                aria-label={t('hero.closeModal')}
               >
                 <X className="h-5 w-5" />
               </button>
@@ -249,10 +232,10 @@ export default function Hero() {
                 id="cv-modal-title"
                 className="font-heading text-xl font-semibold pr-10 mb-1"
               >
-                Qual currículo baixar?
+                {t('hero.cvModalTitle')}
               </h2>
               <p className="text-sm text-muted-foreground mb-6">
-                Escolha a versão que combina com a vaga ou o contato.
+                {t('hero.cvModalSubtitle')}
               </p>
               <div className="flex flex-col gap-3">
                 {CV_OPTIONS.map((option) => {
@@ -268,9 +251,9 @@ export default function Hero() {
                         <Icon className="h-5 w-5" />
                       </span>
                       <span>
-                        <span className="block font-medium">{option.label}</span>
+                        <span className="block font-medium">{t(option.labelKey)}</span>
                         <span className="text-sm text-muted-foreground">
-                          {option.description}
+                          {t(option.descriptionKey)}
                         </span>
                       </span>
                     </button>

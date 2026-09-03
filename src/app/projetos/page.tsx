@@ -9,17 +9,18 @@ import { projects } from '@/data/projects'
 import ProjectCard from '@/components/ProjectCard'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { LanguageProvider } from '@/contexts/LanguageContext'
+import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext'
 
 const CATEGORIES = [
-  { id: 'all', label: 'Todos' },
-  { id: 'fullstack', label: 'Full Stack' },
-  { id: 'frontend', label: 'Frontend' },
-  { id: 'backend', label: 'Backend' },
-  { id: 'automation', label: 'Automação' },
+  { id: 'all', labelKey: 'projects.all' },
+  { id: 'fullstack', labelKey: 'projects.fullstack' },
+  { id: 'frontend', labelKey: 'projects.frontend' },
+  { id: 'backend', labelKey: 'projects.backend' },
+  { id: 'automation', labelKey: 'projects.automation' },
 ]
 
 function ProjetosContent() {
+  const { t } = useLanguage()
   const [filter, setFilter] = useState('all')
   const filteredProjects =
     filter === 'all'
@@ -42,14 +43,13 @@ function ProjetosContent() {
               className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Voltar ao início
+              {t('projects.backHome')}
             </Link>
             <h1 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Todos os <span className="gradient-text">Projetos</span>
+              {t('projects.allTitle')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              Uma seleção completa dos meus trabalhos, demonstrando expertise em desenvolvimento
-              full stack, automação e criação de soluções inovadoras.
+              {t('projects.allDescription')}
             </p>
           </motion.div>
 
@@ -67,7 +67,7 @@ function ProjetosContent() {
                 onClick={() => setFilter(cat.id)}
                 className="transition-all duration-200"
               >
-                {cat.label}
+                {t(cat.labelKey)}
               </Button>
             ))}
           </motion.div>
