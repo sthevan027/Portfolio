@@ -2,14 +2,38 @@
 
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { 
-  Monitor, 
-  Server, 
-  Database, 
-  Cloud, 
-  Smartphone, 
-  Settings 
+import {
+  Monitor,
+  Server,
+  Database,
+  Cloud,
+  Smartphone,
+  Settings,
+  Hash,
+  Terminal,
+  FileCode,
+  ScanText,
+  Code2,
 } from 'lucide-react'
+import {
+  SiPython,
+  SiJavascript,
+  SiTypescript,
+  SiHtml5,
+  SiCss,
+  SiPostgresql,
+  SiGnubash,
+  SiReact,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiSupabase,
+  SiDocker,
+  SiVercel,
+  SiGithubactions,
+  SiPwa,
+} from 'react-icons/si'
+import { FaJava } from 'react-icons/fa'
+import type { IconType } from 'react-icons'
 import { skillCategories as skillCategoriesData } from '@/data/skills'
 import { useLanguage } from '@/contexts/LanguageContext'
 
@@ -21,6 +45,33 @@ const ICON_MAP = {
   Smartphone,
   Settings,
 } as const
+
+const SKILL_ICONS: Record<string, IconType> = {
+  TypeScript: SiTypescript,
+  'React/Next.js': SiReact,
+  'Tailwind CSS': SiTailwindcss,
+  HTML: SiHtml5,
+  CSS: SiCss,
+  JavaScript: SiJavascript,
+  'Node.js': SiNodedotjs,
+  'C#': Hash,
+  Java: FaJava,
+  PostgreSQL: SiPostgresql,
+  Supabase: SiSupabase,
+  Docker: SiDocker,
+  Vercel: SiVercel,
+  'GitHub Actions': SiGithubactions,
+  PWA: SiPwa,
+  Python: SiPython,
+  'OCR (Tesseract)': ScanText,
+  PowerShell: Terminal,
+  Shell: SiGnubash,
+  VBScript: FileCode,
+}
+
+function getSkillIcon(name: string): IconType {
+  return SKILL_ICONS[name] || Code2
+}
 
 export default function Skills() {
   const { t } = useLanguage()
@@ -77,14 +128,18 @@ export default function Skills() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <span
-                        key={skill.name}
-                        className="rounded-full border border-gray-700 bg-gray-800/60 px-3 py-1 text-sm text-gray-200"
-                      >
-                        {skill.name}
-                      </span>
-                    ))}
+                    {category.skills.map((skill) => {
+                      const Icon = getSkillIcon(skill.name)
+                      return (
+                        <span
+                          key={skill.name}
+                          className="inline-flex items-center gap-1.5 rounded-full border border-gray-700 bg-gray-800/60 px-3 py-1 text-sm text-gray-200"
+                        >
+                          <Icon className="h-3.5 w-3.5 shrink-0" />
+                          {skill.name}
+                        </span>
+                      )
+                    })}
                   </div>
                 </CardContent>
               </Card>
