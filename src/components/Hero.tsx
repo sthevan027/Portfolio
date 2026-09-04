@@ -45,15 +45,6 @@ function useTypewriter(fullText: string, speedMs = 45) {
   useEffect(() => {
     setTypedLength(0)
 
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    if (prefersReducedMotion) {
-      setTypedLength(fullText.length)
-      return
-    }
-
     let i = 0
     const interval = setInterval(() => {
       i += 1
