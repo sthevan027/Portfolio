@@ -39,9 +39,44 @@ function downloadPdf(folder: string, fileName: string, downloadAs: string) {
   document.body.removeChild(link)
 }
 
+function useTypewriter(fullText: string, speedMs = 45) {
+  const [typedLength, setTypedLength] = useState(0)
+
+  useEffect(() => {
+    setTypedLength(0)
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (prefersReducedMotion) {
+      setTypedLength(fullText.length)
+      return
+    }
+
+    let i = 0
+    const interval = setInterval(() => {
+      i += 1
+      setTypedLength(i)
+      if (i >= fullText.length) clearInterval(interval)
+    }, speedMs)
+
+    return () => clearInterval(interval)
+  }, [fullText, speedMs])
+
+  return { typedLength, isDone: typedLength >= fullText.length }
+}
+
 export default function Hero() {
   const { t } = useLanguage()
   const [cvModalOpen, setCvModalOpen] = useState(false)
+
+  const greeting = t('hero.greeting')
+  const name = 'Sthevan Santos'
+  const fullGreeting = `${greeting} ${name}`
+  const { typedLength, isDone } = useTypewriter(fullGreeting)
+  const typedGreeting = fullGreeting.slice(0, Math.min(typedLength, greeting.length))
+  const typedName = fullGreeting.slice(greeting.length + 1, typedLength)
 
   useEffect(() => {
     const openCvFromHash = () => {
@@ -123,8 +158,15 @@ export default function Hero() {
             className="text-center lg:text-left"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
-              {t('hero.greeting')}{' '}
-              <span className="text-primary">Sthevan Santos</span>
+              <span aria-hidden>
+                {typedGreeting}
+                {typedName && ' '}
+                <span className="text-primary">{typedName}</span>
+                <span className="ml-1 inline-block w-[2px] h-8 sm:h-9 md:h-11 lg:h-12 translate-y-1 bg-primary align-middle animate-pulse" />
+              </span>
+              <span className="sr-only">
+                {greeting} <span className="text-primary">{name}</span>
+              </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium">
