@@ -34,7 +34,7 @@ export default function Projects() {
   }, [])
 
   return (
-    <section id="projects" className="py-20 bg-background">
+    <section id="projects" className="py-16 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

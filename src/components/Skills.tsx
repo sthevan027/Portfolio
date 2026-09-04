@@ -31,7 +31,7 @@ export default function Skills() {
   }))
 
   return (
-    <section id="experience" className="py-20 bg-black">
+    <section id="experience" className="py-16 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

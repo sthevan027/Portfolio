@@ -25,7 +25,7 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="py-20 bg-background">
+    <section id="about" className="py-16 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
