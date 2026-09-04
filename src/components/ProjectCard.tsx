@@ -4,9 +4,32 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ExternalLink, Github, TrendingUp } from 'lucide-react'
+import { ExternalLink, Github, TrendingUp, Hash, Terminal, FileCode, AppWindow, Code2 } from 'lucide-react'
+import { SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, SiPostgresql, SiGnubash } from 'react-icons/si'
+import { FaJava } from 'react-icons/fa'
 import type { Project } from '@/data/projects'
+import type { IconType } from 'react-icons'
 import { useLanguage } from '@/contexts/LanguageContext'
+
+const TECH_ICONS: Record<string, IconType> = {
+  Python: SiPython,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  HTML: SiHtml5,
+  CSS: SiCss,
+  Java: FaJava,
+  PLpgSQL: SiPostgresql,
+  Shell: SiGnubash,
+  'C#': Hash,
+  PowerShell: Terminal,
+  VBScript: FileCode,
+  Batchfile: Terminal,
+  Tkinter: AppWindow,
+}
+
+function getTechIcon(tech: string): IconType {
+  return TECH_ICONS[tech] || Code2
+}
 
 const GRADIENTS = [
   'from-blue-600 to-cyan-500',
@@ -95,14 +118,18 @@ export default function ProjectCard({ project, index, size = 'compact' }: Projec
         <CardContent className="space-y-4">
           <div className="flex flex-wrap gap-2">
             {(isFeatured ? project.technologies : project.technologies.slice(0, 3)).map(
-              (tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md"
-                >
-                  {tech}
-                </span>
-              )
+              (tech) => {
+                const Icon = getTechIcon(tech)
+                return (
+                  <span
+                    key={tech}
+                    className="inline-flex items-center gap-1.5 px-2 py-1 bg-primary/10 text-primary text-xs rounded-md"
+                  >
+                    <Icon className="h-3.5 w-3.5 shrink-0" />
+                    {tech}
+                  </span>
+                )
+              }
             )}
           </div>
           <div className="flex gap-2">
