@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Target, Eye, Heart, Users } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { EASE_SMOOTH, fadeUpTransition } from '@/lib/motion'
+import { fadeUpTransition } from '@/lib/motion'
 
 export default function About() {
   const { t } = useLanguage()
@@ -82,22 +82,15 @@ export default function About() {
 
           <div className="relative">
             {/* Timeline line - hidden on mobile, visible md+ */}
-            <motion.div
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              transition={{ duration: 1.2, ease: EASE_SMOOTH }}
-              viewport={{ once: true, amount: 0.2 }}
-              style={{ originY: 0 }}
-              className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-secondary"
-            />
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-secondary" />
 
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -48 : 48 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: (index % 2) * 0.1 }}
-                viewport={{ once: true, amount: 0.4 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.3 }}
                 className={`relative flex items-center mb-12 ${
                   index % 2 === 0 ? 'md:flex-row flex-col' : 'md:flex-row-reverse flex-col'
                 }`}
@@ -113,13 +106,7 @@ export default function About() {
                 </div>
 
                 {/* Timeline dot - hidden on mobile */}
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.3, ease: EASE_SMOOTH }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"
-                />
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background" />
               </motion.div>
             ))}
           </div>

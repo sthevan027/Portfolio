@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion'
 import { ArrowRight, MessageCircle, Download, X, Code2, Zap, Rocket } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -66,10 +66,14 @@ export default function Hero() {
     target: sectionRef,
     offset: ['start start', 'end start'],
   })
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '35%'])
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+  const bgY = useTransform(smoothProgress, [0, 1], ['0%', '25%'])
+  const imageY = useTransform(smoothProgress, [0, 1], ['0%', '15%'])
+  const contentOpacity = useTransform(smoothProgress, [0, 0.7], [1, 0])
 
   const greeting = t('hero.greeting')
   const name = 'Sthevan Santos'
@@ -150,7 +154,7 @@ export default function Hero() {
       <motion.div style={{ y: bgY }} className="hero-bg absolute inset-0" />
 
       <motion.div
-        style={{ y: contentY, opacity: contentOpacity }}
+        style={{ opacity: contentOpacity }}
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -161,6 +165,14 @@ export default function Hero() {
             transition={{ duration: 0.4, ease: 'easeOut' }}
             className="text-center lg:text-left"
           >
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 mb-5 font-mono text-xs uppercase tracking-wider text-primary">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              {t('contact.available')}
+            </div>
+
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
               <span aria-hidden>
                 {typedGreeting}

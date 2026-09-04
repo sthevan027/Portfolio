@@ -93,11 +93,11 @@ export default function Skills() {
                   return (
                     <motion.span
                       key={skill.name}
-                      initial={{ opacity: 0, scale: 0.5, y: 12 }}
-                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.035, ease: 'backOut' }}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35, delay: index * 0.025, ease: 'easeOut' }}
                       viewport={{ once: true, amount: 0.6 }}
-                      whileHover={{ scale: 1.1, y: -4 }}
+                      whileHover={{ y: -3 }}
                       title={skill.name}
                       aria-label={skill.name}
                       className="flex h-14 w-14 items-center justify-center rounded-xl border border-gray-700 bg-gray-800/60 text-gray-200 transition-colors hover:border-primary hover:text-primary"
