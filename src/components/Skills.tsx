@@ -1,20 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import {
-  Monitor,
-  Server,
-  Database,
-  Cloud,
-  Smartphone,
-  Settings,
-  Hash,
-  Terminal,
-  FileCode,
-  ScanText,
-  Code2,
-} from 'lucide-react'
+import { Card, CardContent } from '@/components/ui/card'
+import { Hash, Terminal, FileCode, ScanText, Code2 } from 'lucide-react'
 import {
   SiPython,
   SiJavascript,
@@ -36,15 +24,6 @@ import { FaJava } from 'react-icons/fa'
 import type { IconType } from 'react-icons'
 import { skillCategories as skillCategoriesData } from '@/data/skills'
 import { useLanguage } from '@/contexts/LanguageContext'
-
-const ICON_MAP = {
-  Monitor,
-  Server,
-  Database,
-  Cloud,
-  Smartphone,
-  Settings,
-} as const
 
 const SKILL_ICONS: Record<string, IconType> = {
   TypeScript: SiTypescript,
@@ -75,11 +54,9 @@ function getSkillIcon(name: string): IconType {
 
 export default function Skills() {
   const { t } = useLanguage()
-  const skillCategories = skillCategoriesData.map((cat) => ({
-    ...cat,
-    icon: ICON_MAP[cat.icon as keyof typeof ICON_MAP] || Monitor,
-    skills: [...cat.skills].sort((a, b) => b.level - a.level),
-  }))
+  const allSkills = skillCategoriesData
+    .flatMap((cat) => cat.skills)
+    .sort((a, b) => b.level - a.level)
 
   return (
     <section id="experience" className="py-16 bg-black">
@@ -106,45 +83,30 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
-              viewport={{ once: true }}
-              className="group relative"
-            >
-              <Card className="glass hover:glow transition-all duration-300 h-full bg-gray-900/50 border-gray-700">
-                <CardHeader className="pb-4">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${category.color} flex items-center justify-center`}>
-                      <category.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <CardTitle className={`text-xl ${category.iconColor}`}>{category.title}</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => {
-                      const Icon = getSkillIcon(skill.name)
-                      return (
-                        <span
-                          key={skill.name}
-                          className="inline-flex items-center gap-1.5 rounded-full border border-gray-700 bg-gray-800/60 px-3 py-1 text-sm text-gray-200"
-                        >
-                          <Icon className="h-3.5 w-3.5 shrink-0" />
-                          {skill.name}
-                        </span>
-                      )
-                    })}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+          <Card className="glass bg-gray-900/50 border-gray-700">
+            <CardContent className="p-6 md:p-8">
+              <div className="flex flex-wrap justify-center gap-3">
+                {allSkills.map((skill, index) => {
+                  const Icon = getSkillIcon(skill.name)
+                  return (
+                    <motion.span
+                      key={skill.name}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: index * 0.02 }}
+                      viewport={{ once: true }}
+                      title={skill.name}
+                      aria-label={skill.name}
+                      className="flex h-14 w-14 items-center justify-center rounded-xl border border-gray-700 bg-gray-800/60 text-gray-200 transition-colors hover:border-primary hover:text-primary"
+                    >
+                      <Icon className="h-6 w-6" />
+                    </motion.span>
+                  )
+                })}
+              </div>
+            </CardContent>
+          </Card>
         </motion.div>
 
         {/* Additional Info */}
