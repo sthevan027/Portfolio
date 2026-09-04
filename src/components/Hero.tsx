@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, MessageCircle, Download, X, Code2, Zap, Rocket } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -61,6 +61,15 @@ function useTypewriter(fullText: string, speedMs = 45) {
 export default function Hero() {
   const { t } = useLanguage()
   const [cvModalOpen, setCvModalOpen] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '35%'])
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   const greeting = t('hero.greeting')
   const name = 'Sthevan Santos'
@@ -129,6 +138,7 @@ export default function Hero() {
 
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden scroll-mt-20"
     >
@@ -137,9 +147,12 @@ export default function Hero() {
         className="absolute left-0 top-0 h-px w-px overflow-hidden pointer-events-none"
         aria-hidden
       />
-      <div className="hero-bg absolute inset-0"></div>
-      
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <motion.div style={{ y: bgY }} className="hero-bg absolute inset-0" />
+
+      <motion.div
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
@@ -203,6 +216,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
+            style={{ y: imageY }}
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
@@ -240,7 +254,7 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {cvModalOpen && (

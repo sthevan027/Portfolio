@@ -1,13 +1,20 @@
 'use client'
 
 import { useState } from 'react'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { language, setLanguage, t } = useLanguage()
+  const { scrollY } = useScroll()
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setScrolled(latest > 20)
+  })
 
   const toggleLanguage = () => {
     setLanguage(language === 'pt' ? 'en' : 'pt')
@@ -23,7 +30,18 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass">
+    <motion.nav
+      initial={false}
+      animate={{
+        boxShadow: scrolled
+          ? '0 8px 24px -12px rgba(0,0,0,0.5)'
+          : '0 0px 0px 0px rgba(0,0,0,0)',
+      }}
+      transition={{ duration: 0.3 }}
+      className={`fixed top-0 w-full z-50 glass transition-colors duration-300 ${
+        scrolled ? 'border-b border-border/60' : 'border-b border-transparent'
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -92,7 +110,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </motion.nav>
   )
 }
 

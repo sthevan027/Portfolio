@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Heart, ArrowUp, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { EASE_SMOOTH } from '@/lib/motion'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -28,10 +29,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: EASE_SMOOTH }}
+            viewport={{ once: true, amount: 0.4 }}
             className="space-y-6"
           >
             <div className="flex items-center space-x-2">
@@ -52,10 +53,10 @@ export default function Footer() {
 
           {/* Navigation */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1, ease: EASE_SMOOTH }}
+            viewport={{ once: true, amount: 0.4 }}
             className="space-y-4"
           >
             <h4 className="text-lg font-heading font-semibold text-white">{t('footer.navigation')}</h4>
@@ -74,10 +75,10 @@ export default function Footer() {
 
           {/* Contact & Social */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease: EASE_SMOOTH }}
+            viewport={{ once: true, amount: 0.4 }}
             className="space-y-4"
           >
             <h4 className="text-lg font-heading font-semibold text-white">{t('footer.contact')}</h4>
@@ -131,8 +132,8 @@ export default function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1, ease: EASE_SMOOTH }}
+          viewport={{ once: true, amount: 0.6 }}
           className="border-t border-gray-800 mt-12 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">

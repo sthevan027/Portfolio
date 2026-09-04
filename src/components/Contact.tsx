@@ -17,6 +17,7 @@ import {
   AlertCircle
 } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { EASE_SMOOTH, fadeUpTransition } from '@/lib/motion'
 
 export default function Contact() {
   const { t } = useLanguage()
@@ -129,10 +130,10 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={fadeUpTransition()}
+          viewport={{ once: true, amount: 0.4 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -146,10 +147,10 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -16 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: EASE_SMOOTH }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <Card className="glass">
               <CardHeader>
@@ -268,10 +269,10 @@ export default function Contact() {
 
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: 16 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: EASE_SMOOTH }}
+            viewport={{ once: true, amount: 0.2 }}
             className="space-y-8"
           >
             {/* Contact Information */}
@@ -283,10 +284,11 @@ export default function Contact() {
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={info.titleKey}
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.08, ease: EASE_SMOOTH }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    whileHover={{ x: 4 }}
                     className="flex items-center space-x-4 p-4 glass rounded-lg min-h-[60px]"
                   >
                     <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
@@ -324,10 +326,10 @@ export default function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.85 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.35, delay: index * 0.05 }}
-                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08, ease: 'backOut' }}
+                    viewport={{ once: true, amount: 0.6 }}
                     className={`w-12 h-12 min-h-[48px] min-w-[48px] bg-primary/20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${social.color}`}
                   >
                     <social.icon className="h-5 w-5" />

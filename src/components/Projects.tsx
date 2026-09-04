@@ -8,6 +8,7 @@ import { ArrowRight } from 'lucide-react'
 import { projects } from '@/data/projects'
 import ProjectCard from '@/components/ProjectCard'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { fadeUpTransition } from '@/lib/motion'
 
 const FEATURED_ORDER = [
   'gerador-de-relatorio',
@@ -38,10 +39,10 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={fadeUpTransition()}
+          viewport={{ once: true, amount: 0.4 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -54,10 +55,10 @@ export default function Projects() {
 
         {/* Featured Projects */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={fadeUpTransition()}
+          viewport={{ once: true, amount: 0.2 }}
           className="mb-16"
         >
           <h3 className="text-2xl font-heading font-bold mb-8 text-center">
@@ -76,10 +77,10 @@ export default function Projects() {
 
           {/* Ver mais projetos button */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
+            transition={fadeUpTransition()}
+            viewport={{ once: true, amount: 0.6 }}
             className="flex justify-center mt-12"
           >
             <Button size="lg" asChild className="hover:glow">

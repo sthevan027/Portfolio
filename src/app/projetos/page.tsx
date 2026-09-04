@@ -9,6 +9,7 @@ import { projects } from '@/data/projects'
 import ProjectCard from '@/components/ProjectCard'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ScrollProgress from '@/components/ScrollProgress'
 import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext'
 
 const CATEGORIES = [
@@ -29,6 +30,7 @@ function ProjetosContent() {
 
   return (
     <main className="min-h-screen pt-16">
+      <ScrollProgress />
       <Navbar />
       <section className="py-20 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -10,6 +10,7 @@ import { FaJava } from 'react-icons/fa'
 import type { Project } from '@/data/projects'
 import type { IconType } from 'react-icons'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { EASE_SMOOTH } from '@/lib/motion'
 
 const TECH_ICONS: Record<string, IconType> = {
   Python: SiPython,
@@ -69,10 +70,11 @@ export default function ProjectCard({ project, index, size = 'compact' }: Projec
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * (isFeatured ? 0.08 : 0.05) }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: index * (isFeatured ? 0.1 : 0.06) }}
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={{ y: -6 }}
     >
       <Card className="glass hover:glow transition-all duration-300 h-full overflow-hidden flex flex-col min-h-0">
         <div className="aspect-video rounded-t-lg overflow-hidden bg-muted relative shrink-0">

@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import ScrollProgress from '@/components/ScrollProgress'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 
 const About = dynamic(() => import('@/components/About'), { ssr: true })
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <LanguageProvider>
       <main className="min-h-screen">
+        <ScrollProgress />
         <Navbar />
         <Hero />
         <About />

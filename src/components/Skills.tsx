@@ -24,6 +24,7 @@ import { FaJava } from 'react-icons/fa'
 import type { IconType } from 'react-icons'
 import { skillCategories as skillCategoriesData } from '@/data/skills'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { fadeUpTransition } from '@/lib/motion'
 
 const SKILL_ICONS: Record<string, IconType> = {
   TypeScript: SiTypescript,
@@ -63,10 +64,10 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={fadeUpTransition()}
+          viewport={{ once: true, amount: 0.4 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
@@ -79,10 +80,10 @@ export default function Skills() {
 
         {/* Skills Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={fadeUpTransition()}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <Card className="glass bg-gray-900/50 border-gray-700">
             <CardContent className="p-6 md:p-8">
@@ -92,10 +93,11 @@ export default function Skills() {
                   return (
                     <motion.span
                       key={skill.name}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.02 }}
-                      viewport={{ once: true }}
+                      initial={{ opacity: 0, scale: 0.5, y: 12 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.035, ease: 'backOut' }}
+                      viewport={{ once: true, amount: 0.6 }}
+                      whileHover={{ scale: 1.1, y: -4 }}
                       title={skill.name}
                       aria-label={skill.name}
                       className="flex h-14 w-14 items-center justify-center rounded-xl border border-gray-700 bg-gray-800/60 text-gray-200 transition-colors hover:border-primary hover:text-primary"
@@ -111,10 +113,10 @@ export default function Skills() {
 
         {/* Additional Info */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={fadeUpTransition()}
+          viewport={{ once: true, amount: 0.6 }}
           className="text-center mt-16"
         >
           <p className="text-gray-400 max-w-2xl mx-auto">

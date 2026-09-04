@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Target, Eye, Heart, Users } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { EASE_SMOOTH, fadeUpTransition } from '@/lib/motion'
 
 export default function About() {
   const { t } = useLanguage()
@@ -29,10 +30,10 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={fadeUpTransition()}
+          viewport={{ once: true, amount: 0.4 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
@@ -44,20 +45,15 @@ export default function About() {
         </motion.div>
 
         {/* Values Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {values.map((value, index) => (
             <motion.div
               key={value.titleKey}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
-              viewport={{ once: true }}
+              transition={fadeUpTransition(index * 0.1)}
+              viewport={{ once: true, amount: 0.4 }}
+              whileHover={{ y: -6 }}
             >
               <Card className="glass hover:glow transition-all duration-300 h-full">
                 <CardContent className="p-6 text-center">
@@ -70,31 +66,38 @@ export default function About() {
               </Card>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h3 className="text-2xl font-heading font-bold text-center mb-12">
+        <div className="mb-16">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={fadeUpTransition()}
+            viewport={{ once: true, amount: 0.6 }}
+            className="text-2xl font-heading font-bold text-center mb-12"
+          >
             {t('about.journey')}
-          </h3>
+          </motion.h3>
 
           <div className="relative">
             {/* Timeline line - hidden on mobile, visible md+ */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-secondary"></div>
+            <motion.div
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              transition={{ duration: 1.2, ease: EASE_SMOOTH }}
+              viewport={{ once: true, amount: 0.2 }}
+              style={{ originY: 0 }}
+              className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-secondary"
+            />
 
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -48 : 48 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: (index % 2) * 0.1 }}
+                viewport={{ once: true, amount: 0.4 }}
                 className={`relative flex items-center mb-12 ${
                   index % 2 === 0 ? 'md:flex-row flex-col' : 'md:flex-row-reverse flex-col'
                 }`}
@@ -110,18 +113,24 @@ export default function About() {
                 </div>
 
                 {/* Timeline dot - hidden on mobile */}
-                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.3, ease: EASE_SMOOTH }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"
+                />
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={fadeUpTransition()}
+          viewport={{ once: true, amount: 0.4 }}
           className="text-center"
         >
           <Card className="glass max-w-4xl mx-auto">
