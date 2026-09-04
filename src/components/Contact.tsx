@@ -246,7 +246,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-primary hover:bg-primary/90 glow"
+                      className="w-full bg-primary hover:bg-primary/90 hover:glow"
                     >
                       {isSubmitting ? (
                         <>

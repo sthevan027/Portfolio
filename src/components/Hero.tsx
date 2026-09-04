@@ -69,6 +69,15 @@ export default function Hero() {
     clearCurriculoHash()
   }
 
+  useEffect(() => {
+    if (!cvModalOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeCvModal()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [cvModalOpen])
+
   const handleWhatsAppClick = () => {
     const phoneNumber = '5527988772784'
     const message = encodeURIComponent(t('hero.whatsappMessage'))

@@ -82,7 +82,7 @@ export default function Projects() {
             viewport={{ once: true }}
             className="flex justify-center mt-12"
           >
-            <Button size="lg" asChild className="glow">
+            <Button size="lg" asChild className="hover:glow">
               <Link href="/projetos" className="inline-flex items-center">
                 {t('projects.viewMore')}
                 <ArrowRight className="h-5 w-5 ml-2" />

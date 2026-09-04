@@ -10,9 +10,9 @@ import { useLanguage } from '@/contexts/LanguageContext'
 
 const GRADIENTS = [
   'from-blue-600 to-cyan-500',
-  'from-blue-700 to-indigo-600',
+  'from-blue-700 to-sky-600',
   'from-cyan-600 to-blue-500',
-  'from-indigo-600 to-blue-500',
+  'from-sky-700 to-blue-600',
   'from-blue-600 to-sky-500',
   'from-sky-600 to-cyan-500',
 ]

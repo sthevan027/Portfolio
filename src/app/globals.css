@@ -72,7 +72,7 @@
   }
 
   .hero-bg {
-    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 30% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 55%);
   }
 }
 

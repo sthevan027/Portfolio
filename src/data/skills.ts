@@ -80,8 +80,8 @@ export const skillCategories: SkillCategory[] = [
     "id": "database",
     "title": "Database",
     "icon": "Database",
-    "color": "from-purple-500 to-pink-500",
-    "iconColor": "text-purple-400",
+    "color": "from-teal-500 to-cyan-500",
+    "iconColor": "text-teal-400",
     "skills": [
       {
         "name": "PostgreSQL",
@@ -118,8 +118,8 @@ export const skillCategories: SkillCategory[] = [
     "id": "mobile",
     "title": "Mobile",
     "icon": "Smartphone",
-    "color": "from-indigo-500 to-purple-500",
-    "iconColor": "text-indigo-400",
+    "color": "from-slate-500 to-zinc-600",
+    "iconColor": "text-slate-300",
     "skills": [
       {
         "name": "PWA",

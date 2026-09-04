@@ -135,7 +135,7 @@ export default function About() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 min-h-[44px] px-6 py-3 glow"
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 hover:glow min-h-[44px] px-6 py-3"
                 >
                   {t('about.ctaContact')}
                 </a>
