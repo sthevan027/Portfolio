@@ -4,30 +4,30 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Botões no vocabulário de placa: Barlow Condensed em caixa alta, chapa com
+ * canto de 8px. Verde de rota (`route`) só para a ação de contato.
+ */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[8px] font-display font-bold uppercase tracking-wide transition-[transform,background-color,color] duration-200 ease-out disabled:pointer-events-none disabled:opacity-60 [&_svg]:h-5 [&_svg]:w-5 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        ink: "bg-ink text-paper hover:-translate-y-0.5",
+        route: "bg-route text-white hover:bg-route-deep",
+        sign: "bg-sign text-ink hover:-translate-y-0.5",
+        outlineSign: "border-2 border-sign text-sign hover:bg-sign hover:text-ink",
+        plate: "bg-white text-ink ring-[3px] ring-inset ring-ink hover:-translate-y-0.5",
+        link: "px-1 text-ink underline decoration-2 underline-offset-[6px] hover:text-route-deep",
       },
       size: {
-        default: "h-10 min-h-[44px] px-4 py-2",
-        sm: "h-9 min-h-[44px] rounded-md px-3",
-        lg: "h-11 min-h-[44px] rounded-md px-8",
-        icon: "h-10 w-10 min-h-[44px] min-w-[44px]",
+        default: "min-h-[52px] px-6 text-lg",
+        sm: "min-h-[44px] px-3 text-[15px] [&_svg]:h-4 [&_svg]:w-4",
+        lg: "min-h-[56px] px-7 text-xl",
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "ink",
       size: "default",
     },
   }
@@ -54,4 +54,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
-

@@ -1,159 +1,149 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ExternalLink, Github, TrendingUp, Hash, Terminal, FileCode, AppWindow, Code2 } from 'lucide-react'
-import { SiPython, SiJavascript, SiTypescript, SiHtml5, SiCss, SiPostgresql, SiGnubash } from 'react-icons/si'
-import { FaJava } from 'react-icons/fa'
-import type { Project } from '@/data/projects'
-import type { IconType } from 'react-icons'
+import Image from 'next/image'
+import { ArrowUpRight, Lock } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { EASE_SMOOTH } from '@/lib/motion'
+import type { Project, ProjectCategory } from '@/data/projects'
+import { localized } from '@/lib/project-i18n'
 
-const TECH_ICONS: Record<string, IconType> = {
-  Python: SiPython,
-  JavaScript: SiJavascript,
-  TypeScript: SiTypescript,
-  HTML: SiHtml5,
-  CSS: SiCss,
-  Java: FaJava,
-  PLpgSQL: SiPostgresql,
-  Shell: SiGnubash,
-  'C#': Hash,
-  PowerShell: Terminal,
-  VBScript: FileCode,
-  Batchfile: Terminal,
-  Tkinter: AppWindow,
+/** Cabeçalho de placa por categoria — a cor diz o tipo, como na sinalização. */
+export const CATEGORY_STYLE: Record<ProjectCategory, string> = {
+  automation: 'bg-sign text-ink',
+  fullstack: 'bg-info text-white',
+  frontend: 'bg-ink text-sign',
+  backend: 'bg-white text-ink',
 }
 
-function getTechIcon(tech: string): IconType {
-  return TECH_ICONS[tech] || Code2
+export function CategoryTag({ category, className = '' }: { category: ProjectCategory; className?: string }) {
+  const { t } = useLanguage()
+  return (
+    <span
+      className={`inline-flex items-center rounded-[4px] px-2 py-0.5 font-display text-[13px] font-bold uppercase tracking-wider ring-2 ring-inset ring-ink ${CATEGORY_STYLE[category]} ${className}`}
+    >
+      {t(`projects.${category}`)}
+    </span>
+  )
 }
 
-const GRADIENTS = [
-  'from-blue-600 to-cyan-500',
-  'from-blue-700 to-sky-600',
-  'from-cyan-600 to-blue-500',
-  'from-sky-700 to-blue-600',
-  'from-blue-600 to-sky-500',
-  'from-sky-600 to-cyan-500',
-]
-
-function getProjectPreview(project: { title: string }, index: number) {
-  const gradient = GRADIENTS[index % GRADIENTS.length]
-  const words = project.title.split(/\s+/)
-  const initials =
-    words.length >= 2
-      ? words
-          .slice(0, 2)
-          .map((w) => w[0])
-          .join('')
-          .toUpperCase()
-      : project.title.slice(0, 2).toUpperCase()
-  return { gradient, initials: initials || '?' }
+export function ProjectLinks({ project }: { project: Project }) {
+  const { t } = useLanguage()
+  return (
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+      {project.github ? (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-[44px] items-center gap-1.5 font-display text-[17px] font-bold uppercase tracking-wide text-ink underline decoration-2 underline-offset-[5px] hover:text-route"
+        >
+          {t('projects.code')}
+          <ArrowUpRight className="h-4 w-4" aria-hidden />
+        </a>
+      ) : (
+        <span className="inline-flex min-h-[44px] items-center gap-1.5 font-display text-[15px] font-bold uppercase tracking-wide text-steel">
+          <Lock className="h-4 w-4" aria-hidden />
+          {t('projects.private')}
+        </span>
+      )}
+      {project.demo && (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-[44px] items-center gap-1.5 rounded-[6px] bg-route px-3 font-display text-[17px] font-bold uppercase tracking-wide text-white hover:bg-route-deep"
+        >
+          {t('projects.demo')}
+          <ArrowUpRight className="h-4 w-4" aria-hidden />
+        </a>
+      )}
+    </div>
+  )
 }
 
 interface ProjectCardProps {
   project: Project
-  index: number
-  size?: 'featured' | 'compact'
+  layout?: 'wide' | 'plate'
+  priority?: boolean
+  /** nível do título: h3 dentro da seção da home, h2 na página /projetos */
+  headingLevel?: 2 | 3
 }
 
-export default function ProjectCard({ project, index, size = 'compact' }: ProjectCardProps) {
-  const { t } = useLanguage()
-  const [previewFailed, setPreviewFailed] = useState(false)
-  const preview = getProjectPreview(project, index)
-  const isFeatured = size === 'featured'
-  const showImage = project.previewImage && !previewFailed
+export default function ProjectCard({ project, layout = 'plate', priority = false, headingLevel = 3 }: ProjectCardProps) {
+  const Heading = headingLevel === 2 ? 'h2' : 'h3'
+  const { t, language } = useLanguage()
+  const L = localized(project, language)
+  const wide = layout === 'wide'
+
+  const gain = L.impact && (
+    <p className="rounded-[6px] bg-sign px-4 py-3 ring-2 ring-inset ring-ink">
+      <span className="block font-display text-[1.45rem] font-extrabold uppercase leading-tight text-ink">
+        {L.impact}
+      </span>
+      <span className="mt-1 block font-display text-[13px] font-bold uppercase tracking-[0.14em] text-sign-ink">
+        {t('projects.measured')}
+      </span>
+    </p>
+  )
+
+  const stack = (
+    <ul className="flex flex-wrap gap-2" aria-label="Stack">
+      {project.technologies.map((tech) => (
+        <li key={tech} className="rounded-[4px] border-2 border-ink/80 px-2 py-0.5 text-[14px] font-semibold text-ink">
+          {tech}
+        </li>
+      ))}
+    </ul>
+  )
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: index * (isFeatured ? 0.1 : 0.06) }}
-      viewport={{ once: true, amount: 0.2 }}
-      whileHover={{ y: -6 }}
-    >
-      <Card className="glass hover:glow transition-all duration-300 h-full overflow-hidden flex flex-col min-h-0">
-        <div className="aspect-video rounded-t-lg overflow-hidden bg-muted relative shrink-0">
-          {showImage ? (
-            <img
+    <article className="frame group flex h-full flex-col overflow-hidden bg-white transition-transform duration-300 ease-out hover:-translate-y-1">
+      <div className={`${CATEGORY_STYLE[project.category]} px-5 py-2.5`}>
+        <span className="font-display text-[15px] font-bold uppercase tracking-[0.12em]">
+          {t(`projects.${project.category}`)}
+        </span>
+      </div>
+
+      {project.previewImage && (
+        <div className="border-y-[3px] border-ink bg-ink">
+          {/* no card largo o print é recortado por cima: a metade de baixo dos prints de app costuma ser vazia */}
+          <div className={`relative w-full ${wide ? 'aspect-video lg:aspect-[21/8]' : 'aspect-video'}`}>
+            <Image
               src={project.previewImage}
-              alt={`Pré-visualização de ${project.title}`}
-              width={640}
-              height={360}
-              loading="lazy"
-              decoding="async"
-              className="absolute inset-0 h-full w-full object-cover"
-              onError={() => setPreviewFailed(true)}
+              alt={`${t('projects.previewAlt')}: ${L.title}`}
+              fill
+              priority={priority}
+              sizes={wide ? '(min-width: 1024px) 1200px, 100vw' : '(min-width: 1024px) 560px, 100vw'}
+              className="object-cover object-top"
             />
-          ) : (
-            <div
-              className={`absolute inset-0 w-full h-full bg-gradient-to-br ${preview.gradient} flex items-center justify-center`}
-            >
-              <span
-                className={`font-bold text-white/90 tracking-tighter drop-shadow-lg select-none ${
-                  isFeatured ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl'
-                }`}
-              >
-                {preview.initials}
-              </span>
-            </div>
-          )}
+          </div>
         </div>
-        <CardHeader>
-          <CardTitle className={isFeatured ? 'text-xl' : 'text-lg'}>{project.title}</CardTitle>
-          <p
-            className={`text-muted-foreground ${isFeatured ? '' : 'text-sm'}`}
-          >
-            {project.description}
-          </p>
-          {project.impact && (
-            <div className="flex items-center gap-1.5 text-emerald-500 dark:text-emerald-400 text-sm font-medium">
-              <TrendingUp className="h-4 w-4 shrink-0" />
-              <span>{project.impact}</span>
+      )}
+
+      {wide ? (
+        <div className="grid flex-1 gap-6 p-5 sm:p-7 lg:grid-cols-12 lg:gap-10 lg:p-10">
+          <div className="lg:col-span-7">
+            <Heading className="font-display text-[2.6rem] font-extrabold uppercase text-ink sm:text-[3.2rem]">{L.title}</Heading>
+            <p className="mt-4 max-w-[62ch] text-[1.05rem] leading-relaxed text-steel">{L.description}</p>
+          </div>
+          <div className="flex flex-col gap-4 lg:col-span-5">
+            {gain}
+            {stack}
+            <div className="mt-auto pt-1">
+              <ProjectLinks project={project} />
             </div>
-          )}
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex flex-wrap gap-2">
-            {(isFeatured ? project.technologies : project.technologies.slice(0, 3)).map(
-              (tech) => {
-                const Icon = getTechIcon(tech)
-                return (
-                  <span
-                    key={tech}
-                    className="inline-flex items-center gap-1.5 px-2 py-1 bg-primary/10 text-primary text-xs rounded-md"
-                  >
-                    <Icon className="h-3.5 w-3.5 shrink-0" />
-                    {tech}
-                  </span>
-                )
-              }
-            )}
           </div>
-          <div className="flex gap-2">
-            {project.github && (
-              <Button size="sm" variant="outline" asChild>
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4 mr-2" />
-                  {t('projects.code')}
-                </a>
-              </Button>
-            )}
-            {project.demo && (
-              <Button size="sm" asChild>
-                <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="h-4 w-4 mr-2" />
-                  {t('projects.demo')}
-                </a>
-              </Button>
-            )}
+        </div>
+      ) : (
+        <div className="flex flex-1 flex-col gap-4 p-5 sm:p-7">
+          <Heading className="font-display text-[2rem] font-extrabold uppercase text-ink">{L.title}</Heading>
+          <p className="max-w-[60ch] text-[1.05rem] leading-relaxed text-steel">{L.description}</p>
+          {gain}
+          {stack}
+          <div className="mt-auto pt-1">
+            <ProjectLinks project={project} />
           </div>
-        </CardContent>
-      </Card>
-    </motion.div>
+        </div>
+      )}
+    </article>
   )
 }

@@ -1,96 +1,101 @@
 'use client'
 
-import { useMemo } from 'react'
-import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import { projects } from '@/data/projects'
-import ProjectCard from '@/components/ProjectCard'
+import ProjectCard, { CategoryTag, ProjectLinks } from '@/components/ProjectCard'
+import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { fadeUpTransition } from '@/lib/motion'
+import { localized } from '@/lib/project-i18n'
 
+/** Ordem dos destaques: as ferramentas com ganho medido abrem a lista. */
 const FEATURED_ORDER = [
   'gerador-de-relatorio',
   'gerador-de-art',
   'ceo-os',
-  'system-control',
-  'devradar',
+  'atlas', // título do ceo-os no portfólio (repo privado, sem link)
   'laudofacil',
+  'devradar',
 ]
 
+// repo privado vem sem link: cai no título, sem acento ("Relatório" → "relatorio")
+const slug = (p: { github: string | null; title: string }) =>
+  (p.github?.split('/').pop() ?? p.title)
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+
+const OTHERS_ON_HOME = 8
+
 export default function Projects() {
-  const { t } = useLanguage()
-  const featuredProjects = useMemo(() => {
-    const featured = projects.filter((p) => p.featured)
-    return featured.sort((a, b) => {
-      const repoA = a.github?.split('/').pop()?.toLowerCase().replace(/\s+/g, '-') ?? ''
-      const repoB = b.github?.split('/').pop()?.toLowerCase().replace(/\s+/g, '-') ?? ''
-      const iA = FEATURED_ORDER.indexOf(repoA)
-      const iB = FEATURED_ORDER.indexOf(repoB)
-      if (iA === -1) return 1
-      if (iB === -1) return -1
-      return iA - iB
+  const { t, language } = useLanguage()
+
+  const featured = projects
+    .filter((p) => p.featured)
+    .sort((a, b) => {
+      const ia = FEATURED_ORDER.indexOf(slug(a))
+      const ib = FEATURED_ORDER.indexOf(slug(b))
+      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib)
     })
-  }, [])
+  const [lead, ...rest] = featured
+  const others = projects.filter((p) => !p.featured).slice(0, OTHERS_ON_HOME)
 
   return (
-    <section id="projects" className="py-16 bg-background">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={fadeUpTransition()}
-          viewport={{ once: true, amount: 0.4 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+    <section id="projects" className="bg-paper pb-20 pt-4 sm:pb-28">
+      <div className="mx-auto max-w-site px-3 sm:px-6 lg:px-8">
+        <div className="grid gap-6 pb-10 lg:grid-cols-12 lg:items-end">
+          <h2 className="font-display text-[clamp(4rem,12vw,6rem)] font-extrabold uppercase leading-[0.85] text-ink lg:col-span-6">
             {t('projects.title')}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('projects.description')}
+          <p className="max-w-[58ch] text-[1.125rem] leading-relaxed text-steel lg:col-span-6">
+            {t('projects.lede')}
           </p>
-        </motion.div>
+        </div>
 
-        {/* Featured Projects */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={fadeUpTransition()}
-          viewport={{ once: true, amount: 0.2 }}
-          className="mb-16"
-        >
-          <h3 className="text-2xl font-heading font-bold mb-8 text-center">
-            {t('projects.featured')}
-          </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                size="featured"
-              />
-            ))}
+        {lead && <ProjectCard project={lead} layout="wide" priority />}
+
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          {rest.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
+        </div>
+
+        {others.length > 0 && (
+          <div className="mt-20">
+            <h3 className="font-display text-[2.6rem] font-extrabold uppercase text-ink">
+              {t('projects.othersTitle')}
+            </h3>
+            <ul className="mt-6 border-t-[3px] border-ink">
+              {others.map((p) => (
+                <li
+                  key={p.id}
+                  className="grid gap-3 border-b-2 border-ink/15 py-5 transition-colors hover:bg-white sm:grid-cols-[150px_1fr_auto] sm:items-center sm:gap-6 sm:px-3"
+                >
+                  <CategoryTag category={p.category} className="hidden justify-self-start sm:inline-flex sm:self-center" />
+                  <div>
+                    <p className="font-display text-[1.6rem] font-extrabold uppercase leading-none text-ink">
+                      {localized(p, language).title}
+                    </p>
+                    <p className="mt-1.5 max-w-[70ch] text-[15px] leading-snug text-steel">{localized(p, language).description}</p>
+                    <p className="mt-1.5 text-[14px] font-semibold text-ink/80">{p.technologies.join(' · ')}</p>
+                    <CategoryTag category={p.category} className="mt-3 sm:hidden" />
+                  </div>
+                  <ProjectLinks project={p} />
+                </li>
+              ))}
+            </ul>
           </div>
+        )}
 
-          {/* Ver mais projetos button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={fadeUpTransition()}
-            viewport={{ once: true, amount: 0.6 }}
-            className="flex justify-center mt-12"
-          >
-            <Button size="lg" asChild className="hover:glow">
-              <Link href="/projetos" className="inline-flex items-center">
-                {t('projects.viewMore')}
-                <ArrowRight className="h-5 w-5 ml-2" />
-              </Link>
-            </Button>
-          </motion.div>
-        </motion.div>
+        <div className="mt-10 flex justify-start">
+          <Button asChild size="lg">
+            <Link href="/projetos">
+              {t('projects.viewAll').replace('21', String(projects.length))}
+              <ArrowRight aria-hidden />
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   )

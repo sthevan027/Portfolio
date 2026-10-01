@@ -1,63 +1,60 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const barlow = Barlow({
   variable: "--font-sans",
   subsets: ["latin"],
-  display: "swap",
-  preload: true,
+  weight: ["400", "600"],
+  // corpo: sem troca de fonte depois da pintura (a troca virava o LCP no celular);
+  // o fallback do next/font já tem as métricas ajustadas à Barlow
+  display: "optional",
 });
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-heading",
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["700", "800"],
   display: "swap",
-  preload: false,
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["500"],
-  display: "swap",
-  preload: false,
-});
+const SITE_URL = "https://sthevandev.vercel.app";
+const TITLE = "Sthevan Santos — Desenvolvedor fullstack que veio da obra";
+const DESCRIPTION =
+  "Dev fullstack (React, TypeScript, Supabase) e automação em Python. Saí da obra automatizando relatórios, ARTs e medições — veja os 21 projetos e ganhos medidos.";
 
 export const viewport: Viewport = {
-  themeColor: "#2563EB",
+  themeColor: "#F5C400",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: "Sthevan Santos - Frontend Developer & CEO da Virex",
-  description:
-    "Portfólio de Sthevan Santos - Especialista em React, Next.js e automações. CEO da Virex. Transformando ideias em soluções digitais inovadoras.",
+  title: {
+    default: TITLE,
+    template: "%s · Sthevan Santos",
+  },
+  description: DESCRIPTION,
   keywords: [
     "Sthevan Santos",
-    "Frontend Developer",
-    "React Developer",
-    "Next.js Developer",
-    "Virex",
+    "desenvolvedor fullstack",
+    "desenvolvedor React",
     "TypeScript",
-    "Tailwind CSS",
-    "Framer Motion",
-    "Desenvolvedor Frontend",
-    "Portfólio",
-    "Automação",
-    "Web Development",
+    "Supabase",
+    "Next.js",
+    "automação Python",
+    "automação de engenharia",
+    "dev Espírito Santo",
+    "Virex",
   ],
-  authors: [{ name: "Sthevan Santos" }],
+  authors: [{ name: "Sthevan Santos", url: SITE_URL }],
   creator: "Sthevan Santos",
-  publisher: "Virex",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://sthevan-santos.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
@@ -66,17 +63,16 @@ export const metadata: Metadata = {
     apple: "/sthevan.jpg",
   },
   openGraph: {
-    title: "Sthevan Santos - Frontend Developer & CEO da Virex",
-    description:
-      "Especialista em React, Next.js e automações. Transformando ideias em soluções digitais inovadoras.",
-    url: "https://sthevan-santos.vercel.app",
-    siteName: "Sthevan Santos Portfolio",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Sthevan Santos",
     images: [
       {
-        url: "/sthevan.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Sthevan Santos - Frontend Developer",
+        alt: "Sthevan Santos — desenvolvedor fullstack que veio da obra",
       },
     ],
     locale: "pt_BR",
@@ -84,11 +80,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sthevan Santos - Frontend Developer & CEO da Virex",
-    description:
-      "Especialista em React, Next.js e automações. Transformando ideias em soluções digitais inovadoras.",
-    images: ["/sthevan.jpg"],
-    creator: "@sthevan_dev",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.png"],
+    creator: "@SantosSthevan",
   },
   robots: {
     index: true,
@@ -101,9 +96,51 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "google-site-verification-code",
+};
+
+const DIRECTION_CONTRACT = `<!--
+THESIS: O portfólio como a sinalização de uma obra: cada projeto é uma placa, cada ganho medido é um contador. Recusa o hero escuro com acento neon e grade de cards iguais.
+OWN-WORLD: amarelo segurança em campo cheio, preto de placa, branco esmaltado; placas com borda interna e parafusos; faixa zebrada nas divisas; Barlow Condensed em caixa alta; verde de rota só para ação; azul informativo nas placas de categoria.
+STORY: o visitante entende em segundos que é um dev fullstack que veio da obra, vê ganhos medidos e projetos funcionando, e chama no WhatsApp ou baixa o currículo.
+FIRST VIEWPORT: placa amarela de ponta a ponta; nome gigante condensado à esquerda, foto emoldurada como placa à direita; linha "fullstack que veio da obra"; ações Ver projetos / WhatsApp / Currículo; faixa zebrada fecha a dobra e o quadro de resultados vira os dígitos logo abaixo.
+FORM: sinalização de canteiro, 5ª da lista ordenada, seed 212ab402.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->`;
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sthevan Santos",
+  alternateName: "Sthevan das Virgens dos Santos",
+  jobTitle: "Desenvolvedor Fullstack",
+  description: DESCRIPTION,
+  url: SITE_URL,
+  image: `${SITE_URL}/sthevan.jpg`,
+  email: "mailto:sthevan.ssantos@gmail.com",
+  telephone: "+55-27-98877-2784",
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "ES",
+    addressCountry: "BR",
   },
+  worksFor: { "@type": "Organization", name: "Virex" },
+  knowsAbout: [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Supabase",
+    "PostgreSQL",
+    "Node.js",
+    "Python",
+    "OCR",
+    "Automação de processos",
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/sthevanssantos",
+    "https://github.com/sthevan027",
+    "https://instagram.com/sthevan.dev",
+    "https://x.com/SantosSthevan",
+  ],
 };
 
 export default function RootLayout({
@@ -113,36 +150,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <head>
+      <body
+        className={`${barlow.variable} ${barlowCondensed.variable} font-sans antialiased`}
+      >
+        <div hidden dangerouslySetInnerHTML={{ __html: DIRECTION_CONTRACT }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Sthevan Santos",
-              jobTitle: "Frontend Developer & CEO",
-              worksFor: {
-                "@type": "Organization",
-                name: "Virex",
-              },
-              description: "Especialista em React, Next.js e automações",
-              url: "https://sthevan-santos.vercel.app",
-              sameAs: [
-                "https://linkedin.com/in/sthevan-santos",
-                "https://github.com/sthevan-santos",
-                "https://instagram.com/sthevan.dev",
-              ],
-              image: "/sthevan.jpg",
-              email: "sthevan.ssantos@gmail.com",
-              telephone: "+55-27-98877-2784",
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-      </head>
-      <body
-        className={`${inter.variable} ${bricolage.variable} ${jetbrainsMono.variable} font-sans antialiased`}
-      >
         {children}
       </body>
     </html>

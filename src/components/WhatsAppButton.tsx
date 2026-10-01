@@ -1,40 +1,33 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { MessageCircle } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { whatsappLink } from '@/lib/site'
 
+/** Atalho de WhatsApp: só aparece depois da dobra, quando o botão do hero já saiu da tela. */
 export default function WhatsAppButton() {
   const { t } = useLanguage()
-  const handleWhatsAppClick = () => {
-    const phoneNumber = '5527988772784'
-    const message = encodeURIComponent(t('hero.whatsappButtonMessage'))
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
-    window.open(whatsappUrl, '_blank')
-  }
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.9)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <motion.button
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 0.5, delay: 1 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      onClick={handleWhatsAppClick}
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
-      aria-label={t('hero.whatsapp')}
+    <a
+      href={whatsappLink(t('hero.whatsappMessage'))}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={t('hero.ctaWhatsapp')}
+      className={`fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-[10px] bg-route text-white shadow-[0_14px_30px_-12px_rgb(0_0_0/0.55)] ring-[3px] ring-inset ring-ink transition-all duration-300 ease-out hover:bg-route-deep ${
+        visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
+      }`}
     >
-      <MessageCircle className="h-6 w-6" />
-
-      {/* Tooltip */}
-      <div className="absolute right-16 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-        {t('hero.whatsapp')}
-        <div className="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-      </div>
-      
-      {/* Pulse animation */}
-      <div className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20"></div>
-    </motion.button>
+      <MessageCircle className="h-6 w-6" aria-hidden />
+    </a>
   )
 }
-

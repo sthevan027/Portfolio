@@ -1,161 +1,51 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Heart, ArrowUp, Sparkles } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { ArrowUp } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { EASE_SMOOTH } from '@/lib/motion'
+import { SITE } from '@/lib/site'
 
 export default function Footer() {
   const { t } = useLanguage()
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const currentYear = new Date().getFullYear()
-
-  const navLinks = [
-    { href: '#home', labelKey: 'nav.home' },
-    { href: '#about', labelKey: 'nav.about' },
-    { href: '#projects', labelKey: 'nav.projects' },
-    { href: '#experience', labelKey: 'nav.experience' },
-    { href: '#curriculo', labelKey: 'nav.curriculo' },
-    { href: '#contact', labelKey: 'nav.contact' },
-  ]
 
   return (
-    <footer className="bg-black border-t border-gray-800">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE_SMOOTH }}
-            viewport={{ once: true, amount: 0.4 }}
-            className="space-y-6"
-          >
-            <div className="flex items-center space-x-2">
-              <Sparkles className="h-6 w-6 text-primary" />
-              <h3 className="text-2xl font-heading font-bold text-white">
-                Sthevan Santos
-              </h3>
-            </div>
-            <div className="space-y-4">
-              <p className="text-lg font-medium brand-mark">
-                {t('footer.tagline')}
-              </p>
-              <p className="text-muted-foreground max-w-md leading-relaxed">
-                {t('footer.description')}
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Navigation */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: EASE_SMOOTH }}
-            viewport={{ once: true, amount: 0.4 }}
-            className="space-y-4"
-          >
-            <h4 className="text-lg font-heading font-semibold text-white">{t('footer.navigation')}</h4>
-            <nav className="flex flex-col space-y-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 w-fit py-2 min-h-[44px] flex items-center hover:translate-x-1 transform"
-                >
-                  {t(link.labelKey)}
-                </a>
-              ))}
-            </nav>
-          </motion.div>
-
-          {/* Contact & Social */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: EASE_SMOOTH }}
-            viewport={{ once: true, amount: 0.4 }}
-            className="space-y-4"
-          >
-            <h4 className="text-lg font-heading font-semibold text-white">{t('footer.contact')}</h4>
-            <div className="space-y-3">
-              <a
-                href="mailto:sthevan.ssantos@gmail.com"
-                className="block py-2 min-h-[44px] text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                sthevan.ssantos@gmail.com
-              </a>
-              <a
-                href="https://wa.me/5527988772784"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block py-2 min-h-[44px] text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                +55 (27) 98877-2784
-              </a>
-            </div>
-            
-            <div className="flex flex-wrap gap-3 pt-4">
-              <a
-                href="https://linkedin.com/in/sthevan-santos"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-2 min-h-[44px] flex items-center text-muted-foreground hover:text-blue-500 transition-colors duration-200"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/sthevan027"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-2 min-h-[44px] flex items-center text-muted-foreground hover:text-gray-300 transition-colors duration-200"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://instagram.com/sthevan.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-2 min-h-[44px] flex items-center text-muted-foreground hover:text-pink-500 transition-colors duration-200"
-              >
-                Instagram
-              </a>
-            </div>
-          </motion.div>
+    <footer className="bg-ink text-paper">
+      <div className="mx-auto flex max-w-site flex-col gap-6 px-3 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div>
+          <p className="inline-block rounded-[6px] bg-sign px-3 py-1.5 font-display text-xl font-extrabold uppercase leading-none tracking-wide text-ink">
+            Sthevan Santos
+          </p>
+          <p className="mt-3 text-paper/70">{t('footer.line')}</p>
         </div>
-
-        {/* Bottom Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: EASE_SMOOTH }}
-          viewport={{ once: true, amount: 0.6 }}
-          className="border-t border-gray-800 mt-12 pt-8"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-muted-foreground">
-              <span>© {currentYear} {t('footer.copyright')}</span>
-              <Heart className="h-4 w-4 text-red-500" />
-              <span>{t('footer.coffee')}</span>
-            </div>
-
-            <Button
-              onClick={scrollToTop}
-              variant="ghost"
-              size="sm"
-              className="text-muted-foreground hover:text-primary transition-colors"
+        <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[17px] font-bold uppercase tracking-wide">
+          <li>
+            <a href={SITE.github} target="_blank" rel="noopener noreferrer" className="hover:text-sign">GitHub</a>
+          </li>
+          <li>
+            <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-sign">LinkedIn</a>
+          </li>
+          <li>
+            <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-sign">Instagram</a>
+          </li>
+          <li>
+            {/* funciona em qualquer página (o #home só existe na home) */}
+            <button
+              type="button"
+              onClick={() => {
+                const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })
+                document.querySelector<HTMLElement>('header a')?.focus({ preventScroll: true })
+              }}
+              className="inline-flex min-h-[44px] items-center gap-1.5 font-display font-bold uppercase tracking-wide text-sign hover:underline"
             >
-              <ArrowUp className="h-4 w-4 mr-2" />
+              <ArrowUp className="h-4 w-4" aria-hidden />
               {t('footer.backToTop')}
-            </Button>
-          </div>
-        </motion.div>
+            </button>
+          </li>
+        </ul>
       </div>
+      <p className="border-t border-paper/10 px-3 py-4 text-center text-[14px] text-paper/50">
+        © {new Date().getFullYear()} {t('footer.rights')}
+      </p>
     </footer>
   )
 }
-

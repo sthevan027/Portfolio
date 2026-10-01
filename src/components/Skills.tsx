@@ -1,130 +1,58 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Card, CardContent } from '@/components/ui/card'
-import { Hash, Terminal, FileCode, ScanText, Code2 } from 'lucide-react'
-import {
-  SiPython,
-  SiJavascript,
-  SiTypescript,
-  SiHtml5,
-  SiCss,
-  SiPostgresql,
-  SiGnubash,
-  SiReact,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiSupabase,
-  SiDocker,
-  SiVercel,
-  SiGithubactions,
-  SiPwa,
-} from 'react-icons/si'
-import { FaJava } from 'react-icons/fa'
-import type { IconType } from 'react-icons'
-import { skillCategories as skillCategoriesData } from '@/data/skills'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { fadeUpTransition } from '@/lib/motion'
 
-const SKILL_ICONS: Record<string, IconType> = {
-  TypeScript: SiTypescript,
-  'React/Next.js': SiReact,
-  'Tailwind CSS': SiTailwindcss,
-  HTML: SiHtml5,
-  CSS: SiCss,
-  JavaScript: SiJavascript,
-  'Node.js': SiNodedotjs,
-  'C#': Hash,
-  Java: FaJava,
-  PostgreSQL: SiPostgresql,
-  Supabase: SiSupabase,
-  Docker: SiDocker,
-  Vercel: SiVercel,
-  'GitHub Actions': SiGithubactions,
-  PWA: SiPwa,
-  Python: SiPython,
-  'OCR (Tesseract)': ScanText,
-  PowerShell: Terminal,
-  Shell: SiGnubash,
-  VBScript: FileCode,
-}
-
-function getSkillIcon(name: string): IconType {
-  return SKILL_ICONS[name] || Code2
-}
+/** Stack por uso real — nomes legíveis, sem barra de porcentagem. */
+const GROUPS = [
+  {
+    key: 'product',
+    items: ['TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Supabase', 'PostgreSQL', 'PWA'],
+  },
+  {
+    key: 'automation',
+    items: ['Python', 'OCR (Tesseract)', 'pandas', 'openpyxl', 'pdfplumber', 'pywebview', 'PowerShell', 'Shell'],
+  },
+  {
+    key: 'delivery',
+    items: ['Git', 'GitHub Actions', 'Vercel', 'Docker'],
+  },
+] as const
 
 export default function Skills() {
   const { t } = useLanguage()
-  const allSkills = skillCategoriesData
-    .flatMap((cat) => cat.skills)
-    .sort((a, b) => b.level - a.level)
 
   return (
-    <section id="experience" className="py-16 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={fadeUpTransition()}
-          viewport={{ once: true, amount: 0.4 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-            {t('skills.title')}
+    <section id="stack" className="bg-paper py-20 sm:py-28">
+      <div className="mx-auto max-w-site px-3 sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <h2 className="font-display text-[clamp(3.6rem,10vw,6rem)] font-extrabold uppercase leading-[0.85] text-ink lg:col-span-6">
+            {t('stack.title')}
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            {t('skills.description')}
-          </p>
-        </motion.div>
+          <p className="max-w-[48ch] text-[1.2rem] leading-relaxed text-steel lg:col-span-6">{t('stack.lede')}</p>
+        </div>
 
-        {/* Skills Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={fadeUpTransition()}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <Card className="glass bg-gray-900/50 border-gray-700">
-            <CardContent className="p-6 md:p-8">
-              <div className="flex flex-wrap justify-center gap-3">
-                {allSkills.map((skill, index) => {
-                  const Icon = getSkillIcon(skill.name)
-                  return (
-                    <motion.span
-                      key={skill.name}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.35, delay: index * 0.025, ease: 'easeOut' }}
-                      viewport={{ once: true, amount: 0.6 }}
-                      whileHover={{ y: -3 }}
-                      title={skill.name}
-                      aria-label={skill.name}
-                      className="flex h-14 w-14 items-center justify-center rounded-xl border border-gray-700 bg-gray-800/60 text-gray-200 transition-colors hover:border-primary hover:text-primary"
-                    >
-                      <Icon className="h-6 w-6" />
-                    </motion.span>
-                  )
-                })}
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={fadeUpTransition()}
-          viewport={{ once: true, amount: 0.6 }}
-          className="text-center mt-16"
-        >
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            {t('skills.philosophy')}
-          </p>
-        </motion.div>
+        <div className="mt-12 grid gap-0 border-t-[3px] border-ink lg:grid-cols-3">
+          {GROUPS.map((g, i) => (
+            <div
+              key={g.key}
+              className={`border-b-[3px] border-ink py-8 lg:border-b-0 ${i > 0 ? 'lg:border-l-[3px] lg:pl-8' : ''} ${i < GROUPS.length - 1 ? 'lg:pr-8' : ''}`}
+            >
+              <h3 className="font-display text-[2.2rem] font-extrabold uppercase text-ink">{t(`stack.${g.key}`)}</h3>
+              <p className="mt-2 text-[1rem] text-steel">{t(`stack.${g.key}Text`)}</p>
+              <ul className="mt-6 flex flex-wrap gap-2.5">
+                {g.items.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-[6px] bg-white px-3 py-1.5 font-display text-[1.15rem] font-bold uppercase tracking-wide text-ink ring-2 ring-inset ring-ink"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
 }
-

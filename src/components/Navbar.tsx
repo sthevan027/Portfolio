@@ -1,116 +1,110 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
-import { Menu, X, Globe } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Menu, X, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { SITE } from '@/lib/site'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const { language, setLanguage, t } = useLanguage()
-  const { scrollY } = useScroll()
 
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    setScrolled(latest > 20)
-  })
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'pt' ? 'en' : 'pt')
-  }
+  useEffect(() => {
+    if (!isOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setIsOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isOpen])
 
   const navItems = [
-    { href: '#home', label: t('nav.home') },
-    { href: '#about', label: t('nav.about') },
-    { href: '#projects', label: t('nav.projects') },
-    { href: '#experience', label: t('nav.experience') },
-    { href: '#curriculo', label: t('nav.curriculo') },
-    { href: '#contact', label: t('nav.contact') },
+    { href: '/#projects', label: t('nav.projects') },
+    { href: '/#path', label: t('nav.path') },
+    { href: '/#stack', label: t('nav.stack') },
+    { href: '/#contact', label: t('nav.contact') },
   ]
 
   return (
-    <motion.nav
-      initial={false}
-      animate={{
-        boxShadow: scrolled
-          ? '0 8px 24px -12px rgba(0,0,0,0.5)'
-          : '0 0px 0px 0px rgba(0,0,0,0)',
-      }}
-      transition={{ duration: 0.3 }}
-      className={`fixed top-0 w-full z-50 glass transition-colors duration-300 ${
-        scrolled ? 'border-b border-border/60' : 'border-b border-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <a href="#home" className="text-xl font-heading font-bold brand-mark">
-              Sthevan
-            </a>
-          </div>
+    <header className="fixed inset-x-0 top-0 z-50 bg-ink text-paper">
+      <nav className="mx-auto flex h-16 max-w-site items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <a
+          href="/#home"
+          className="rounded-[6px] bg-sign px-3 py-1.5 font-display text-lg font-extrabold uppercase leading-none tracking-wide text-ink"
+        >
+          Sthevan Santos
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-8 flex items-baseline space-x-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 hover:scale-105"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Language Toggle & Mobile menu button */}
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              className="flex items-center space-x-2 hover:bg-primary/10"
-            >
-              <Globe className="h-4 w-4" />
-              <span className="font-medium">{language.toUpperCase()}</span>
-            </Button>
-
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsOpen(!isOpen)}
-                className="hover:bg-primary/10 min-h-[44px] min-w-[44px] p-0"
-                aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
-              >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3 glass">
-            {navItems.map((item) => (
+        <ul className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => (
+            <li key={item.href}>
               <a
-                key={item.href}
                 href={item.href}
-                className="text-foreground hover:text-primary block px-4 py-3 min-h-[44px] flex items-center rounded-md text-base font-medium transition-colors duration-200 hover:bg-primary/10"
-                onClick={() => setIsOpen(false)}
+                className="block px-3 py-2 font-display text-[17px] font-bold uppercase tracking-wide text-paper/85 underline-offset-[10px] transition-colors hover:text-sign hover:underline decoration-sign"
               >
                 {item.label}
               </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
+            className="flex min-h-[44px] items-center gap-1 px-2 font-display text-[15px] font-bold uppercase tracking-wider"
+          >
+            {/* nome acessível começa pelo texto visível ("PT / EN") e completa com a ação */}
+            <span className={language === 'pt' ? 'text-sign' : 'text-paper/60'}>PT</span>
+            <span className="text-paper/40" aria-hidden>/</span>
+            <span className={language === 'en' ? 'text-sign' : 'text-paper/60'}>EN</span>
+            <span className="sr-only"> — {t('nav.switchLanguage')}</span>
+          </button>
+
+          <Button asChild variant="outlineSign" size="sm" className="hidden rounded-[6px] sm:inline-flex">
+            <a href={SITE.resumeDev} download>
+              <Download aria-hidden />
+              {t('nav.resume')}
+            </a>
+          </Button>
+
+          <button
+            type="button"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden"
+            onClick={() => setIsOpen((v) => !v)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+      </nav>
+
+      {isOpen && (
+        <div id="mobile-menu" className="border-t-4 border-sign bg-ink md:hidden">
+          <ul className="mx-auto max-w-site px-4 py-3">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="flex min-h-[52px] items-center border-b border-paper/10 font-display text-2xl font-extrabold uppercase tracking-wide text-paper"
+                >
+                  {item.label}
+                </a>
+              </li>
             ))}
-          </div>
+            <li>
+              <Button asChild variant="sign" size="lg" className="mt-3 w-full">
+                <a href={SITE.resumeDev} download onClick={() => setIsOpen(false)}>
+                  <Download aria-hidden />
+                  {t('nav.resume')}
+                </a>
+              </Button>
+            </li>
+          </ul>
         </div>
       )}
-    </motion.nav>
+    </header>
   )
 }
-

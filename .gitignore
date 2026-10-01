@@ -52,3 +52,7 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# Impeccable: prints de revisão e páginas de decisão são locais; o sistema (design.json) vai pro git
+.impeccable/*
+!.impeccable/design.json

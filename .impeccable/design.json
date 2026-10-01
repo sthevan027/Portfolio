@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-01T14:48:35.476074+00:00",
+  "title": "Design System: Sthevan Santos — Portfólio",
+  "extensions": {
+    "colorMeta": {
+      "sign": {
+        "role": "primary",
+        "displayName": "Amarelo Segurança",
+        "canonical": "oklch(84% 0.17 90)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.085 90)",
+          "oklch(25% 0.085 90)",
+          "oklch(35% 0.17 90)",
+          "oklch(45% 0.17 90)",
+          "oklch(55% 0.17 90)",
+          "oklch(65% 0.17 90)",
+          "oklch(80% 0.17 90)",
+          "oklch(95% 0.085 90)"
+        ]
+      },
+      "sign-ink": {
+        "role": "primary",
+        "displayName": "Ocre de Placa",
+        "canonical": "oklch(31% 0.065 95)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.033 95)",
+          "oklch(25% 0.033 95)",
+          "oklch(35% 0.065 95)",
+          "oklch(45% 0.065 95)",
+          "oklch(55% 0.065 95)",
+          "oklch(65% 0.065 95)",
+          "oklch(80% 0.065 95)",
+          "oklch(95% 0.033 95)"
+        ]
+      },
+      "route": {
+        "role": "secondary",
+        "displayName": "Verde de Rota",
+        "canonical": "oklch(51% 0.13 152)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.065 152)",
+          "oklch(25% 0.065 152)",
+          "oklch(35% 0.13 152)",
+          "oklch(45% 0.13 152)",
+          "oklch(55% 0.13 152)",
+          "oklch(65% 0.13 152)",
+          "oklch(80% 0.13 152)",
+          "oklch(95% 0.065 152)"
+        ]
+      },
+      "route-deep": {
+        "role": "secondary",
+        "displayName": "Verde de Rota Fundo",
+        "canonical": "oklch(43% 0.11 152)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.055 152)",
+          "oklch(25% 0.055 152)",
+          "oklch(35% 0.11 152)",
+          "oklch(45% 0.11 152)",
+          "oklch(55% 0.11 152)",
+          "oklch(65% 0.11 152)",
+          "oklch(80% 0.11 152)",
+          "oklch(95% 0.055 152)"
+        ]
+      },
+      "info": {
+        "role": "tertiary",
+        "displayName": "Azul Informativo",
+        "canonical": "oklch(45% 0.15 260)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.075 260)",
+          "oklch(25% 0.075 260)",
+          "oklch(35% 0.15 260)",
+          "oklch(45% 0.15 260)",
+          "oklch(55% 0.15 260)",
+          "oklch(65% 0.15 260)",
+          "oklch(80% 0.15 260)",
+          "oklch(95% 0.075 260)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Preto de Placa",
+        "canonical": "oklch(19% 0 0)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.0 0)",
+          "oklch(25% 0.0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0.0 0)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Branco Esmaltado",
+        "canonical": "oklch(96% 0.004 106)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.002 106)",
+          "oklch(25% 0.002 106)",
+          "oklch(35% 0.004 106)",
+          "oklch(45% 0.004 106)",
+          "oklch(55% 0.004 106)",
+          "oklch(65% 0.004 106)",
+          "oklch(80% 0.004 106)",
+          "oklch(95% 0.002 106)"
+        ]
+      },
+      "enamel-white": {
+        "role": "neutral",
+        "displayName": "Branco de Placa",
+        "canonical": "oklch(100% 0 0)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.0 0)",
+          "oklch(25% 0.0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0.0 0)"
+        ]
+      },
+      "steel": {
+        "role": "neutral",
+        "displayName": "Aço",
+        "canonical": "oklch(41% 0.007 106)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.004 106)",
+          "oklch(25% 0.004 106)",
+          "oklch(35% 0.007 106)",
+          "oklch(45% 0.007 106)",
+          "oklch(55% 0.007 106)",
+          "oklch(65% 0.007 106)",
+          "oklch(80% 0.007 106)",
+          "oklch(95% 0.004 106)"
+        ]
+      },
+      "screw": {
+        "role": "neutral",
+        "displayName": "Parafuso",
+        "canonical": "oklch(53% 0.008 106)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.004 106)",
+          "oklch(25% 0.004 106)",
+          "oklch(35% 0.008 106)",
+          "oklch(45% 0.008 106)",
+          "oklch(55% 0.008 106)",
+          "oklch(65% 0.008 106)",
+          "oklch(80% 0.008 106)",
+          "oklch(95% 0.004 106)"
+        ]
+      },
+      "destructive": {
+        "role": "neutral",
+        "displayName": "Vermelho de Erro",
+        "canonical": "oklch(51% 0.19 27)",
+        "source": "src/app/globals.css (RGB channels); hex in DESIGN.md frontmatter is the exact equivalent",
+        "tonalRamp": [
+          "oklch(15% 0.095 27)",
+          "oklch(25% 0.095 27)",
+          "oklch(35% 0.19 27)",
+          "oklch(45% 0.19 27)",
+          "oklch(55% 0.19 27)",
+          "oklch(65% 0.19 27)",
+          "oklch(80% 0.19 27)",
+          "oklch(95% 0.095 27)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nome na dobra, título de /projetos e títulos de seção."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Título do quadro de resultados e linha de posicionamento."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Títulos de cards, placas e grupos."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descrições e ledes em Barlow."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Rótulos, navegação, botões e legendas em caixa alta."
+      },
+      "counter": {
+        "displayName": "Counter",
+        "purpose": "Dígitos tabulares do quadro de resultados."
+      }
+    },
+    "shadows": [
+      {
+        "name": "plate",
+        "value": "inset 0 0 0 9px var(--plate-field), inset 0 0 0 12px rgb(var(--plate-line)), 0 0 0 1px rgb(18 18 18 / 0.12), 0 22px 40px -24px rgb(0 0 0 / 0.45)",
+        "purpose": "Placa NR-26: filete recuado 9→12px + sombra baixa."
+      },
+      {
+        "name": "frame",
+        "value": "inset 0 0 0 4px rgb(18 18 18), 0 22px 40px -24px rgb(0 0 0 / 0.45)",
+        "purpose": "Moldura dos cards de projeto."
+      },
+      {
+        "name": "digit",
+        "value": "0 6px 14px -8px rgb(0 0 0 / 0.6)",
+        "purpose": "Plaquinha de dígito do contador."
+      },
+      {
+        "name": "float",
+        "value": "0 14px 30px -12px rgb(0 0 0 / 0.55)",
+        "purpose": "Botão flutuante de WhatsApp."
+      }
+    ],
+    "motion": [
+      {
+        "name": "flip-in",
+        "value": "160ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Virada de cada passo do dígito (rotateX -88deg → 0, blur 1.5px → 0)."
+      },
+      {
+        "name": "flip-step",
+        "value": "85ms por passo; 120ms de escalonamento por dígito; dispara a 45% visível",
+        "purpose": "Contagem 0 → valor no quadro; não roda sob reduced motion (valor final no HTML)."
+      },
+      {
+        "name": "lift",
+        "value": "200ms ease-out, translateY(-2px)",
+        "purpose": "Hover de botões ink/sign e abas de filtro."
+      },
+      {
+        "name": "card-lift",
+        "value": "300ms ease-out, translateY(-4px)",
+        "purpose": "Hover dos cards de projeto."
+      },
+      {
+        "name": "float-reveal",
+        "value": "300ms ease-out, translateY(16px) + opacity",
+        "purpose": "Entrada do botão flutuante após 90% da dobra."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "container",
+        "value": "76rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação padrão em preto de placa (Ver projetos, enviar formulário).",
+      "html": "<button class=\"ds-btn-ink\">VER PROJETOS</button>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border:none;border-radius:8px;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:0.025em;cursor:pointer;transition:transform 200ms ease-out, background-color 200ms ease-out, color 200ms ease-out;background:#121212;color:#F3F3F0;} .ds-btn-ink:hover{transform:translateY(-2px);} .ds-btn-ink:focus-visible{outline:3px solid #0B7A3E;outline-offset:3px;}"
+    },
+    {
+      "name": "Route Button",
+      "kind": "button",
+      "refersTo": "button-route",
+      "description": "Verde de rota: só WhatsApp e Demo.",
+      "html": "<button class=\"ds-btn-route\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\"/></svg>CHAMAR NO WHATSAPP</button>",
+      "css": ".ds-btn-route{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border:none;border-radius:8px;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:0.025em;cursor:pointer;transition:transform 200ms ease-out, background-color 200ms ease-out, color 200ms ease-out;background:#0B7A3E;color:#fff;} .ds-btn-route:hover{background:#085E2F;} .ds-btn-route:focus-visible{outline:3px solid #0B7A3E;outline-offset:3px;}"
+    },
+    {
+      "name": "Link Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação terciária sublinhada (Currículo na dobra).",
+      "html": "<a href=\"#\" class=\"ds-btn-link\">BAIXAR CURRÍCULO</a>",
+      "css": ".ds-btn-link{display:inline-flex;align-items:center;min-height:52px;padding:0 4px;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:0.025em;color:#121212;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;transition:color 200ms ease-out;} .ds-btn-link:hover{color:#085E2F;} .ds-btn-link:focus-visible{outline:3px solid #0B7A3E;outline-offset:3px;}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo branco com borda preta de 3px; no foco a borda vira verde de rota.",
+      "html": "<label class=\"ds-label\" for=\"ds-f\">NOME</label><input id=\"ds-f\" class=\"ds-input\" placeholder=\"Seu nome\">",
+      "css": ".ds-label{display:block;margin-bottom:6px;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:0.05em;color:#121212;} .ds-input{width:100%;padding:12px 14px;border:3px solid #121212;border-radius:6px;background:#fff;color:#121212;font-family:Barlow, ui-sans-serif, system-ui, sans-serif;font-size:1.05rem;caret-color:#0B7A3E;} .ds-input::placeholder{color:#4A4A46;} .ds-input:focus{outline:none;border-color:#0B7A3E;}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Barra preta fixa de 64px com logotipo em placa amarela.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">STHEVAN SANTOS</span><a href=\"#\">PROJETOS</a><a href=\"#\">TRAJETÓRIA</a><a href=\"#\">STACK</a><a href=\"#\">CONTATO</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:4px;height:64px;padding:0 24px;background:#121212;} .ds-nav-logo{margin-right:auto;padding:6px 12px;border-radius:6px;background:#F5C400;color:#121212;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:800;font-size:18px;line-height:1;text-transform:uppercase;letter-spacing:0.025em;} .ds-nav a{padding:8px 12px;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:0.025em;color:rgb(243 243 240 / .85);text-decoration:none;text-underline-offset:10px;text-decoration-color:#F5C400;transition:color 150ms;} .ds-nav a:hover{color:#F5C400;text-decoration-line:underline;} .ds-nav a:focus-visible{outline:3px solid #0B7A3E;outline-offset:3px;}"
+    },
+    {
+      "name": "Category Tag",
+      "kind": "chip",
+      "refersTo": "tag-category-fullstack",
+      "description": "Placa de categoria; cor fixa por tipo, contorno preto de 2px.",
+      "html": "<span class=\"ds-tag ds-tag-auto\">AUTOMAÇÃO</span> <span class=\"ds-tag ds-tag-full\">FULLSTACK</span> <span class=\"ds-tag ds-tag-front\">FRONTEND</span> <span class=\"ds-tag ds-tag-back\">BACKEND</span>",
+      "css": ".ds-tag{display:inline-flex;padding:2px 8px;border-radius:4px;box-shadow:inset 0 0 0 2px #121212;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.05em;} .ds-tag-auto{background:#F5C400;color:#121212;} .ds-tag-full{background:#1F4FA3;color:#fff;} .ds-tag-front{background:#121212;color:#F5C400;} .ds-tag-back{background:#fff;color:#121212;}"
+    },
+    {
+      "name": "Plate",
+      "kind": "card",
+      "refersTo": "plate",
+      "description": "Placa NR-26: campo até a borda, filete recuado 9→12px, quatro parafusos chapados.",
+      "html": "<div class=\"ds-plate\"><h3>PARA RECRUTADORES</h3><p>Currículo, e-mail e perfis.</p></div>",
+      "css": ".ds-plate{--plate-field:#fff;--plate-line:#121212;--screw:#6E6E68;position:relative;padding:44px 36px;border-radius:14px;background:var(--plate-field);box-shadow:inset 0 0 0 9px var(--plate-field),inset 0 0 0 12px var(--plate-line),0 0 0 1px rgb(18 18 18 / .12),0 22px 40px -24px rgb(0 0 0 / .45);color:#121212;} .ds-plate::before,.ds-plate::after{content:'';position:absolute;left:18px;right:18px;height:9px;pointer-events:none;background:radial-gradient(circle 4.5px at 4.5px 50%, var(--screw) 96%, transparent 100%),radial-gradient(circle 4.5px at calc(100% - 4.5px) 50%, var(--screw) 96%, transparent 100%);} .ds-plate::before{top:18px;} .ds-plate::after{bottom:18px;} .ds-plate h3{margin:0;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:800;font-size:2rem;line-height:.92;text-transform:uppercase;} .ds-plate p{margin:8px 0 0;font-family:Barlow, ui-sans-serif, system-ui, sans-serif;color:#4A4A46;}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "plate",
+      "description": "Moldura preta de 4px (sem parafusos), faixa de categoria no topo, caixa de ganho amarela.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-cat\">AUTOMAÇÃO</div><div class=\"ds-card-body\"><h3>GERADOR DE ART</h3><p>Aplicativo desktop que monta a ART a partir do histórico.</p><p class=\"ds-gain\"><b>DE 5 DIAS PARA MEIO DIA</b><span>GANHO MEDIDO</span></p></div></article>",
+      "css": ".ds-card{overflow:hidden;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 4px #121212,0 22px 40px -24px rgb(0 0 0 / .45);transition:transform 300ms ease-out;} .ds-card:hover{transform:translateY(-4px);} .ds-card-cat{padding:10px 20px;background:#F5C400;color:#121212;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:700;font-size:15px;letter-spacing:.12em;} .ds-card-body{padding:20px 28px 28px;display:flex;flex-direction:column;gap:16px;} .ds-card h3{margin:0;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:800;font-size:2rem;line-height:.92;color:#121212;} .ds-card p{margin:0;font-family:Barlow, ui-sans-serif, system-ui, sans-serif;font-size:1.05rem;line-height:1.625;color:#4A4A46;} .ds-card .ds-gain{padding:12px 16px;border-radius:6px;background:#F5C400;box-shadow:inset 0 0 0 2px #121212;} .ds-gain b{display:block;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:800;font-size:1.45rem;line-height:1.25;color:#121212;} .ds-gain span{display:block;margin-top:4px;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:700;font-size:13px;letter-spacing:.14em;color:#3D3200;}"
+    },
+    {
+      "name": "Flip Digit Counter",
+      "kind": "custom",
+      "refersTo": "plate",
+      "description": "Assinatura: dígitos em plaquinhas pretas que viram de 0 ao valor; estáticos sob reduced motion.",
+      "html": "<span class=\"ds-digits\"><span class=\"ds-digit\"><span>2</span></span><span class=\"ds-digit\"><span>1</span></span></span>",
+      "css": ".ds-digits{display:inline-flex;gap:.12em;font-family:'Barlow Condensed', 'Arial Narrow', sans-serif;font-weight:800;font-size:4rem;line-height:1;font-variant-numeric:tabular-nums;} .ds-digit{position:relative;display:inline-flex;align-items:center;justify-content:center;width:.86em;height:1.18em;overflow:hidden;border-radius:6px;background:#121212;color:#F5C400;box-shadow:0 6px 14px -8px rgb(0 0 0 / .6);perspective:400px;} .ds-digit::after{content:'';position:absolute;left:0;right:0;top:50%;height:2px;transform:translateY(-50%);background:rgb(0 0 0 / .7);} .ds-digit>span{display:inline-block;animation:ds-flip 160ms cubic-bezier(.16,1,.3,1) both;} @keyframes ds-flip{from{transform:rotateX(-88deg);filter:blur(1.5px);opacity:.4;}to{transform:rotateX(0);filter:blur(0);opacity:1;}} @media (prefers-reduced-motion: reduce){.ds-digit>span{animation:none;}}"
+    },
+    {
+      "name": "Hazard Stripe",
+      "kind": "custom",
+      "refersTo": "plate",
+      "description": "Faixa zebrada de 28px nas divisas dos campos amarelos.",
+      "html": "<div class=\"ds-hazard\" aria-hidden=\"true\"></div>",
+      "css": ".ds-hazard{height:28px;background:repeating-linear-gradient(-45deg,#F5C400 0 22px,#121212 22px 44px);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Sinalização do Canteiro",
+    "overview": "O site inteiro é sinalização de obra: cada bloco importante é uma placa esmaltada parafusada, cada ganho medido é um contador de dígitos que vira, e as divisas entre trechos são marcadas com faixa zebrada amarela e preta. Amarelo segurança aparece em campo cheio (dobra, contato, cabeçalhos de seção da página de projetos), não como acento; o preto de placa carrega navegação, rodapé e a seção de trajetória; o branco esmaltado é o chão de leitura.\n\nA densidade é de placa, não de painel: títulos condensados enormes em caixa alta, poucas palavras por bloco, bordas grossas (3px) em preto, contraste máximo. A profundidade vem do material da placa (filete interno, parafusos, sombra difusa baixa), nunca de brilho ou vidro. O sistema recusa explicitamente o hero escuro com acento neon e a grade de cards todos iguais.",
+    "keyCharacteristics": [
+      "Amarelo segurança em campo cheio, preto de placa, branco esmaltado.",
+      "Placas com filete interno recuado e quatro parafusos chapados.",
+      "Faixa zebrada (28px de altura) fecha a dobra e abre o contato.",
+      "Barlow Condensed 800 em caixa alta para todo título e rótulo.",
+      "Verde de rota reservado a ação de contato/demo e ao foco.",
+      "Cor de categoria como placa de categoria (amarelo, azul, preto, branco).",
+      "Assinatura de movimento: dígitos do quadro de resultados viram de 0 até o valor."
+    ],
+    "rules": [
+      {
+        "name": "A Regra do Verde de Rota",
+        "body": "Verde aparece apenas onde algo leva a um contato ou a um projeto rodando (WhatsApp, Demo) e no foco. Nunca decoração, nunca fundo de seção, nunca ícone solto.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Campo Cheio",
+        "body": "Amarelo entra como campo inteiro (seção, placa, caixa de ganho), não como sublinhado fino ou glow. Se o amarelo virou um detalhe de 2px, está errado — exceto o sublinhado de hover da navbar sobre preto.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra da Cor de Categoria",
+        "body": "Cada categoria tem uma placa fixa: automação = amarelo/preto, fullstack = azul/branco, frontend = preto/amarelo, backend = branco/preto, sempre com contorno preto de 2px nas etiquetas. A aba ligada do filtro herda a mesma cor.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra da Caixa Alta Condensada",
+        "body": "Tudo que é título, rótulo, botão ou navegação é Barlow Condensed em caixa alta. Barlow normal só em parágrafo, descrição e lista de tecnologias.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Número Tabular",
+        "body": "Números de contagem, períodos da trajetória e contadores de filtro usam `tabular-nums`; o corpo desliga `tnum` por padrão.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra da Sombra Baixa",
+        "body": "Sombra sempre com spread negativo e caída para baixo (y 6–22px, spread −8 a −24px). Nada de sombra dura deslocada, glow colorido ou blur de fundo.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do montar blocos de destaque como placa: campo até a borda, filete recuado 9→12px, parafusos nos quatro cantos, canto de 14px.",
+      "Do fechar e abrir trechos amarelos com a faixa zebrada de 28px de ponta a ponta.",
+      "Do escrever todo título, rótulo e botão em Barlow Condensed caixa alta; parágrafos em Barlow.",
+      "Do usar verde de rota só para WhatsApp, Demo e foco (contorno de 3px, offset 3px).",
+      "Do usar sign-ink para texto secundário sobre amarelo e steel sobre branco.",
+      "Do variar a escala dos projetos (um destaque largo, pares, lista) em vez de uma grade uniforme.",
+      "Do garantir que qualquer número animado já esteja completo no HTML e fique estático sob reduced motion."
+    ],
+    "donts": [
+      "Don't fazer hero escuro com acento neon nem glow colorido.",
+      "Don't usar verde como decoração, fundo de seção ou cor de destaque de texto.",
+      "Don't usar o azul informativo fora das placas de categoria.",
+      "Don't arredondar até pílula botões, chips ou placas; o maior canto é 14px (exceção: o thumb da barra de rolagem).",
+      "Don't aplicar sombra dura deslocada, vidro ou blur de fundo; profundidade é a sombra baixa da placa.",
+      "Don't colocar parafusos em cards de projeto; parafuso é de placa.",
+      "Don't usar barra de porcentagem em habilidades; stack é lista de nomes por uso.",
+      "Don't pôr kicker/eyebrow acima de títulos de seção; o título condensado entra sozinho."
+    ]
+  }
+}

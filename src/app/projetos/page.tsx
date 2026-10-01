@@ -2,97 +2,85 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { projects } from '@/data/projects'
-import ProjectCard from '@/components/ProjectCard'
+import { projects, type ProjectCategory } from '@/data/projects'
+import ProjectCard, { CATEGORY_STYLE } from '@/components/ProjectCard'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import ScrollProgress from '@/components/ScrollProgress'
 import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext'
 
-const CATEGORIES = [
-  { id: 'all', labelKey: 'projects.all' },
-  { id: 'fullstack', labelKey: 'projects.fullstack' },
-  { id: 'frontend', labelKey: 'projects.frontend' },
-  { id: 'backend', labelKey: 'projects.backend' },
-  { id: 'automation', labelKey: 'projects.automation' },
-]
+const CATEGORIES: ('all' | ProjectCategory)[] = ['all', 'fullstack', 'automation', 'frontend', 'backend']
+
+/** Aba ligada = cor da placa daquela categoria. */
+const onStyle = (c: ProjectCategory) =>
+  CATEGORY_STYLE[c]
+    .split(' ')
+    .map((cls) => `data-[state=on]:${cls}`)
+    .join(' ')
 
 function ProjetosContent() {
   const { t } = useLanguage()
-  const [filter, setFilter] = useState('all')
-  const filteredProjects =
-    filter === 'all'
-      ? projects
-      : projects.filter((p) => p.category === filter)
+  const [filter, setFilter] = useState<'all' | ProjectCategory>('all')
+  const available = CATEGORIES.filter((c) => c === 'all' || projects.some((p) => p.category === c))
+  const list = filter === 'all' ? projects : projects.filter((p) => p.category === filter)
 
   return (
-    <main className="min-h-screen pt-16">
-      <ScrollProgress />
+    <>
       <Navbar />
-      <section className="py-20 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
+      <main className="bg-paper pt-16">
+        <section className="bg-sign">
+          <div className="mx-auto max-w-site px-3 pb-10 pt-10 sm:px-6 lg:px-8 lg:pb-14 lg:pt-14">
             <Link
               href="/#projects"
-              className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8"
+              className="inline-flex min-h-[44px] items-center gap-2 font-display text-lg font-bold uppercase tracking-wide text-ink underline decoration-2 underline-offset-[5px] hover:text-route-deep"
             >
-              <ArrowLeft className="h-4 w-4 mr-2" />
+              <ArrowLeft className="h-5 w-5" aria-hidden />
               {t('projects.backHome')}
             </Link>
-            <h1 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            <h1 className="mt-6 font-display text-[clamp(3.6rem,11vw,6rem)] font-extrabold uppercase leading-[0.85] text-ink">
               {t('projects.allTitle')}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              {t('projects.allDescription')}
-            </p>
-          </motion.div>
+            <p className="mt-5 max-w-[60ch] text-[1.125rem] leading-relaxed text-sign-ink">{t('projects.allLede')}</p>
+          </div>
+          <div className="hazard h-7" aria-hidden />
+        </section>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-wrap gap-2 justify-center mb-12"
+        <section className="mx-auto max-w-site px-3 py-12 sm:px-6 lg:px-8">
+          <ToggleGroup
+            type="single"
+            value={filter}
+            onValueChange={(v) => v && setFilter(v as 'all' | ProjectCategory)}
+            aria-label={t('projects.filterLabel')}
           >
-            {CATEGORIES.map((cat) => (
-              <Button
-                key={cat.id}
-                variant={filter === cat.id ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setFilter(cat.id)}
-                className="transition-all duration-200"
-              >
-                {t(cat.labelKey)}
-              </Button>
-            ))}
-          </motion.div>
+            {available.map((c) => {
+              const count = c === 'all' ? projects.length : projects.filter((p) => p.category === c).length
+              return (
+                <ToggleGroupItem
+                  key={c}
+                  value={c}
+                  className={c === 'all' ? 'data-[state=on]:bg-ink data-[state=on]:text-paper' : onStyle(c)}
+                >
+                  {t(`projects.${c}`)}
+                  <span className="tabular text-[15px] opacity-70">{count}</span>
+                </ToggleGroupItem>
+              )
+            })}
+          </ToggleGroup>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {filteredProjects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                size="compact"
-              />
-            ))}
-          </motion.div>
-        </div>
-      </section>
+          {list.length === 0 ? (
+            <p className="mt-10 text-steel">{t('projects.empty')}</p>
+          ) : (
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              {list.map((p) => (
+                <ProjectCard key={p.id} project={p} headingLevel={2} />
+              ))}
+            </div>
+          )}
+        </section>
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
 

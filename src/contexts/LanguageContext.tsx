@@ -23,6 +23,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // leitores de tela e tradutores usam o lang do <html> para pronunciar o conteúdo
+  useEffect(() => {
+    document.documentElement.lang = language === 'en' ? 'en' : 'pt-BR'
+  }, [language])
+
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
     try {
