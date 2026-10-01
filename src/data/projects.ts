@@ -181,7 +181,7 @@ export const projects: Project[] = [
     "github": "https://github.com/sthevan027/LaudoFacil",
     "demo": null,
     "featured": true,
-    "previewImage": "/projects/eletrolab.svg"
+    "previewImage": "/projects/laudofacil.png"
   },
   {
     "id": 11,
@@ -210,7 +210,7 @@ export const projects: Project[] = [
     "github": "https://github.com/sthevan027/DevRadar",
     "demo": null,
     "featured": true,
-    "previewImage": "/projects/gh-dev-analyzer.svg"
+    "previewImage": "/projects/devradar.png"
   },
   {
     "id": 13,

@@ -50,8 +50,8 @@ const FEATURED_REPOS = [
 /** Pré-visualizações em public/projects/ — mantém após cada sync */
 const PREVIEW_IMAGES = {
   'ceo-os': '/projects/ceo-os.svg',
-  devradar: '/projects/gh-dev-analyzer.svg',
-  laudofacil: '/projects/eletrolab.svg',
+  devradar: '/projects/devradar.png',
+  laudofacil: '/projects/laudofacil.png',
   'system-control': '/projects/system-control.svg',
 }
 
