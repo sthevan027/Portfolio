@@ -1,6 +1,6 @@
 /**
  * Dados dos projetos - sincronizados com GitHub (sthevan027)
- * Última sincronização: 2026-10-01T20:30:57.225Z
+ * Última sincronização: 2026-10-01T21:51:30.923Z
  * Execute: pnpm run sync:projects para atualizar
  */
 
@@ -248,7 +248,7 @@ export const projects: Project[] = [
   {
     "id": 13,
     "title": "Crachá Digital",
-    "description": "Protótipo de crachá digital com QR Code (JL Construtora): página pública com dados do colaborador e status dos treinamentos de segurança. Next.js + SQLite.",
+    "description": "Protótipo de crachá digital com QR Code: página pública com dados do colaborador e status dos treinamentos de segurança. Next.js + SQLite.",
     "image": "/api/placeholder/400/250",
     "category": "fullstack",
     "technologies": [
