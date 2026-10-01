@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: "/sthevan.jpg",
+    apple: "/sthevan-perfil.jpg",
   },
   openGraph: {
     title: TITLE,
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     siteName: "Sthevan Santos",
     images: [
       {
-        url: "/og.png",
+        url: "/og-perfil.png",
         width: 1200,
         height: 630,
         alt: "Sthevan Santos — desenvolvedor fullstack que veio da obra",
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/og.png"],
+    images: ["/og-perfil.png"],
     creator: "@SantosSthevan",
   },
   robots: {
@@ -115,7 +115,7 @@ const personJsonLd = {
   jobTitle: "Desenvolvedor Fullstack",
   description: DESCRIPTION,
   url: SITE_URL,
-  image: `${SITE_URL}/sthevan.jpg`,
+  image: `${SITE_URL}/sthevan-perfil.jpg`,
   email: "mailto:sthevan.ssantos@gmail.com",
   telephone: "+55-27-98877-2784",
   address: {

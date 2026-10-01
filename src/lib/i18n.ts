@@ -19,7 +19,7 @@ export const translations = {
       ctaResume: 'Baixar currículo',
       available: 'Disponível para vaga fullstack e projetos freelance',
       location: 'Espírito Santo, Brasil · remoto ou híbrido',
-      photoAlt: 'Sthevan Santos no notebook, revisando documentos impressos',
+      photoAlt: 'Retrato de Sthevan Santos',
       whatsappMessage: 'Olá, Sthevan! Vi seu portfólio e quero conversar.',
     },
     board: {
@@ -143,7 +143,7 @@ export const translations = {
       ctaResume: 'Download resume',
       available: 'Open to full-stack roles and freelance projects',
       location: 'Espírito Santo, Brazil · remote or hybrid',
-      photoAlt: 'Sthevan Santos at a laptop, reviewing printed documents',
+      photoAlt: 'Portrait of Sthevan Santos',
       whatsappMessage: 'Hi Sthevan! I saw your portfolio and would like to talk.',
     },
     board: {

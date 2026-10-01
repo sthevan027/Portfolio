@@ -57,7 +57,7 @@ export default function Hero() {
                 <div className="plate plate-paper plate-screws px-5 pb-9 pt-10">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[6px] border-[3px] border-ink">
                     <Image
-                      src="/sthevan.jpg"
+                      src="/sthevan-perfil.jpg"
                       alt={t('hero.photoAlt')}
                       fill
                       sizes="(min-width: 1024px) 360px, min(360px, calc(100vw - 112px))"
