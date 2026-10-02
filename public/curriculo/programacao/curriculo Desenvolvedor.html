@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sthevan Santos | Desenvolvedor Fullstack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #1f2937;
+      --strong: #111827;
+      --muted: #6b7280;
+      --line: #d1d5db;
+      --chip-bg: #f3f4f6;
+      --ok: #166534;
+      --ok-bg: #e8f5e9;
+      --sans: "IBM Plex Sans", Arial, sans-serif;
+      --mono: "IBM Plex Mono", "Courier New", monospace;
+      --serif: "Source Serif 4", Georgia, serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fff;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 10pt;
+      line-height: 1.55;
+    }
+
+    .page { max-width: 186mm; margin: 0 auto; }
+
+    /* HEADER */
+    h1 {
+      text-align: center;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 25pt;
+      color: var(--strong);
+      padding-top: 4px;
+    }
+    .badge {
+      display: table;
+      margin: 12px auto 0;
+      padding: 3px 12px;
+      background: var(--ok-bg);
+      color: var(--ok);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 9pt;
+    }
+    .contact {
+      text-align: center;
+      margin-top: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--line);
+      font-size: 9.5pt;
+      color: var(--muted);
+    }
+    .contact a { color: inherit; text-decoration: none; }
+    .contact .sep { margin: 0 8px; color: #c4c8ce; }
+
+    /* SECTIONS */
+    h2 {
+      margin-top: 16px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 8pt;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      page-break-after: avoid;
+    }
+
+    .job { margin-bottom: 10px; page-break-inside: avoid; }
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .job-head strong { font-size: 10.5pt; font-weight: 600; color: var(--strong); }
+    .job-head span { font-family: var(--mono); font-size: 8.5pt; color: var(--muted); }
+    .role { font-style: italic; color: var(--muted); margin-bottom: 3px; }
+    ul { margin-left: 20px; }
+    li { margin-bottom: 2px; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+    }
+    .edu strong { display: block; font-size: 10.5pt; font-weight: 600; color: var(--strong); }
+    .edu span { display: block; color: var(--muted); font-size: 9pt; }
+    .edu .years { font-family: var(--mono); font-size: 8.5pt; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px 10px; }
+    .chips span {
+      font-family: var(--mono);
+      font-size: 8.5pt;
+      padding: 3px 10px;
+      background: var(--chip-bg);
+      border-radius: 3px;
+    }
+
+    .langs span { margin-right: 28px; }
+    .langs em { font-style: normal; font-family: var(--mono); font-size: 8.5pt; color: var(--muted); }
+
+    .certs { font-size: 9.3pt; }
+    .certs p { margin-bottom: 6px; }
+
+    @page { size: A4; margin: 16mm 14mm; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <h1>Sthevan das Virgens dos Santos</h1>
+    <div class="badge">Disponível para vagas</div>
+    <p class="contact">
+      sthevan.ssantos@gmail.com<span class="sep">·</span>(27) 98877-2784<span class="sep">·</span><a href="https://www.linkedin.com/in/sthevanssantos/">linkedin.com/in/sthevanssantos</a>
+    </p>
+
+    <h2>Resumo</h2>
+    <p>
+      Desenvolvedor fullstack com atuação em sistemas internos, integrações e entregas para clientes, com foco em APIs REST,
+      automação de processos, dashboards e evolução contínua de produtos. Trabalho com TypeScript, JavaScript, Python e Go, do
+      levantamento de requisitos ao deploy, priorizando performance, clareza de regras de negócio e escalabilidade. Base técnica em
+      automação industrial e elétrica — projetos, documentação técnica e PLC/CLP — que carrego para a forma como estruturo e
+      automatizo sistemas. Atualmente dedicado integralmente a projetos freelance e em busca de posição fullstack ou automação industrial.
+    </p>
+
+    <h2>Experiência</h2>
+
+    <div class="job">
+      <div class="job-head"><strong>Virex — Freelance</strong><span>set 2024 — atual</span></div>
+      <p class="role">Desenvolvedor Fullstack</p>
+      <ul>
+        <li>Presto serviços de desenvolvimento web para empresas e clientes, com entregas sob escopo acordado — 10 projetos entregues entre sites institucionais, dashboards, sistemas, ERPs e CRMs.</li>
+        <li>Desenvolvo sistemas web, dashboards e CRMs para organizar vendas, atendimento e indicadores, com foco em performance e escalabilidade.</li>
+        <li>Implemento APIs REST e integrações com terceiros, viabilizando dados e fluxos em tempo real ou batch, reduzindo a entrada manual de dados.</li>
+        <li>Atuo com JavaScript, TypeScript e Python em projetos de perfis variados, do levantamento de requisitos à entrega completa com Node.js.</li>
+        <li>Estruturo fluxos de implantação com Docker e CI/CD, projetando soluções com arquitetura modular e bases preparadas para crescimento.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><strong>JL Construtora — Serra, ES</strong><span>set 2024 — set 2026</span></div>
+      <p class="role">Eletricista FC — apoio à engenharia e desenvolvimento interno</p>
+      <ul>
+        <li>Desenvolvi um gerador automatizado de ART, reduzindo o tempo de elaboração de 5 dias para 1 dia.</li>
+        <li>Desenvolvi solução automatizada com IA para geração de relatórios de eletromecânica, eliminando retrabalho manual e reduzindo o tempo de entrega em 70%.</li>
+        <li>Elaborei documentos técnicos e apoiei o projetista na criação de projetos em AutoCAD.</li>
+        <li>Criei dashboards no Power BI para controle de contratos externos e comparação entre custo orçado e realizado, apoiando decisões com base em dados — acompanhamento de 3 contratos.</li>
+        <li>Desenvolvi soluções para organização automática de arquivos e notificações inteligentes de atas e reuniões, reduzindo retrabalho administrativo.</li>
+        <li>Criei um sistema de QR Code para encapsular informações de FISQ, agilizando o acesso a dados críticos de segurança em campo.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head"><strong>SGS Industrial — Instalações, Testes e Comissionamentos</strong><span>jan 2023 — jul 2024</span></div>
+      <p class="role">Eletricista de Manutenção Eletroeletrônica</p>
+      <ul>
+        <li>Liderança de equipe elétrica nas áreas de CDQ e Aciaria da ArcelorMittal.</li>
+        <li>Organização das frentes de trabalho e acompanhamento das atividades em campo.</li>
+        <li>Participação em reuniões de planejamento com a ArcelorMittal, atuando na separação de equipes e controle de efetivo.</li>
+        <li>Atuação no controle, execução, baixa e fechamento de OMs (Ordens de Manutenção).</li>
+        <li>Execução de manutenção corretiva e preventiva de máquinas e equipamentos industriais.</li>
+        <li>Montagem de painéis elétricos, leitura e interpretação de diagramas elétricos.</li>
+        <li>Calibração de instrumentos industriais e apoio técnico a testes e comissionamentos.</li>
+      </ul>
+    </div>
+
+    <h2>Formação</h2>
+    <div class="two-col edu">
+      <div><strong>Engenharia de Software</strong><span>Curso superior em andamento</span><span class="years">2025 — atual</span></div>
+      <div><strong>Técnico em Automação</strong><span>Curso técnico concluído</span><span class="years">2022 — 2024</span></div>
+    </div>
+
+    <h2>Habilidades técnicas</h2>
+    <div class="chips">
+      <span>TypeScript</span><span>JavaScript</span><span>Python</span><span>Java</span><span>C#</span><span>Go</span><span>Rust</span><span>HTML</span><span>SQL</span><span>Bash</span>
+      <span>PowerShell</span><span>Node.js</span><span>React</span><span>Next.js</span><span>.NET</span><span>Flask</span><span>APIs REST</span><span>GraphQL</span><span>PostgreSQL</span>
+      <span>Supabase</span><span>RLS</span><span>MongoDB</span><span>SQLite</span><span>Redis</span><span>Docker</span><span>CI/CD</span><span>Git · GitHub</span><span>Vercel</span>
+      <span>pnpm</span><span>Jest · Vitest</span><span>S.O.L.I.D.</span><span>Power BI</span><span>AutoCAD</span><span>PLC/CLP</span><span>Automação Industrial</span>
+      <span>Projetos Elétricos</span><span>Documentação Técnica</span>
+    </div>
+
+    <h2>Idiomas</h2>
+    <p class="langs"><span>Português <em>nativo</em></span><span>Inglês <em>intermediário</em></span></p>
+
+    <h2>Certificações</h2>
+    <div class="two-col certs">
+      <div>
+        <p>TypeScript Avançado — Rocketseat</p>
+        <p>React.js e Next.js — Rocketseat</p>
+        <p>Node.js APIs REST — Alura</p>
+        <p>JavaScript ES6+ — Origamid</p>
+        <p>Python para Automação — Udemy</p>
+        <p>Git e GitHub — Curso em Vídeo</p>
+        <p>Docker Fundamentals — Full Cycle</p>
+        <p>PostgreSQL Fundamentals — Alura</p>
+      </div>
+      <div>
+        <p>Arquitetura de Software e SOLID — Full Cycle</p>
+        <p>Fundamentos da IA Agente no GitHub — Microsoft Learn</p>
+        <p>Descrever a computação em nuvem — Microsoft Learn</p>
+        <p>Descrever os benefícios do uso de serviços de nuvem — Microsoft Learn</p>
+        <p>Hospedar um aplicativo Web com o Serviço de Aplicativo do Azure — Microsoft Learn</p>
+        <p>Power BI para Análise de Dados — Microsoft Learn</p>
+        <p>Comece a criar com o Power BI — Microsoft Learn</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
