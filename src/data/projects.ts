@@ -43,20 +43,21 @@ export const projects: Project[] = [
   },
   {
     "id": 2,
-    "title": "Claude Glass",
-    "description": "Widget de desktop que mostra o uso do Claude Code, com um pet de pixel art",
+    "title": "Pacer",
+    "description": "Widget para Windows que mostra quanto do seu plano do Claude você já usou e prevê quando ele acaba nesse ritmo, com painel de uso por modelo e valor estimado em R$.",
     "image": "/api/placeholder/400/250",
     "category": "frontend",
     "technologies": [
-      "Electron",
-      "JavaScript",
-      "Node.js"
+      "Tauri",
+      "Rust",
+      "React",
+      "TypeScript"
     ],
-    "github": "https://github.com/sthevan027/Claude-Glass",
-    "demo": null,
+    "github": "https://github.com/sthevan027/pacer",
+    "demo": "https://pacercontrol.netlify.app/",
     "featured": false,
-    "previewImage": "/projects/claude-glass.png",
-    "descriptionEn": "Desktop widget that shows your Claude Code usage, with a pixel-art pet."
+    "previewImage": "/projects/pacer.png",
+    "descriptionEn": "Windows widget that shows how much of your Claude plan you have used and predicts when it runs out at the current pace, with a per-model usage panel and an estimated cost in BRL."
   },
   {
     "id": 3,
