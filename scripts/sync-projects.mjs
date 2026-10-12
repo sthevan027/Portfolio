@@ -52,7 +52,7 @@ const PREVIEW_IMAGES = {
   'analise_medicao': '/projects/analise-medicao.png',
   ataai: '/projects/ataai.png',
   'ceo-os': '/projects/atlas.png',
-  'claude-glass': '/projects/claude-glass.png',
+  pacer: '/projects/pacer.png',
   'cracha-digital': '/projects/cracha-digital.png',
   dashboardcusto: '/projects/dashboardcusto.png',
   devradar: '/projects/devradar.png',
@@ -96,7 +96,14 @@ const OVERRIDES = {
   'painel-gerencial': { title: 'Painel Gerencial', category: 'fullstack', stack: ['Python', 'Flask', 'Plotly', 'pandas'] },
   'analisado-de-contratos': { title: 'Analisador de Contratos', stack: ['Python', 'Flask', 'openpyxl', 'Chart.js'] },
   analise_medicao: { title: 'Análise de Medição', stack: ['Python', 'OCR (Tesseract)', 'pandas', 'pdfplumber'] },
-  'claude-glass': { title: 'Claude Glass', stack: ['Electron', 'JavaScript', 'Node.js'] },
+  pacer: {
+    title: 'Pacer',
+    description:
+      'Widget para Windows que mostra quanto do seu plano do Claude você já usou e prevê quando ele acaba nesse ritmo, com painel de uso por modelo e valor estimado em R$.',
+    category: 'frontend',
+    stack: ['Tauri', 'Rust', 'React', 'TypeScript'],
+    demo: 'https://pacercontrol.netlify.app/',
+  },
   meusalario: { title: 'MeuSalário', stack: ['Next.js', 'TypeScript', 'Supabase', 'Recharts'] },
   laudofacil: {
     title: 'LaudoFácil',
@@ -135,8 +142,9 @@ const EN = {
     description:
       'Construction cost dashboard (budgeted × actual) by group, subgroup and item, with Postgres views, RLS and an audit trail of every entry.',
   },
-  'claude-glass': {
-    description: 'Desktop widget that shows your Claude Code usage, with a pixel-art pet.',
+  pacer: {
+    description:
+      'Windows widget that shows how much of your Claude plan you have used and predicts when it runs out at the current pace, with a per-model usage panel and an estimated cost in BRL.',
   },
   'ceo-os': {
     description:
@@ -403,7 +411,7 @@ async function main() {
 
   const syncedProjects = filtered.map((repo, i) => {
     const repoKey = repo.name.toLowerCase()
-    const demo = vercelDemos[repoKey] || null
+    const demo = OVERRIDES[repoKey]?.demo ?? vercelDemos[repoKey] ?? null
     const featured = FEATURED_REPOS.includes(repoKey)
 
     const previewImage = PREVIEW_IMAGES[repoKey]
