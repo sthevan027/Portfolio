@@ -13,15 +13,17 @@ const STORAGE_KEY = 'portfolio-language'
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('pt')
+/** `locked` fixa o idioma (páginas de conteúdo só em português) e ignora a preferência salva. */
+export function LanguageProvider({ children, locked }: { children: ReactNode; locked?: Language }) {
+  const [language, setLanguageState] = useState<Language>(locked ?? 'pt')
 
   useEffect(() => {
+    if (locked) return
     const stored = window.localStorage.getItem(STORAGE_KEY)
     if (stored === 'pt' || stored === 'en') {
       setLanguageState(stored)
     }
-  }, [])
+  }, [locked])
 
   // leitores de tela e tradutores usam o lang do <html> para pronunciar o conteúdo
   useEffect(() => {

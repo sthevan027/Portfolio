@@ -1,10 +1,12 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { ArrowUpRight, Lock } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { Project, ProjectCategory } from '@/data/projects'
 import { localized } from '@/lib/project-i18n'
+import { CASES } from '@/data/cases'
 
 /** Cabeçalho de placa por categoria — a cor diz o tipo, como na sinalização. */
 export const CATEGORY_STYLE: Record<ProjectCategory, string> = {
@@ -27,8 +29,17 @@ export function CategoryTag({ category, className = '' }: { category: ProjectCat
 
 export function ProjectLinks({ project }: { project: Project }) {
   const { t } = useLanguage()
+  const caseStudy = CASES.find((c) => c.projectTitle === project.title)
   return (
     <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+      {caseStudy && (
+        <Link
+          href={`/projetos/${caseStudy.slug}`}
+          className="inline-flex min-h-[44px] items-center gap-1.5 font-display text-[17px] font-bold uppercase tracking-wide text-ink underline decoration-2 underline-offset-[5px] hover:text-route-deep"
+        >
+          {t('cases.read')}
+        </Link>
+      )}
       {project.github ? (
         <a
           href={project.github}

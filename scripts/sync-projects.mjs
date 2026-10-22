@@ -38,11 +38,13 @@ const GITHUB_USER = 'sthevan027'
 const GH_FIELDS = 'name,description,url,primaryLanguage,isFork,isPrivate,updatedAt,homepageUrl,languages'
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN
 
+// Os seis com estudo de caso (src/data/cases.ts) — o resto vai para o portfólio completo
 const FEATURED_REPOS = [
   'gerador-de-relatorio',
   'gerador-de-art',
-  'ceo-os',
-  'devradar',
+  'analise_medicao',
+  'painel-gerencial',
+  'dashboardcusto',
   'laudofacil',
 ]
 

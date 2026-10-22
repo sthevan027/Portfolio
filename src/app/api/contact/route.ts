@@ -1,128 +1,115 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { NEED_TYPES, SITE } from '@/lib/site'
+
+/**
+ * Formulário comercial. Envia o e-mail pela API do Resend; sem as variáveis de
+ * ambiente abaixo a rota responde 503 e o site NÃO mostra confirmação de envio.
+ *
+ *   RESEND_API_KEY      chave do Resend (só no servidor)
+ *   CONTACT_TO_EMAIL    destino (padrão: e-mail do site)
+ *   CONTACT_FROM_EMAIL  remetente verificado (padrão: onboarding@resend.dev,
+ *                       que só entrega para o e-mail dono da conta Resend)
+ */
+
+const NEED_LABEL: Record<(typeof NEED_TYPES)[number], string> = {
+  sistema: 'Sistema personalizado',
+  automacao: 'Automação de processos',
+  manutencao: 'Manutenção e melhoria de sistema',
+  outro: 'Outro assunto',
+}
+
+const LIMITS = { name: 120, company: 120, contact: 160, message: 4000 }
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+// limite simples por IP; vale por instância (best effort contra rajadas)
+const hits = new Map<string, number[]>()
+const WINDOW_MS = 10 * 60 * 1000
+const MAX_HITS = 5
+
+function rateLimited(ip: string) {
+  const now = Date.now()
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS)
+  recent.push(now)
+  hits.set(ip, recent)
+  if (hits.size > 500) hits.clear()
+  return recent.length > MAX_HITS
+}
+
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+
+const clean = (v: unknown, max: number) => (typeof v === 'string' ? v.trim().slice(0, max) : '')
+
+function isPhone(v: string) {
+  const digits = v.replace(/\D/g, '')
+  return digits.length >= 10 && digits.length <= 15
+}
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+  if (rateLimited(ip)) {
+    return NextResponse.json({ error: 'Muitas tentativas. Aguarde alguns minutos.' }, { status: 429 })
+  }
+
+  let body: Record<string, unknown>
   try {
-    const { name, email, subject, message } = await req.json()
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Requisição inválida.' }, { status: 400 })
+  }
 
-    // Validação básica
-    if (!name || !email || !subject || !message) {
-      return NextResponse.json(
-        { error: 'Todos os campos são obrigatórios' },
-        { status: 400 }
-      )
-    }
+  // campo-armadilha: humanos não preenchem; responde ok sem enviar nada
+  if (clean(body.website, 200)) return NextResponse.json({ success: true })
 
-    // Validação de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Email inválido' },
-        { status: 400 }
-      )
-    }
+  const name = clean(body.name, LIMITS.name)
+  const company = clean(body.company, LIMITS.company)
+  const contact = clean(body.contact, LIMITS.contact)
+  const need = clean(body.need, 20) as (typeof NEED_TYPES)[number]
+  const message = clean(body.message, LIMITS.message)
 
-    // Simular envio de emails
-    console.log('📧 Nova mensagem de contato:', {
-      name,
-      email,
-      subject,
-      message,
-      timestamp: new Date().toISOString()
+  if (!name || !contact || !message || !NEED_TYPES.includes(need)) {
+    return NextResponse.json({ error: 'Preencha nome, contato, tipo de necessidade e descrição.' }, { status: 400 })
+  }
+  if (!EMAIL_RE.test(contact) && !isPhone(contact)) {
+    return NextResponse.json({ error: 'Informe um e-mail ou WhatsApp válido.' }, { status: 400 })
+  }
+
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error('Contato: RESEND_API_KEY não configurada — mensagem não enviada.')
+    return NextResponse.json({ error: 'not_configured' }, { status: 503 })
+  }
+
+  const contactIsEmail = EMAIL_RE.test(contact)
+  const html = `
+    <h2>Novo contato pelo site</h2>
+    <p><strong>Nome:</strong> ${escapeHtml(name)}</p>
+    <p><strong>Empresa:</strong> ${escapeHtml(company || '—')}</p>
+    <p><strong>Contato:</strong> ${escapeHtml(contact)}</p>
+    <p><strong>Necessidade:</strong> ${NEED_LABEL[need]}</p>
+    <p><strong>Descrição:</strong></p>
+    <p style="white-space:pre-wrap">${escapeHtml(message)}</p>
+  `
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM_EMAIL || `Site ${SITE.name} <onboarding@resend.dev>`,
+        to: [process.env.CONTACT_TO_EMAIL || SITE.email],
+        subject: `Novo contato (${NEED_LABEL[need]}): ${name.replace(/[\r\n]+/g, ' ')}`,
+        html,
+        ...(contactIsEmail ? { reply_to: contact } : {}),
+      }),
     })
-
-    // Simular delay de envio
-    await new Promise(resolve => setTimeout(resolve, 1000))
-
-    // 1. Email para Sthevan (notificação)
-    const emailToSthevan = {
-      to: 'sthevan.ssantos@gmail.com',
-      subject: `🚀 Novo contato do portfólio: ${subject}`,
-      html: `
-        <h2>Novo contato recebido!</h2>
-        <p><strong>Nome:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Assunto:</strong> ${subject}</p>
-        <p><strong>Mensagem:</strong></p>
-        <p>${message}</p>
-        <hr>
-        <p><small>Enviado em: ${new Date().toLocaleString('pt-BR')}</small></p>
-      `
+    if (!res.ok) {
+      console.error('Contato: Resend respondeu', res.status, await res.text().catch(() => ''))
+      return NextResponse.json({ error: 'send_failed' }, { status: 502 })
     }
-
-    // 2. Email de resposta automática para o cliente
-    const autoReplyToClient = {
-      to: email,
-      subject: '✅ Recebemos sua mensagem! - Virex',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2563EB;">Olá, ${name}! 👋</h2>
-          
-          <p>Obrigado por entrar em contato comigo através do meu portfólio!</p>
-          
-          <p>Recebi sua mensagem sobre <strong>"${subject}"</strong> e vou analisar com atenção.</p>
-          
-          <h3 style="color: #2563EB;">📧 O que acontece agora?</h3>
-          <ul>
-            <li>Vou analisar sua solicitação nos próximos 24 horas</li>
-            <li>Entrarei em contato com uma proposta personalizada</li>
-            <li>Podemos agendar uma conversa para alinhar os detalhes</li>
-          </ul>
-          
-          <h3 style="color: #2563EB;">💬 Prefere falar direto?</h3>
-          <p>Se quiser uma resposta mais rápida, pode me chamar no WhatsApp:</p>
-          <p style="background: #25D366; color: white; padding: 10px; border-radius: 5px; text-align: center;">
-            <a href="https://wa.me/5527988772784?text=Olá! Vi sua mensagem no portfólio sobre ${encodeURIComponent(subject)}" 
-               style="color: white; text-decoration: none; font-weight: bold;">
-              📱 Falar no WhatsApp
-            </a>
-          </p>
-          
-          <hr style="margin: 30px 0;">
-          
-          <p><strong>Sthevan Santos</strong></p>
-          <p>CEO da Virex | Frontend Developer</p>
-          <p>Especialista em React, Next.js e automações</p>
-          
-          <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 20px;">
-            <p style="margin: 0; font-style: italic; color: #666;">
-              "Do conceito ao código. Do código ao resultado."
-            </p>
-          </div>
-        </div>
-      `
-    }
-
-    // Log dos emails que seriam enviados
-    console.log('📤 Email para Sthevan:', emailToSthevan.subject)
-    console.log('📤 Resposta automática para:', email)
-
-    // Em produção, você enviaria os emails aqui usando Resend, SendGrid, etc.
-    // await resend.send(emailToSthevan)
-    // await resend.send(autoReplyToClient)
-
-    return NextResponse.json({
-      success: true,
-      message: 'Mensagem enviada com sucesso! Você receberá uma confirmação por email.'
-    })
-
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('❌ Erro ao processar contato:', error)
-    return NextResponse.json(
-      { error: 'Erro interno do servidor. Tente novamente em alguns instantes.' },
-      { status: 500 }
-    )
+    console.error('Contato: falha ao chamar o Resend', error)
+    return NextResponse.json({ error: 'send_failed' }, { status: 502 })
   }
 }
-
-// Permitir CORS para desenvolvimento
-export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  })
-}
-
