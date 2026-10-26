@@ -98,7 +98,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
               <h2 id="resultado" className="font-display text-[1.5rem] font-extrabold uppercase text-ink">Resultado</h2>
               {c.result ? (
                 <>
-                  <p className="mt-3 rounded-[6px] bg-sign px-3 py-2 font-display text-[1.5rem] font-extrabold uppercase leading-tight text-ink ring-2 ring-inset ring-ink">
+                  <p className="mt-3 rounded-[6px] bg-sign px-3 py-2 font-display text-[1.5rem] font-extrabold uppercase leading-tight text-white ring-2 ring-inset ring-ink">
                     {c.result}
                   </p>
                   <p className="mt-3 text-[15px] leading-snug text-steel">{c.resultNote}</p>

@@ -67,7 +67,7 @@ export default function Analytics() {
             <button
               type="button"
               onClick={() => choose('granted')}
-              className="min-h-[44px] rounded-[6px] bg-sign px-4 font-display text-base font-bold uppercase tracking-wide text-ink"
+              className="min-h-[44px] rounded-[6px] bg-sign px-4 font-display text-base font-bold uppercase tracking-wide text-white"
             >
               Aceitar
             </button>

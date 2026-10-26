@@ -8,13 +8,13 @@
  * Verde de rota é reservado para ação (links, botões, foco) — nunca decoração.
  */
 :root {
-  --sign: 245 196 0; /* amarelo segurança */
-  --sign-ink: 61 50 0; /* texto secundário sobre amarelo */
-  --ink: 18 18 18; /* preto de placa */
+  --sign: 37 99 235; /* azul de destaque (troca do amarelo de sinalização) */
+  --sign-ink: 219 234 254; /* texto secundário sobre azul */
+  --ink: 18 18 18; /* preto */
   --paper: 243 243 240; /* branco esmaltado */
   --steel: 74 74 70; /* texto secundário sobre branco */
-  --route: 11 122 62; /* verde de rota: só ação */
-  --route-deep: 8 94 47;
+  --route: 37 99 235; /* ação: mesmo azul de destaque */
+  --route-deep: 29 78 216;
   --info: 31 79 163; /* azul de placa informativa */
   --line: 18 18 18;
 
@@ -185,8 +185,9 @@
     bottom: 18px;
   }
 
+  /* faixa de divisa: lisa, sem zebrado de canteiro */
   .hazard {
-    background: var(--hazard);
+    background: rgb(var(--sign));
   }
 
   .tabular {

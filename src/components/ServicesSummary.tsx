@@ -8,7 +8,7 @@ import { trackEvent } from '@/lib/analytics'
 
 const ITEMS = [
   { key: 's1', anchor: 'sistemas-personalizados', plate: 'bg-info text-white' },
-  { key: 's2', anchor: 'automacao-de-processos', plate: 'bg-sign text-ink' },
+  { key: 's2', anchor: 'automacao-de-processos', plate: 'bg-sign text-white' },
   { key: 's3', anchor: 'modernizacao-e-melhoria', plate: 'bg-ink text-sign' },
 ] as const
 

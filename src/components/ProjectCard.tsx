@@ -10,7 +10,7 @@ import { CASES } from '@/data/cases'
 
 /** Cabeçalho de placa por categoria — a cor diz o tipo, como na sinalização. */
 export const CATEGORY_STYLE: Record<ProjectCategory, string> = {
-  automation: 'bg-sign text-ink',
+  automation: 'bg-sign text-white',
   fullstack: 'bg-info text-white',
   frontend: 'bg-ink text-sign',
   backend: 'bg-white text-ink',

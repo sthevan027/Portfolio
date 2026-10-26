@@ -22,7 +22,7 @@ export default function Path() {
           {STEPS.map((s) => (
             <li key={s} className="flex flex-col">
               <div
-                className="flex h-16 items-center bg-sign pl-5 pr-10 font-display text-[1.35rem] font-extrabold uppercase tracking-wide text-ink [clip-path:polygon(0_0,calc(100%-28px)_0,100%_50%,calc(100%-28px)_100%,0_100%)]"
+                className="flex h-16 items-center bg-sign pl-5 pr-10 font-display text-[1.35rem] font-extrabold uppercase tracking-wide text-white [clip-path:polygon(0_0,calc(100%-28px)_0,100%_50%,calc(100%-28px)_100%,0_100%)]"
               >
                 <span className="tabular">{t(`path.${s}Period`)}</span>
               </div>

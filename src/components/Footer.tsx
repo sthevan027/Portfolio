@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="bg-ink text-paper">
       <div className="mx-auto flex max-w-site flex-col gap-6 px-3 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div>
-          <p className="inline-block rounded-[6px] bg-sign px-3 py-1.5 font-display text-xl font-extrabold uppercase leading-none tracking-wide text-ink">
+          <p className="inline-block rounded-[6px] bg-sign px-3 py-1.5 font-display text-xl font-extrabold uppercase leading-none tracking-wide text-white">
             Sthevan Santos
           </p>
           <p className="mt-3 text-paper/70">{t('footer.line')}</p>

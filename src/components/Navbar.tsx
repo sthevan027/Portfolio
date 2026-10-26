@@ -31,14 +31,14 @@ export default function Navbar({ showLanguageSwitch = true }: { showLanguageSwit
     <header className="fixed inset-x-0 top-0 z-50 bg-ink text-paper">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:rounded-[6px] focus:bg-sign focus:px-4 focus:py-2 focus:font-display focus:font-bold focus:uppercase focus:text-ink"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:rounded-[6px] focus:bg-sign focus:px-4 focus:py-2 focus:font-display focus:font-bold focus:uppercase focus:text-white"
       >
         {t('nav.skip')}
       </a>
       <nav className="mx-auto flex h-16 max-w-site items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="rounded-[6px] bg-sign px-3 py-1.5 font-display text-lg font-extrabold uppercase leading-none tracking-wide text-ink"
+          className="rounded-[6px] bg-sign px-3 py-1.5 font-display text-lg font-extrabold uppercase leading-none tracking-wide text-white"
         >
           Sthevan Santos
         </Link>

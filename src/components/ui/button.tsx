@@ -15,8 +15,8 @@ const buttonVariants = cva(
       variant: {
         ink: "bg-ink text-paper hover:-translate-y-0.5",
         route: "bg-route text-white hover:bg-route-deep",
-        sign: "bg-sign text-ink hover:-translate-y-0.5",
-        outlineSign: "border-2 border-sign text-sign hover:bg-sign hover:text-ink",
+        sign: "bg-sign text-white hover:-translate-y-0.5",
+        outlineSign: "border-2 border-sign text-sign hover:bg-sign hover:text-white",
         plate: "bg-white text-ink ring-[3px] ring-inset ring-ink hover:-translate-y-0.5",
         link: "px-1 text-ink underline decoration-2 underline-offset-[6px] hover:text-route-deep",
       },
