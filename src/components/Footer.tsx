@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { ArrowUp } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { SITE } from '@/lib/site'
@@ -17,6 +18,15 @@ export default function Footer() {
           <p className="mt-3 text-paper/70">{t('footer.line')}</p>
         </div>
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[17px] font-bold uppercase tracking-wide">
+          <li>
+            <Link href="/servicos" className="hover:text-sign">{t('nav.services')}</Link>
+          </li>
+          <li>
+            <Link href="/projetos" className="hover:text-sign">{t('nav.projects')}</Link>
+          </li>
+          <li>
+            <Link href="/privacidade" className="hover:text-sign">{t('footer.privacy')}</Link>
+          </li>
           <li>
             <a href={SITE.github} target="_blank" rel="noopener noreferrer" className="hover:text-sign">GitHub</a>
           </li>

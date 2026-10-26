@@ -6,6 +6,10 @@
 
 web
 
+## Direção atual (2026-10)
+
+O site passou a priorizar a captação de **clientes empresariais** (sistemas, automação, melhoria de sistemas). O currículo continua acessível em posição secundária. Detalhes e pendências em `doc/lancamento-comercial.md`.
+
 ## Users
 
 - **Recrutadores e líderes técnicos** avaliando o Sthevan para uma vaga de dev fullstack (júnior–pleno, remoto ou presencial/híbrido no ES). Chegam pelo link do currículo, LinkedIn ou candidatura; decidem em poucos minutos se ele vale uma entrevista.

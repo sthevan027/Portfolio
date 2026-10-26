@@ -1,10 +1,12 @@
 'use client'
 
 import Image from 'next/image'
-import { ArrowDown, Download, MessageCircle } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { SITE, whatsappLink } from '@/lib/site'
+import { trackEvent } from '@/lib/analytics'
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -16,38 +18,37 @@ export default function Hero() {
         <div className="plate plate-sign plate-screws px-6 pb-11 pt-11 sm:px-10 lg:px-14 lg:pb-10 lg:pt-11">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <h1 className="font-display text-[clamp(3.6rem,11vw,6rem)] font-extrabold uppercase leading-[0.86] text-ink">
-                Sthevan
-                <br />
-                Santos
+              <p className="inline-block rounded-[6px] bg-ink px-3 py-1.5 font-display text-[15px] font-bold uppercase tracking-wider text-sign sm:text-base">
+                {t('hero.eyebrow')}
+              </p>
+
+              <h1 className="mt-4 font-display text-[clamp(2.5rem,6.4vw,4.4rem)] font-extrabold uppercase leading-[0.92] text-ink">
+                {t('hero.headline')}
               </h1>
 
-              <p className="mt-4 max-w-[22ch] font-display text-[clamp(1.75rem,3.4vw,2.6rem)] font-bold uppercase leading-[1.02] text-ink">
-                {t('hero.headline')}
-              </p>
-
-              <p className="mt-4 max-w-[60ch] text-[1.125rem] leading-relaxed text-sign-ink">
-                {t('hero.lede')}
-              </p>
+              <p className="mt-5 max-w-[58ch] text-[1.125rem] leading-relaxed text-ink">{t('hero.lede')}</p>
+              <p className="mt-3 max-w-[58ch] text-[1rem] leading-relaxed text-sign-ink">{t('hero.background')}</p>
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Button asChild>
-                  <a href="#projects">
-                    {t('hero.ctaProjects')}
-                    <ArrowDown aria-hidden />
+                  <a href="#contact" onClick={() => trackEvent('quote_click', { location: 'hero' })}>
+                    {t('hero.ctaQuote')}
+                    <ArrowRight aria-hidden />
                   </a>
                 </Button>
                 <Button asChild variant="route">
-                  <a href={whatsappLink(t('hero.whatsappMessage'))} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={whatsappLink(t('hero.whatsappMessage'))}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent('whatsapp_click', { location: 'hero' })}
+                  >
                     <MessageCircle aria-hidden />
                     {t('hero.ctaWhatsapp')}
                   </a>
                 </Button>
                 <Button asChild variant="link">
-                  <a href={SITE.resumeDev} download>
-                    <Download aria-hidden />
-                    {t('hero.ctaResume')}
-                  </a>
+                  <Link href="/servicos">{t('hero.ctaServices')}</Link>
                 </Button>
               </div>
             </div>
@@ -66,7 +67,7 @@ export default function Hero() {
                     />
                   </div>
                   <figcaption className="px-1 pb-1 pt-3 font-display text-[15px] font-bold uppercase tracking-wide text-ink">
-                    {t('hero.location')}
+                    {SITE.name} · {t('hero.location')}
                   </figcaption>
                 </div>
               </figure>

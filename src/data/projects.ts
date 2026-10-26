@@ -37,7 +37,7 @@ export const projects: Project[] = [
     ],
     "github": null,
     "demo": null,
-    "featured": false,
+    "featured": true,
     "previewImage": "/projects/dashboardcusto.png",
     "descriptionEn": "Construction cost dashboard (budgeted × actual) by group, subgroup and item, with Postgres views, RLS and an audit trail of every entry."
   },
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     ],
     "github": null,
     "demo": null,
-    "featured": true,
+    "featured": false,
     "previewImage": "/projects/atlas.png",
     "descriptionEn": "Personal growth system: tasks, habits, health and a daily log in one place. A React + TypeScript PWA on Supabase (Auth/RLS)."
   },
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/Analise_Medicao",
     "demo": null,
-    "featured": false,
+    "featured": true,
     "previewImage": "/projects/analise-medicao.png",
     "titleEn": "Measurement Analysis",
     "descriptionEn": "Python pipeline that automates the monthly measurement of an industrial site: reads weighbridge tickets from PDFs (with OCR), matches them to the contract price table and outputs the Excel report of the amount to bill."
@@ -127,7 +127,7 @@ export const projects: Project[] = [
     ],
     "github": null,
     "demo": null,
-    "featured": false,
+    "featured": true,
     "previewImage": "/projects/painel-gerencial.png",
     "titleEn": "Management Dashboard",
     "descriptionEn": "Desktop dashboard (Flask + pywebview) to track a construction project physically and financially: budget vs. measured, ABC curve, schedule and measurement bulletins (sample data)."
@@ -276,7 +276,7 @@ export const projects: Project[] = [
     ],
     "github": "https://github.com/sthevan027/DevRadar",
     "demo": null,
-    "featured": true,
+    "featured": false,
     "previewImage": "/projects/devradar.png",
     "descriptionEn": "CLI that analyzes GitHub profiles and generates an HTML report with metrics and insights."
   },
