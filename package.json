@@ -10,7 +10,7 @@
     "lint": "next lint",
     "sync:projects": "node scripts/sync-projects.mjs",
     "sync:skills": "node scripts/sync-skills.mjs",
-    "sync": "pnpm run sync:projects && pnpm run sync:skills"
+    "sync": "bun run sync:projects && bun run sync:skills"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.3.3",
