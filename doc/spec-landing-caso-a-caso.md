@@ -47,17 +47,16 @@ Regras:
 | Caso | clientType | kind | Resultado | Pendência |
 |---|---|---|---|---|
 | Restaurante Vó Zilda (cardápio e painel de pedidos) | pequeno-negocio | demonstracao | nenhum ainda | confirmar com a dona que nome, marca e prints podem aparecer |
-| Confeitaria (a criar) | pequeno-negocio | demonstracao | nenhum ainda | demo a ser feita; nome e dados a definir |
 | MeuSalário | pessoa-fisica | projeto-proprio | nenhum | dados de exemplo |
 | Gerador de Relatório | empresa | projeto-proprio | 1 para 3 relatórios por dia (já em `cases.ts`) | nenhuma |
-| PontoLeve | pequeno-negocio | projeto-proprio | nenhum | **oculto desde o PR #8**: reverter a ocultação ou ficar fora |
-| Crachá Digital | pequeno-negocio | projeto-proprio | nenhum | **oculto desde o PR #8**: mesmo caso |
 
-Os casos da Vó Zilda e da confeitaria são demonstração. Não aparecem como cliente de referência.
+Os casos ocultos (PontoLeve, Crachá Digital e os demais do PR #8) ficam fora da landing. O caso da Vó Zilda é demonstração e não aparece como cliente de referência.
+
+A confeitaria não entra agora. A demo será feita pelo Sthevan, e depois ela vira um caso com `kind: 'demonstracao'`.
 
 ## Identidade visual
 
-- Fundo neutro (branco quente ou quase preto), tipografia sans grande e uma cor de destaque.
+- Fundo neutro (branco quente ou quase preto), tipografia sans grande e azul como cor de destaque.
 - Sem amarelo de sinalização e sem placas.
 - Prints dentro de moldura de navegador ou de celular.
 - Mobile: cards empilhados, margem lateral de 16px, sem rolagem horizontal.
@@ -71,7 +70,7 @@ Os casos da Vó Zilda e da confeitaria são demonstração. Não aparecem como c
 
 ## Implementação (depois da aprovação)
 
-1. Aprovar direção, casos e cor de destaque.
+1. Aprovar direção e casos. Cor de destaque definida: azul.
 2. Atualizar `src/data/cases.ts` (campos novos) e `CasesSection` (filtro por tipo de cliente).
 3. Montar a nova home: dobra, casos, "Para quem", "Como trabalho".
 4. Adicionar demos e prints; revisar no celular e rodar Lighthouse.
@@ -79,8 +78,6 @@ Os casos da Vó Zilda e da confeitaria são demonstração. Não aparecem como c
 
 ## Em aberto
 
-- Cor de destaque (sugestão: verde do protótipo C).
 - Autorização da dona do restaurante Vó Zilda.
-- Reverter a ocultação de PontoLeve e Crachá Digital, ou ficar só com casos visíveis.
-- Nome e dados da confeitaria.
+- Demo da confeitaria: a fazer pelo Sthevan.
 - Manter ou não o currículo na dobra.
