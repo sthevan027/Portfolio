@@ -21,9 +21,9 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 const SITE_URL = "https://sthevandev.vercel.app";
-const TITLE = "Sistemas e automação de processos para empresas | Sthevan Santos";
+const TITLE = "Sites, sistemas e apps · Sthevan Santos (ES)";
 const DESCRIPTION =
-  "Sistemas sob medida, automação de planilhas, relatórios e documentos e melhoria de sistemas web para empresas. Sthevan Santos, desenvolvedor no Espírito Santo.";
+  "Sites, sistemas e apps para negócios e projetos pessoais no Espírito Santo, e à distância para o Brasil e o exterior. Sthevan Santos, desenvolvedor fullstack.";
 
 export const viewport: Viewport = {
   themeColor: "#F5C400",

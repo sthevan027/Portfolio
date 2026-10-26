@@ -4,6 +4,8 @@ import Problems from '@/components/Problems'
 import ServicesSummary from '@/components/ServicesSummary'
 import ResultsBoard from '@/components/ResultsBoard'
 import CasesSection from '@/components/CasesSection'
+import ForWhom from '@/components/ForWhom'
+import HowIWork from '@/components/HowIWork'
 import Projects from '@/components/Projects'
 import Differentials from '@/components/Differentials'
 import Path from '@/components/Path'
@@ -26,6 +28,8 @@ export default function Home() {
         <ServicesSummary />
         <ResultsBoard />
         <CasesSection />
+        <ForWhom />
+        <HowIWork />
         <Projects />
         <Differentials />
         <Path />

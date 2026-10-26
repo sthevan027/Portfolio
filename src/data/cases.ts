@@ -1,14 +1,24 @@
 /**
- * Estudos de caso dos projetos que mostram resolução de problema empresarial.
- * Texto escrito a partir da descrição, da stack e das métricas que já estavam no
- * portfólio. `result` só existe onde o Sthevan mediu o ganho; nos demais fica
- * ausente de propósito (não inventar número). Nenhum dado de empresa aparece aqui.
+ * Estudos de caso mostrados na landing e em /projetos/[slug].
+ * `result` só existe onde o Sthevan mediu o ganho; nos demais fica ausente de
+ * propósito (não inventar número). Casos de demonstração (`kind: 'demonstracao'`)
+ * não são clientes de referência: aparecem com a etiqueta "Demonstração" e
+ * linkam para o site de demonstração, sem página própria.
  */
+
+export type ClientType = 'pessoa-fisica' | 'pequeno-negocio' | 'empresa'
+export type CaseKind = 'cliente' | 'demonstracao' | 'projeto-proprio'
 
 export interface CaseStudy {
   slug: string
-  /** título do projeto em src/data/projects.ts */
+  /** título do projeto em src/data/projects.ts (ou nome da demonstração) */
   projectTitle: string
+  /** quem contratou ou para quem a ferramenta foi feita */
+  clientType: ClientType
+  /** cliente entregue, demonstração ou projeto próprio — vira etiqueta visível */
+  kind: CaseKind
+  /** site de demonstração público; quando existe, o card linka para ele */
+  demoUrl?: string
   /** frase curta sobre o tipo de problema (cards e <title>) */
   tagline: string
   /** descrição para meta description e para o card */
@@ -27,8 +37,58 @@ export interface CaseStudy {
 
 export const CASES: CaseStudy[] = [
   {
+    slug: 'restaurante-vo-zilda',
+    projectTitle: 'Restaurante da Vó Zilda',
+    clientType: 'pequeno-negocio',
+    kind: 'demonstracao',
+    demoUrl: 'https://restaurantevozilda.netlify.app/',
+    tagline: 'Pedidos de marmita direto no site, sem depender de aplicativo',
+    summary:
+      'Protótipo de site de pedidos (entrega e retirada) com painel do restaurante, pensado para um restaurante de marmita que ainda não tinha canal próprio.',
+    problem:
+      'O restaurante estava abrindo sem nenhum sistema e sem canal próprio de pedidos, dependendo de contato direto para cada pedido.',
+    solution:
+      'Um site de pedidos com cardápio, carrinho, entrega e retirada, e um painel do restaurante com pedidos ao vivo, produtos, clientes, bairros de entrega e relatórios.',
+    how: [
+      'Cardápio online com produtos e carrinho para entrega ou retirada.',
+      'Painel do restaurante com pedidos em kanban ao vivo.',
+      'Cadastro de produtos, clientes e bairros de entrega, com relatórios.',
+    ],
+    applications: [
+      'Mesmo modelo de pedidos para confeitaria, lanchonete, padaria ou qualquer loja que vende por encomenda.',
+      'Cardápio e catálogo com pedido direto, para negócios que hoje recebem pedidos só por mensagem.',
+    ],
+    dataNote:
+      'Protótipo de demonstração. Os dados ficam no navegador e o sistema definitivo ainda não foi construído. Não há número de vendas.',
+  },
+  {
+    slug: 'meusalario',
+    projectTitle: 'MeuSalário',
+    clientType: 'pessoa-fisica',
+    kind: 'projeto-proprio',
+    tagline: 'CLT ou PJ/MEI: quanto sobra de cada proposta',
+    summary:
+      'Simulador e comparador de salário CLT contra PJ/MEI, com cálculo de INSS e IRRF e gestão financeira pessoal.',
+    problem:
+      'Comparar uma proposta CLT com uma PJ ou MEI exige calcular INSS e IRRF e considerar o que muda no mês, o que costuma ser feito à mão.',
+    solution:
+      'Um simulador em Next.js e TypeScript, com Supabase, que calcula os dois cenários lado a lado e organiza a gestão financeira pessoal.',
+    how: [
+      'Cálculo de INSS e IRRF para o regime CLT.',
+      'Comparação lado a lado com PJ/MEI.',
+      'Gestão financeira pessoal com gráficos.',
+    ],
+    applications: [
+      'Comparação de propostas de trabalho para quem recebe ofertas em regimes diferentes.',
+      'Controle financeiro pessoal com gráficos de gastos e de renda.',
+    ],
+    dataNote: 'Projeto pessoal. Não há métrica de ganho medida para este projeto.',
+  },
+  {
     slug: 'gerador-de-relatorio',
     projectTitle: 'Gerador de Relatório',
+    clientType: 'empresa',
+    kind: 'projeto-proprio',
     tagline: 'PDFs de tíquete viram relatório padronizado em Excel',
     summary:
       'Aplicativo desktop que lê tíquetes de balança em PDF com OCR e monta o relatório visual de descarte no modelo Excel da obra.',
@@ -56,6 +116,8 @@ export const CASES: CaseStudy[] = [
   {
     slug: 'gerador-de-art',
     projectTitle: 'Gerador de ART',
+    clientType: 'empresa',
+    kind: 'projeto-proprio',
     tagline: 'Documento de segurança montado a partir de um histórico aprovado',
     summary:
       'Aplicativo desktop que gera a Análise de Risco da Tarefa (ART) a partir de um histórico de riscos já aprovados.',
@@ -80,6 +142,8 @@ export const CASES: CaseStudy[] = [
   {
     slug: 'analise-de-medicao',
     projectTitle: 'Análise de Medição',
+    clientType: 'empresa',
+    kind: 'projeto-proprio',
     tagline: 'Medição mensal calculada a partir de tíquetes e tabela de preços',
     summary:
       'Pipeline em Python que lê tíquetes de balança em PDF, cruza com a tabela de preços do contrato e gera o relatório Excel do valor a medir.',
@@ -102,6 +166,8 @@ export const CASES: CaseStudy[] = [
   {
     slug: 'painel-gerencial',
     projectTitle: 'Painel Gerencial',
+    clientType: 'empresa',
+    kind: 'projeto-proprio',
     tagline: 'Acompanhamento físico-financeiro em um painel único',
     summary:
       'Painel desktop em Flask que reúne orçado × medido, curva ABC, cronograma e boletins de medição de uma obra.',
@@ -124,6 +190,8 @@ export const CASES: CaseStudy[] = [
   {
     slug: 'dashboardcusto',
     projectTitle: 'DashboardCusto',
+    clientType: 'empresa',
+    kind: 'projeto-proprio',
     tagline: 'Orçado × realizado com banco de dados, permissões e auditoria',
     summary:
       'Dashboard web de custos de obra (orçado × realizado) por grupo, subgrupo e item, com views no Postgres, RLS e trilha de auditoria.',
@@ -147,6 +215,8 @@ export const CASES: CaseStudy[] = [
   {
     slug: 'laudofacil',
     projectTitle: 'LaudoFácil',
+    clientType: 'empresa',
+    kind: 'projeto-proprio',
     tagline: 'Relatórios técnicos com cálculo automático e exportação',
     summary:
       'Aplicação web para relatórios de qualidade elétrica (Megger, hipot, lançamento de cabo, disjuntor) com cálculo automático e exportação em PDF e Excel.',

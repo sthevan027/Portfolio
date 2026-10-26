@@ -9,8 +9,9 @@ import { projects } from '@/data/projects'
 import { SITE } from '@/lib/site'
 import { jsonLdScript, pageMetadata } from '@/lib/seo'
 
+// demonstrações não têm página própria: linkam para o site de demonstração
 export function generateStaticParams() {
-  return CASES.map((c) => ({ slug: c.slug }))
+  return CASES.filter((c) => c.kind !== 'demonstracao').map((c) => ({ slug: c.slug }))
 }
 
 export const dynamicParams = false
