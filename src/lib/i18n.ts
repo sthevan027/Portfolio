@@ -100,7 +100,7 @@ export const translations = {
       code: 'Código',
       demo: 'Abrir demo',
       private: 'Código privado',
-      viewAll: 'Ver todos os 21 projetos',
+      viewAll: 'Ver todos os 15 projetos',
       othersTitle: 'Mais projetos',
       allTitle: 'Projetos',
       allLede:
@@ -289,7 +289,7 @@ export const translations = {
       code: 'Code',
       demo: 'Open demo',
       private: 'Private code',
-      viewAll: 'See all 21 projects',
+      viewAll: 'See all 15 projects',
       othersTitle: 'More projects',
       allTitle: 'Projects',
       allLede:
