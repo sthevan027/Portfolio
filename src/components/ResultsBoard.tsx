@@ -54,7 +54,7 @@ function FlipDigit({ char, run, delay }: { char: string; run: boolean; delay: nu
   }, [run, char, target, delay])
 
   return (
-    <span className="relative inline-flex h-[1.1em] w-[0.8em] items-center justify-center overflow-hidden rounded-xl bg-ink text-white shadow-[0_6px_14px_-8px_rgb(15_23_42/0.5)] [perspective:400px]">
+    <span className="relative inline-flex h-[1.1em] min-w-[0.8em] items-center justify-center overflow-hidden whitespace-nowrap rounded-xl bg-ink px-[0.14em] text-white shadow-[0_6px_14px_-8px_rgb(15_23_42/0.5)] [perspective:400px]">
       <span key={tick} className={tick > 0 ? 'flip-in' : undefined}>
         {shown}
       </span>

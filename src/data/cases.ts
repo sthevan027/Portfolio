@@ -19,6 +19,8 @@ export interface CaseStudy {
   kind: CaseKind
   /** site de demonstração público; quando existe, o card linka para ele */
   demoUrl?: string
+  /** imagem do caso quando não há projeto correspondente (ex.: demonstrações) */
+  image?: string
   /** frase curta sobre o tipo de problema (cards e <title>) */
   tagline: string
   /** descrição para meta description e para o card */
@@ -42,6 +44,7 @@ export const CASES: CaseStudy[] = [
     clientType: 'pequeno-negocio',
     kind: 'demonstracao',
     demoUrl: 'https://restaurantevozilda.netlify.app/',
+    image: '/cases/restaurante-vo-zilda.png',
     tagline: 'Pedidos de marmita direto no site, sem depender de aplicativo',
     summary:
       'Protótipo de site de pedidos (entrega e retirada) com painel do restaurante, pensado para um restaurante de marmita que ainda não tinha canal próprio.',

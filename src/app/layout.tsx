@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import Analytics from "@/components/Analytics";
+import SmoothScroll from "@/components/SmoothScroll";
 import { OG_IMAGE } from "@/lib/seo";
 
 // uma família só, para corpo e títulos: leitura limpa e um único arquivo de fonte
@@ -88,6 +89,7 @@ export default function RootLayout({
         className={`${manrope.variable} font-sans antialiased`}
       >
         {children}
+        <SmoothScroll />
         <Analytics />
       </body>
     </html>

@@ -11,6 +11,8 @@ module.exports = {
         sign: 'rgb(var(--sign) / <alpha-value>)',
         'sign-ink': 'rgb(var(--sign-ink) / <alpha-value>)',
         'sign-soft': 'rgb(var(--sign-soft) / <alpha-value>)',
+        line: 'rgb(var(--line) / <alpha-value>)',
+        surface: 'rgb(var(--surface) / <alpha-value>)',
         ink: 'rgb(var(--ink) / <alpha-value>)',
         paper: 'rgb(var(--paper) / <alpha-value>)',
         steel: 'rgb(var(--steel) / <alpha-value>)',
