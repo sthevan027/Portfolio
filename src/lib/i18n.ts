@@ -63,6 +63,9 @@ export const translations = {
       quote: 'Pedir uma avaliação',
     },
     cases: {
+      slideLabel: 'Casos em destaque',
+      prev: 'Caso anterior',
+      next: 'Próximo caso',
       eyebrow: 'Casos',
       title: 'Casos',
       lede:
@@ -152,15 +155,19 @@ export const translations = {
       after: 'depois',
     },
     projects: {
+      carouselLabel: 'Projetos em destaque',
+      prev: 'Projeto anterior',
+      next: 'Próximo projeto',
+      goTo: 'Ir para o projeto',
       eyebrow: 'Projetos',
-      title: 'Portfólio completo',
+      title: 'Projetos em destaque',
       lede:
-        'Outros projetos: sistemas, automações e ferramentas pessoais que mostram como eu trabalho. Onde o original tem dado de empresa, o print usa dados de exemplo.',
+        'Sistemas, automações e ferramentas que mostram como eu trabalho. Onde o original tem dado de empresa, o print usa dados de exemplo.',
       measured: 'Ganho medido',
       code: 'Código',
       demo: 'Abrir demo',
       private: 'Código privado',
-      viewAll: 'Ver todos os 21 projetos',
+      viewAll: 'Ver portfólio completo',
       othersTitle: 'Mais projetos',
       allTitle: 'Projetos',
       allLede:
@@ -316,6 +323,9 @@ export const translations = {
       quote: 'Ask for an assessment',
     },
     cases: {
+      slideLabel: 'Featured cases',
+      prev: 'Previous case',
+      next: 'Next case',
       eyebrow: 'Cases',
       title: 'Cases',
       lede:
@@ -405,6 +415,10 @@ export const translations = {
       after: 'after',
     },
     projects: {
+      carouselLabel: 'Featured projects',
+      prev: 'Previous project',
+      next: 'Next project',
+      goTo: 'Go to project',
       eyebrow: 'Projects',
       title: 'Full portfolio',
       lede:
@@ -413,7 +427,7 @@ export const translations = {
       code: 'Code',
       demo: 'Open demo',
       private: 'Private code',
-      viewAll: 'See all 21 projects',
+      viewAll: 'See full portfolio',
       othersTitle: 'More projects',
       allTitle: 'Projects',
       allLede:
