@@ -50,7 +50,7 @@ Fatos confirmados (vault `E:\meu2cerebro`, 2026-10-01):
 - JL Construtora, Serra/ES, obra Vale Tubarão (set/2024 – 15/09/2026): cargo formal Eletricista FC, atuando de fato na equipe de engenharia (planejamento, controle, qualidade) e desenvolvendo as soluções internas.
 - Virex (jan/2025 – atual): desenvolvedor fullstack freelance, **10 projetos entregues** (sites institucionais, dashboards, sistemas, ERPs, CRMs). Dedicação integral desde 15/09/2026.
 - Métricas medidas pelo próprio Sthevan: Gerador de Relatório "de 1 para 3 relatórios processados por dia"; Gerador de ART "de 5 dias para meio dia por ART".
-- 21 projetos no portfólio, todos com imagem em `public/projects/` (prints reais, prints com dados de exemplo ou banners).
+- 15 projetos visíveis no portfólio (6 ocultos no sync: Atlas, Crachá Digital, DevRadar, PontoLeve, ObraTrack, mypage), todos com imagem em `public/projects/` (prints reais, prints com dados de exemplo ou banners).
 - Contato: sthevan.ssantos@gmail.com, WhatsApp +55 (27) 98877-2784, LinkedIn, GitHub, Instagram.
 - Compromisso de resposta "em até 24 horas" — já estava no texto do site antigo, escrito pelo Sthevan; mantido.
 

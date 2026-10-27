@@ -48,6 +48,9 @@ const FEATURED_REPOS = [
   'laudofacil',
 ]
 
+/** Fora do portfólio (ocultos por decisão, não por falta de repo). Chave = repoKey (minúscula). */
+const HIDDEN_REPOS = ['ceo-os', 'cracha-digital', 'devradar', 'pontoleve', 'obratrack', 'mypage']
+
 /** Pré-visualizações em public/projects/ — mantém após cada sync */
 const PREVIEW_IMAGES = {
   'analisado-de-contratos': '/projects/analisado-de-contratos.png',
@@ -102,13 +105,14 @@ const OVERRIDES = {
     title: 'Pacer',
     description:
       'Widget para Windows que mostra quanto do seu plano do Claude você já usou e prevê quando ele acaba nesse ritmo, com painel de uso por modelo e valor estimado em R$.',
-    category: 'frontend',
+    category: 'fullstack',
     stack: ['Tauri', 'Rust', 'React', 'TypeScript'],
     demo: 'https://pacercontrol.netlify.app/',
   },
   meusalario: { title: 'MeuSalário', stack: ['Next.js', 'TypeScript', 'Supabase', 'Recharts'] },
   laudofacil: {
     title: 'LaudoFácil',
+    category: 'fullstack',
     description:
       'Relatórios de qualidade elétrica — Megger, microhmímetro, hipot, lançamento de cabo (NBR 5410) e teste de disjuntor — com entrada manual ou cálculo automático e exportação em PDF e Excel.',
     stack: ['React', 'TypeScript', 'Dexie (IndexedDB)', 'Chart.js'],
@@ -120,11 +124,12 @@ const OVERRIDES = {
   'cracha-digital': { title: 'Crachá Digital', category: 'fullstack', stack: ['Next.js', 'TypeScript', 'SQLite'] },
   focusbrew: {
     title: 'focusbrew',
+    category: 'fullstack',
     description:
       'App de bandeja que percebe quando você está programando com IA, liga o modo foco (bloqueia distrações e ativa o Não Perturbe) e reúne tarefas, PRs do GitHub e um timer com pausa-café.',
     stack: ['Tauri', 'Rust', 'React', 'TypeScript'],
   },
-  'gnome-pr-indicator': { title: 'PR Indicator', stack: ['GJS', 'GNOME Shell', 'GitHub API'] },
+  'gnome-pr-indicator': { title: 'PR Indicator', category: 'fullstack', stack: ['GJS', 'GNOME Shell', 'GitHub API'] },
   dashboardcusto: {
     title: 'DashboardCusto',
     description:
@@ -132,7 +137,7 @@ const OVERRIDES = {
     stack: ['React', 'Supabase', 'PostgreSQL'],
   },
   mypage: { title: 'mypage', stack: ['Next.js', 'TypeScript'] },
-  placadedadosusina1e2: { title: 'Painel de Obras', stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'] },
+  placadedadosusina1e2: { title: 'Painel de Obras', category: 'frontend', stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'] },
 }
 
 /**
@@ -409,7 +414,9 @@ async function main() {
     // Pessoais, nunca publicar
     'meu2cerebro', 'jarvis-core', 'virex-site-prototipos',
   ]
-  const filtered = repos.filter(r => !exclude.includes(r.name) && !r.isFork && r.description)
+  const filtered = repos.filter(
+    r => !exclude.includes(r.name) && !HIDDEN_REPOS.includes(r.name.toLowerCase()) && !r.isFork && r.description,
+  )
 
   const syncedProjects = filtered.map((repo, i) => {
     const repoKey = repo.name.toLowerCase()

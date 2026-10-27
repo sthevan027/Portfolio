@@ -46,7 +46,7 @@ export const projects: Project[] = [
     "title": "Pacer",
     "description": "Widget para Windows que mostra quanto do seu plano do Claude você já usou e prevê quando ele acaba nesse ritmo, com painel de uso por modelo e valor estimado em R$.",
     "image": "/api/placeholder/400/250",
-    "category": "frontend",
+    "category": "fullstack",
     "technologies": [
       "Tauri",
       "Rust",
@@ -61,28 +61,10 @@ export const projects: Project[] = [
   },
   {
     "id": 3,
-    "title": "Atlas",
-    "description": "Sistema pessoal de evolução: tarefas, hábitos, saúde e log diário em um só lugar. PWA em React + TypeScript com Supabase (Auth/RLS).",
-    "image": "/api/placeholder/400/250",
-    "category": "fullstack",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Supabase",
-      "PWA"
-    ],
-    "github": null,
-    "demo": null,
-    "featured": false,
-    "previewImage": "/projects/atlas.png",
-    "descriptionEn": "Personal growth system: tasks, habits, health and a daily log in one place. A React + TypeScript PWA on Supabase (Auth/RLS)."
-  },
-  {
-    "id": 4,
     "title": "PR Indicator",
     "description": "Extensão do GNOME Shell — indicador na barra superior mostrando PRs esperando sua revisão e seus PRs abertos no GitHub.",
     "image": "/api/placeholder/400/250",
-    "category": "frontend",
+    "category": "fullstack",
     "technologies": [
       "GJS",
       "GNOME Shell",
@@ -95,7 +77,7 @@ export const projects: Project[] = [
     "descriptionEn": "GNOME Shell extension — a top-bar indicator showing the PRs waiting for your review and your own open PRs on GitHub."
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "Análise de Medição",
     "description": "Pipeline Python que automatiza a medição mensal das Usinas 1 e 2: extrai tíquetes de balança em PDF (com OCR), cruza com a tabela de preços do contrato (QQP) e gera relatório Excel do valor a medir.",
     "image": "/api/placeholder/400/250",
@@ -114,7 +96,7 @@ export const projects: Project[] = [
     "descriptionEn": "Python pipeline that automates the monthly measurement of an industrial site: reads weighbridge tickets from PDFs (with OCR), matches them to the contract price table and outputs the Excel report of the amount to bill."
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "Painel Gerencial",
     "description": "Painel gerencial desktop (Flask + pywebview) para acompanhamento fisico-financeiro de obras: orcado x medido, curva ABC, cronograma e boletins de medicao (dados de exemplo).",
     "image": "/api/placeholder/400/250",
@@ -133,7 +115,7 @@ export const projects: Project[] = [
     "descriptionEn": "Desktop dashboard (Flask + pywebview) to track a construction project physically and financially: budget vs. measured, ABC curve, schedule and measurement bulletins (sample data)."
   },
   {
-    "id": 7,
+    "id": 6,
     "title": "MeuSalário",
     "description": "Simulador e comparador de salário CLT vs PJ/MEI com cálculo de INSS/IRRF e gestão financeira pessoal. Next.js + TypeScript.",
     "image": "/api/placeholder/400/250",
@@ -151,7 +133,7 @@ export const projects: Project[] = [
     "descriptionEn": "Brazilian salary simulator comparing employee (CLT) vs. contractor (PJ/MEI) pay, with INSS/IRRF tax math and personal finance tracking. Next.js + TypeScript."
   },
   {
-    "id": 8,
+    "id": 7,
     "title": "Gerador de ART",
     "description": "Aplicativo desktop para gerar ARTs (Analise de Risco da Tarefa) a partir de um historico de riscos aprovados",
     "image": "/api/placeholder/400/250",
@@ -171,11 +153,11 @@ export const projects: Project[] = [
     "impactEn": "From 5 days to half a day per ART"
   },
   {
-    "id": 9,
+    "id": 8,
     "title": "focusbrew",
     "description": "App de bandeja que percebe quando você está programando com IA, liga o modo foco (bloqueia distrações e ativa o Não Perturbe) e reúne tarefas, PRs do GitHub e um timer com pausa-café.",
     "image": "/api/placeholder/400/250",
-    "category": "automation",
+    "category": "fullstack",
     "technologies": [
       "Tauri",
       "Rust",
@@ -189,7 +171,7 @@ export const projects: Project[] = [
     "descriptionEn": "Tray app that notices when you are coding with AI, turns on focus mode (blocks distractions, enables Do Not Disturb) and gathers tasks, GitHub PRs and a timer with coffee breaks."
   },
   {
-    "id": 10,
+    "id": 9,
     "title": "Gerador de Relatório",
     "description": "Aplicativo desktop (Python + pywebview) que gera o Relatório Visual de descarte a partir dos tíquetes de balança em PDF (com OCR), preenche o modelo Excel com a foto do tíquete, evita relatórios duplicados e mantém sincronizado o mapa de controle e o status de aprovação.",
     "image": "/api/placeholder/400/250",
@@ -210,7 +192,7 @@ export const projects: Project[] = [
     "impactEn": "From 1 to 3 reports processed per day"
   },
   {
-    "id": 11,
+    "id": 10,
     "title": "Analisador de Contratos",
     "description": "Leitor de planilhas orçamentárias de contrato (QQP/LD/CPU) que gera um dashboard financeiro local (Flask + Chart.js) com composição de custos por grupo/frente e Curva S planejada.",
     "image": "/api/placeholder/400/250",
@@ -229,11 +211,11 @@ export const projects: Project[] = [
     "descriptionEn": "Reads contract budget spreadsheets (QQP/LD/CPU) and builds a local financial dashboard (Flask + Chart.js) with cost breakdown by group and a planned S-curve."
   },
   {
-    "id": 12,
+    "id": 11,
     "title": "LaudoFácil",
     "description": "Relatórios de qualidade elétrica — Megger, microhmímetro, hipot, lançamento de cabo (NBR 5410) e teste de disjuntor — com entrada manual ou cálculo automático e exportação em PDF e Excel.",
     "image": "/api/placeholder/400/250",
-    "category": "frontend",
+    "category": "fullstack",
     "technologies": [
       "React",
       "TypeScript",
@@ -247,58 +229,7 @@ export const projects: Project[] = [
     "descriptionEn": "Electrical quality reports — Megger, micro-ohmmeter, hipot, cable sizing (NBR 5410) and breaker tests — with manual input or automatic calculation and PDF/Excel export."
   },
   {
-    "id": 13,
-    "title": "Crachá Digital",
-    "description": "Protótipo de crachá digital com QR Code: página pública com dados do colaborador e status dos treinamentos de segurança. Next.js + SQLite.",
-    "image": "/api/placeholder/400/250",
-    "category": "fullstack",
-    "technologies": [
-      "Next.js",
-      "TypeScript",
-      "SQLite"
-    ],
-    "github": null,
-    "demo": null,
-    "featured": false,
-    "previewImage": "/projects/cracha-digital.png",
-    "titleEn": "Digital Badge",
-    "descriptionEn": "Digital badge prototype with a QR code: a public page with the worker’s details and the status of their safety trainings. Next.js + SQLite."
-  },
-  {
-    "id": 14,
-    "title": "DevRadar",
-    "description": "CLI para analisar perfis do GitHub e gerar relatório HTML com métricas e insights",
-    "image": "/api/placeholder/400/250",
-    "category": "automation",
-    "technologies": [
-      "PowerShell",
-      "GitHub API"
-    ],
-    "github": "https://github.com/sthevan027/DevRadar",
-    "demo": null,
-    "featured": false,
-    "previewImage": "/projects/devradar.png",
-    "descriptionEn": "CLI that analyzes GitHub profiles and generates an HTML report with metrics and insights."
-  },
-  {
-    "id": 15,
-    "title": "PontoLeve",
-    "description": "Portal do colaborador / protótipo RH (React)",
-    "image": "/api/placeholder/400/250",
-    "category": "frontend",
-    "technologies": [
-      "React",
-      "React Router",
-      "Vite"
-    ],
-    "github": "https://github.com/sthevan027/PontoLeve",
-    "demo": null,
-    "featured": false,
-    "previewImage": "/projects/pontoleve.png",
-    "descriptionEn": "Employee portal / HR prototype (React): timesheet, vacation, payslips and profile."
-  },
-  {
-    "id": 16,
+    "id": 12,
     "title": "AtaAI",
     "description": "Automação de reuniões (agenda, notas e follow-ups)",
     "image": "/api/placeholder/400/250",
@@ -317,40 +248,7 @@ export const projects: Project[] = [
     "descriptionEn": "Meeting automation: syncs meetings, summarizes them with AI into action items and sends the follow-ups."
   },
   {
-    "id": 17,
-    "title": "ObraTrack",
-    "description": "Sistema de Rastreabilidade e Controle de Materiais - QR Code e organização operacional para obras industriais",
-    "image": "/api/placeholder/400/250",
-    "category": "frontend",
-    "technologies": [
-      "SolidJS",
-      "TypeScript",
-      "Vite"
-    ],
-    "github": "https://github.com/sthevan027/ObraTrack",
-    "demo": null,
-    "featured": false,
-    "previewImage": "/projects/obratrack.png",
-    "descriptionEn": "Material traceability and control system — QR codes and operational organization for industrial construction sites."
-  },
-  {
-    "id": 18,
-    "title": "mypage",
-    "description": "Página pessoal/portfólio (TypeScript)",
-    "image": "/api/placeholder/400/250",
-    "category": "frontend",
-    "technologies": [
-      "Next.js",
-      "TypeScript"
-    ],
-    "github": "https://github.com/sthevan027/mypage",
-    "demo": null,
-    "featured": false,
-    "previewImage": "/projects/mypage.png",
-    "descriptionEn": "Personal hub page (Next.js + TypeScript) with posts, links and resume."
-  },
-  {
-    "id": 19,
+    "id": 13,
     "title": "Painel de Obras",
     "description": "Site estático de acompanhamento de obras (Usinas 1 e 2): banner e cards de acesso rápido a arquivos no Dropbox, configurável via JSON.",
     "image": "/api/placeholder/400/250",
@@ -369,7 +267,7 @@ export const projects: Project[] = [
     "descriptionEn": "Static construction-site tracking page: banner and quick-access cards to project files, configurable through a JSON file."
   },
   {
-    "id": 20,
+    "id": 14,
     "image": "/api/placeholder/400/250",
     "title": "RDO Fotos",
     "description": "App desktop que organiza as fotos do RDO (WhatsApp) direto nas pastas de cada ativo, com fluxo de 1 clique por foto e checagem de duplicidade por conteúdo.",
@@ -387,7 +285,7 @@ export const projects: Project[] = [
     "descriptionEn": "Desktop app that files the daily site report (RDO) photos received on WhatsApp straight into each asset’s folder — one click per photo, with content-based duplicate checking."
   },
   {
-    "id": 21,
+    "id": 15,
     "image": "/api/placeholder/400/250",
     "title": "CopyAutomity",
     "description": "Automação que copia e renomeia os tickets de medição todo dia às 07h, organizando por mês sem intervenção manual.",
