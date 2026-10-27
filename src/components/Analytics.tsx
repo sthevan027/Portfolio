@@ -54,27 +54,27 @@ export default function Analytics() {
       {consent === null && (
         <section
           aria-label="Aviso de cookies"
-          className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-[10px] bg-ink p-4 text-paper ring-[3px] ring-inset ring-sign sm:bottom-5"
+          className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-2xl border border-line bg-white p-5 text-ink shadow-[0_18px_40px_-16px_rgb(15_23_42/0.35)] sm:bottom-5"
         >
-          <p className="text-[15px] leading-snug">
+          <p className="text-[15px] leading-relaxed text-steel">
             Uso o Google Analytics, só se você permitir, para saber quais páginas e botões ajudam quem visita o site.{' '}
             <a href="/privacidade" className="font-semibold text-sign underline">
               Política de privacidade
             </a>
             .
           </p>
-          <div className="mt-3 flex gap-3">
+          <div className="mt-4 flex flex-wrap gap-3">
             <button
               type="button"
               onClick={() => choose('granted')}
-              className="min-h-[44px] rounded-[6px] bg-sign px-4 font-display text-base font-bold uppercase tracking-wide text-ink"
+              className="min-h-[44px] rounded-xl bg-sign px-5 text-[15px] font-semibold text-white hover:bg-route-deep"
             >
               Aceitar
             </button>
             <button
               type="button"
               onClick={() => choose('denied')}
-              className="min-h-[44px] rounded-[6px] border-2 border-paper/60 px-4 font-display text-base font-bold uppercase tracking-wide text-paper"
+              className="min-h-[44px] rounded-xl border border-line bg-white px-5 text-[15px] font-semibold text-ink hover:border-sign hover:text-sign"
             >
               Recusar
             </button>

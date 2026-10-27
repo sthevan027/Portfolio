@@ -9,8 +9,9 @@ import { projects } from '@/data/projects'
 import { SITE } from '@/lib/site'
 import { jsonLdScript, pageMetadata } from '@/lib/seo'
 
+// demonstrações não têm página própria: linkam para o site de demonstração
 export function generateStaticParams() {
-  return CASES.map((c) => ({ slug: c.slug }))
+  return CASES.filter((c) => c.kind !== 'demonstracao').map((c) => ({ slug: c.slug }))
 }
 
 export const dynamicParams = false
@@ -40,7 +41,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
     ],
   }
 
-  const block = 'font-display text-[1.9rem] font-extrabold uppercase leading-[0.95] text-ink'
+  const block = 'text-[1.6rem] font-bold leading-tight text-ink'
 
   return (
     <PtShell>
@@ -51,9 +52,9 @@ export default function CasePage({ params }: { params: { slug: string } }) {
         lede={`${c.tagline}. ${c.summary}`}
       />
 
-      <article className="mx-auto max-w-site px-3 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <article className="mx-auto max-w-site px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         {project.previewImage && (
-          <div className="frame relative mb-12 aspect-video w-full overflow-hidden bg-ink lg:aspect-[21/8]">
+          <div className="plate relative mb-12 aspect-video w-full overflow-hidden lg:aspect-[21/8]">
             <Image
               src={project.previewImage}
               alt={`Tela do projeto ${c.projectTitle}`}
@@ -77,7 +78,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
             </section>
             <section aria-labelledby="como-funciona">
               <h2 id="como-funciona" className={block}>Como funciona</h2>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-[1.1rem] leading-relaxed text-steel marker:text-ink">
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-[1.1rem] leading-relaxed text-steel marker:text-sign">
                 {c.how.map((h) => (
                   <li key={h}>{h}</li>
                 ))}
@@ -85,7 +86,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
             </section>
             <section aria-labelledby="aplicacoes">
               <h2 id="aplicacoes" className={block}>Onde a mesma ideia pode ser aplicada</h2>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-[1.1rem] leading-relaxed text-steel marker:text-ink">
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-[1.1rem] leading-relaxed text-steel marker:text-sign">
                 {c.applications.map((a) => (
                   <li key={a}>{a}</li>
                 ))}
@@ -94,11 +95,11 @@ export default function CasePage({ params }: { params: { slug: string } }) {
           </div>
 
           <aside className="space-y-6 lg:col-span-4">
-            <section aria-labelledby="resultado" className="plate plate-paper plate-screws px-6 pb-9 pt-11">
-              <h2 id="resultado" className="font-display text-[1.5rem] font-extrabold uppercase text-ink">Resultado</h2>
+            <section aria-labelledby="resultado" className="plate p-7">
+              <h2 id="resultado" className="text-[1.25rem] font-bold text-ink">Resultado</h2>
               {c.result ? (
                 <>
-                  <p className="mt-3 rounded-[6px] bg-sign px-3 py-2 font-display text-[1.5rem] font-extrabold uppercase leading-tight text-ink ring-2 ring-inset ring-ink">
+                  <p className="mt-3 rounded-xl bg-sign-soft px-4 py-3 text-[1.2rem] font-bold leading-snug text-ink">
                     {c.result}
                   </p>
                   <p className="mt-3 text-[15px] leading-snug text-steel">{c.resultNote}</p>
@@ -107,22 +108,22 @@ export default function CasePage({ params }: { params: { slug: string } }) {
                 <p className="mt-3 text-[15px] leading-snug text-steel">Sem ganho medido para este projeto.</p>
               )}
             </section>
-            <section aria-labelledby="tecnologias" className="plate plate-paper plate-screws px-6 pb-9 pt-11">
-              <h2 id="tecnologias" className="font-display text-[1.5rem] font-extrabold uppercase text-ink">Tecnologias</h2>
+            <section aria-labelledby="tecnologias" className="plate p-7">
+              <h2 id="tecnologias" className="text-[1.25rem] font-bold text-ink">Tecnologias</h2>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {project.technologies.map((t) => (
-                  <li key={t} className="rounded-[4px] border-2 border-ink/80 px-2 py-0.5 text-[14px] font-semibold text-ink">
+                  <li key={t} className="rounded-full bg-paper px-3 py-1 text-[14px] font-medium text-ink">
                     {t}
                   </li>
                 ))}
               </ul>
               {project.github && (
-                <p className="mt-4">
+                <p className="mt-5">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] items-center font-display text-[17px] font-bold uppercase tracking-wide text-ink underline decoration-2 underline-offset-[5px] hover:text-route-deep"
+                    className="inline-flex min-h-[44px] items-center text-[16px] font-semibold text-sign hover:text-route-deep"
                   >
                     Ver código no GitHub
                   </a>
@@ -133,24 +134,21 @@ export default function CasePage({ params }: { params: { slug: string } }) {
           </aside>
         </div>
 
-        <section aria-labelledby="cta" className="mt-14 border-t-[3px] border-ink pt-10">
-          <h2 id="cta" className="font-display text-[clamp(2rem,5vw,3rem)] font-extrabold uppercase leading-[0.95] text-ink">
-            Tem um problema parecido na sua empresa?
+        <section aria-labelledby="cta" className="plate mt-14 p-8 sm:p-10">
+          <h2 id="cta" className="text-[clamp(1.8rem,3.6vw,2.4rem)] font-extrabold leading-tight text-ink">
+            Tem um problema parecido?
           </h2>
-          <p className="mt-3 max-w-[60ch] text-[1.1rem] text-steel">
-            Conte como o processo funciona hoje. Conversamos sobre o que dá para resolver, sem compromisso.
+          <p className="mt-3 max-w-[60ch] text-[1.1rem] leading-relaxed text-steel">
+            Conte como as coisas funcionam hoje. Conversamos sobre o que dá para resolver, sem compromisso.
           </p>
           <div className="mt-6">
             <TrackedCta
               location={`caso_${c.slug}`}
-              message={`Olá, Sthevan! Li o caso ${c.projectTitle} e tenho um problema parecido na minha empresa.`}
+              message={`Olá, Sthevan! Li o caso ${c.projectTitle} e tenho um problema parecido.`}
             />
           </div>
           <p className="mt-8">
-            <Link
-              href="/servicos"
-              className="inline-flex min-h-[44px] items-center font-display text-[17px] font-bold uppercase tracking-wide text-ink underline decoration-2 underline-offset-[5px] hover:text-route-deep"
-            >
+            <Link href="/servicos" className="inline-flex min-h-[44px] items-center text-[16px] font-semibold text-sign hover:text-route-deep">
               Ver todos os serviços
             </Link>
           </p>

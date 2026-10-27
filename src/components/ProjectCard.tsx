@@ -8,20 +8,18 @@ import type { Project, ProjectCategory } from '@/data/projects'
 import { localized } from '@/lib/project-i18n'
 import { CASES } from '@/data/cases'
 
-/** Cabeçalho de placa por categoria — a cor diz o tipo, como na sinalização. */
+/** Selo de categoria: cor suave por tipo, sem caixa alta. */
 export const CATEGORY_STYLE: Record<ProjectCategory, string> = {
-  automation: 'bg-sign text-ink',
-  fullstack: 'bg-info text-white',
-  frontend: 'bg-ink text-sign',
-  backend: 'bg-white text-ink',
+  automation: 'bg-sign-soft text-sign',
+  fullstack: 'bg-paper text-ink',
+  frontend: 'bg-paper text-steel',
+  backend: 'bg-white text-ink ring-1 ring-inset ring-line',
 }
 
 export function CategoryTag({ category, className = '' }: { category: ProjectCategory; className?: string }) {
   const { t } = useLanguage()
   return (
-    <span
-      className={`inline-flex items-center rounded-[4px] px-2 py-0.5 font-display text-[13px] font-bold uppercase tracking-wider ring-2 ring-inset ring-ink ${CATEGORY_STYLE[category]} ${className}`}
-    >
+    <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-[13px] font-semibold ${CATEGORY_STYLE[category]} ${className}`}>
       {t(`projects.${category}`)}
     </span>
   )
@@ -35,7 +33,7 @@ export function ProjectLinks({ project }: { project: Project }) {
       {caseStudy && (
         <Link
           href={`/projetos/${caseStudy.slug}`}
-          className="inline-flex min-h-[44px] items-center gap-1.5 font-display text-[17px] font-bold uppercase tracking-wide text-ink underline decoration-2 underline-offset-[5px] hover:text-route-deep"
+          className="inline-flex min-h-[44px] items-center gap-1.5 text-[16px] font-semibold text-sign hover:text-route-deep"
         >
           {t('cases.read')}
         </Link>
@@ -45,13 +43,13 @@ export function ProjectLinks({ project }: { project: Project }) {
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[44px] items-center gap-1.5 font-display text-[17px] font-bold uppercase tracking-wide text-ink underline decoration-2 underline-offset-[5px] hover:text-route"
+          className="inline-flex min-h-[44px] items-center gap-1.5 text-[16px] font-semibold text-ink hover:text-sign"
         >
           {t('projects.code')}
           <ArrowUpRight className="h-4 w-4" aria-hidden />
         </a>
       ) : (
-        <span className="inline-flex min-h-[44px] items-center gap-1.5 font-display text-[15px] font-bold uppercase tracking-wide text-steel">
+        <span className="inline-flex min-h-[44px] items-center gap-1.5 text-[15px] text-steel">
           <Lock className="h-4 w-4" aria-hidden />
           {t('projects.private')}
         </span>
@@ -61,7 +59,7 @@ export function ProjectLinks({ project }: { project: Project }) {
           href={project.demo}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[44px] items-center gap-1.5 rounded-[6px] bg-route px-3 font-display text-[17px] font-bold uppercase tracking-wide text-white hover:bg-route-deep"
+          className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl bg-sign px-4 text-[16px] font-semibold text-white hover:bg-route-deep"
         >
           {t('projects.demo')}
           <ArrowUpRight className="h-4 w-4" aria-hidden />
@@ -86,20 +84,16 @@ export default function ProjectCard({ project, layout = 'plate', priority = fals
   const wide = layout === 'wide'
 
   const gain = L.impact && (
-    <p className="rounded-[6px] bg-sign px-4 py-3 ring-2 ring-inset ring-ink">
-      <span className="block font-display text-[1.45rem] font-extrabold uppercase leading-tight text-ink">
-        {L.impact}
-      </span>
-      <span className="mt-1 block font-display text-[13px] font-bold uppercase tracking-[0.14em] text-sign-ink">
-        {t('projects.measured')}
-      </span>
+    <p className="rounded-xl bg-sign-soft px-4 py-3">
+      <span className="block text-[1.2rem] font-bold leading-snug text-ink">{L.impact}</span>
+      <span className="mt-0.5 block text-[13px] font-semibold text-sign">{t('projects.measured')}</span>
     </p>
   )
 
   const stack = (
     <ul className="flex flex-wrap gap-2" aria-label="Stack">
       {project.technologies.map((tech) => (
-        <li key={tech} className="rounded-[4px] border-2 border-ink/80 px-2 py-0.5 text-[14px] font-semibold text-ink">
+        <li key={tech} className="rounded-full bg-paper px-2.5 py-1 text-[13px] font-medium text-ink">
           {tech}
         </li>
       ))}
@@ -107,15 +101,9 @@ export default function ProjectCard({ project, layout = 'plate', priority = fals
   )
 
   return (
-    <article className="frame group flex h-full flex-col overflow-hidden bg-white transition-transform duration-300 ease-out hover:-translate-y-1">
-      <div className={`${CATEGORY_STYLE[project.category]} px-5 py-2.5`}>
-        <span className="font-display text-[15px] font-bold uppercase tracking-[0.12em]">
-          {t(`projects.${project.category}`)}
-        </span>
-      </div>
-
+    <article className="plate group flex h-full flex-col overflow-hidden transition-transform duration-300 ease-out hover:-translate-y-1">
       {project.previewImage && (
-        <div className="border-y-[3px] border-ink bg-ink">
+        <div className="border-b border-line bg-paper">
           {/* no card largo o print é recortado por cima: a metade de baixo dos prints de app costuma ser vazia */}
           <div className={`relative w-full ${wide ? 'aspect-video lg:aspect-[21/8]' : 'aspect-video'}`}>
             <Image
@@ -131,10 +119,11 @@ export default function ProjectCard({ project, layout = 'plate', priority = fals
       )}
 
       {wide ? (
-        <div className="grid flex-1 gap-6 p-5 sm:p-7 lg:grid-cols-12 lg:gap-10 lg:p-10">
+        <div className="grid flex-1 gap-6 p-6 sm:p-8 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
-            <Heading className="font-display text-[2.6rem] font-extrabold uppercase text-ink sm:text-[3.2rem]">{L.title}</Heading>
-            <p className="mt-4 max-w-[62ch] text-[1.05rem] leading-relaxed text-steel">{L.description}</p>
+            <CategoryTag category={project.category} />
+            <Heading className="mt-3 text-[2rem] font-extrabold text-ink sm:text-[2.4rem]">{L.title}</Heading>
+            <p className="mt-3 max-w-[62ch] text-[1.05rem] leading-relaxed text-steel">{L.description}</p>
           </div>
           <div className="flex flex-col gap-4 lg:col-span-5">
             {gain}
@@ -145,9 +134,12 @@ export default function ProjectCard({ project, layout = 'plate', priority = fals
           </div>
         </div>
       ) : (
-        <div className="flex flex-1 flex-col gap-4 p-5 sm:p-7">
-          <Heading className="font-display text-[2rem] font-extrabold uppercase text-ink">{L.title}</Heading>
-          <p className="max-w-[60ch] text-[1.05rem] leading-relaxed text-steel">{L.description}</p>
+        <div className="flex flex-1 flex-col gap-4 p-6 sm:p-7">
+          <div>
+            <CategoryTag category={project.category} />
+            <Heading className="mt-3 text-[1.6rem] font-extrabold leading-tight text-ink">{L.title}</Heading>
+          </div>
+          <p className="max-w-[60ch] text-[1rem] leading-relaxed text-steel">{L.description}</p>
           {gain}
           {stack}
           <div className="mt-auto pt-1">

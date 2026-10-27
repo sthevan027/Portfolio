@@ -1,32 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Analytics from "@/components/Analytics";
+import SmoothScroll from "@/components/SmoothScroll";
 import { OG_IMAGE } from "@/lib/seo";
 
-const barlow = Barlow({
+// uma família só, para corpo e títulos: leitura limpa e um único arquivo de fonte
+const manrope = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "600"],
-  // corpo: sem troca de fonte depois da pintura (a troca virava o LCP no celular);
-  // o fallback do next/font já tem as métricas ajustadas à Barlow
-  display: "optional",
-});
-
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 const SITE_URL = "https://sthevandev.vercel.app";
-const TITLE = "Sistemas e automação de processos para empresas | Sthevan Santos";
+const TITLE = "Sites, sistemas e apps · Sthevan Santos (ES)";
 const DESCRIPTION =
-  "Sistemas sob medida, automação de planilhas, relatórios e documentos e melhoria de sistemas web para empresas. Sthevan Santos, desenvolvedor no Espírito Santo.";
+  "Sites, sistemas e apps para negócios e projetos pessoais no Espírito Santo, e à distância para o Brasil e o exterior. Sthevan Santos, desenvolvedor fullstack.";
 
 export const viewport: Viewport = {
-  themeColor: "#F5C400",
+  themeColor: "#2563EB",
   width: "device-width",
   initialScale: 1,
 };
@@ -93,9 +86,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${barlow.variable} ${barlowCondensed.variable} font-sans antialiased`}
+        className={`${manrope.variable} font-sans antialiased`}
       >
         {children}
+        <SmoothScroll />
         <Analytics />
       </body>
     </html>

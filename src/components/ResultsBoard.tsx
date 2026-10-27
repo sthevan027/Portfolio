@@ -6,13 +6,12 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { projects } from '@/data/projects'
 
 /**
- * Quadro de resultados — o "estamos há X dias sem acidentes" do canteiro, com
- * os ganhos medidos no lugar dos dias. Cada dígito é uma plaquinha que vira
- * (0 → valor) quando o quadro entra na tela. O valor final já vem no HTML:
- * sem JS ou com reduced-motion, o quadro aparece parado e completo.
+ * Números medidos, em destaque. Cada dígito gira até o valor quando o bloco
+ * entra na tela. O valor final já vem no HTML: sem JS ou com reduced-motion,
+ * os números aparecem parados e completos.
  */
 
-function useBoardInView<T extends Element>() {
+function useInView<T extends Element>() {
   const ref = useRef<T>(null)
   const [run, setRun] = useState(false)
   useEffect(() => {
@@ -55,18 +54,17 @@ function FlipDigit({ char, run, delay }: { char: string; run: boolean; delay: nu
   }, [run, char, target, delay])
 
   return (
-    <span className="relative inline-flex h-[1.18em] w-[0.86em] items-center justify-center overflow-hidden rounded-[6px] bg-ink text-sign shadow-[0_6px_14px_-8px_rgb(0_0_0/0.6)] [perspective:400px]">
+    <span className="relative inline-flex h-[1.1em] min-w-[0.8em] items-center justify-center overflow-hidden whitespace-nowrap rounded-xl bg-ink px-[0.14em] text-white shadow-[0_6px_14px_-8px_rgb(15_23_42/0.5)] [perspective:400px]">
       <span key={tick} className={tick > 0 ? 'flip-in' : undefined}>
         {shown}
       </span>
-      <span className="pointer-events-none absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 bg-black/70" aria-hidden />
     </span>
   )
 }
 
 function Digits({ value, run, delay = 0 }: { value: string; run: boolean; delay?: number }) {
   return (
-    <span className="tabular inline-flex gap-[0.12em] font-display font-extrabold" aria-hidden>
+    <span className="tabular inline-flex gap-[0.1em] font-extrabold tracking-tight" aria-hidden>
       {value.split('').map((c, i) => (
         <FlipDigit key={`${c}-${i}`} char={c} run={run} delay={delay + i * 120} />
       ))}
@@ -74,28 +72,26 @@ function Digits({ value, run, delay = 0 }: { value: string; run: boolean; delay?
   )
 }
 
-function Row({
+function Stat({
   label,
   source,
-  children,
   sr,
+  children,
 }: {
   label: string
   source: string
-  children: React.ReactNode
   sr: string
+  children: React.ReactNode
 }) {
   return (
-    <li className="grid gap-4 border-t-[3px] border-ink px-5 py-6 sm:grid-cols-[1fr_auto] sm:items-center sm:px-8">
-      <div>
-        <p className="font-display text-[1.6rem] font-bold uppercase leading-none text-ink sm:text-[1.85rem]">
-          {label}
-        </p>
-        <p className="mt-2 text-[15px] text-steel">{source}</p>
-      </div>
-      <div className="text-[3.4rem] leading-none sm:text-[4rem]">
+    <li className="flex flex-col gap-5 p-6 sm:p-7">
+      <div className="text-[3rem] leading-none sm:text-[3.5rem]">
         <span className="sr-only">{sr}</span>
         {children}
+      </div>
+      <div>
+        <p className="text-[1.05rem] font-semibold leading-snug text-ink">{label}</p>
+        <p className="mt-1 text-[14px] text-steel">{source}</p>
       </div>
     </li>
   )
@@ -103,57 +99,56 @@ function Row({
 
 export default function ResultsBoard() {
   const { t } = useLanguage()
-  const { ref, run } = useBoardInView<HTMLDivElement>()
+  const { ref, run } = useInView<HTMLDivElement>()
   const total = String(projects.length)
 
   const beforeAfter = (before: string, after: string, delay: number, beforeLabel: string, afterLabel: string) => (
-    <span className="flex items-end gap-3 sm:gap-4">
-      <span className="flex flex-col items-center gap-1.5">
+    <span className="flex items-end gap-3">
+      <span className="flex flex-col items-center gap-2">
         <Digits value={before} run={run} delay={delay} />
-        <span className="font-display text-sm font-bold uppercase tracking-wider text-steel">{beforeLabel}</span>
+        <span className="text-[13px] font-medium text-steel">{beforeLabel}</span>
       </span>
-      <ArrowRight className="mb-9 h-8 w-8 shrink-0 text-ink" aria-hidden />
-      <span className="flex flex-col items-center gap-1.5">
+      <ArrowRight className="mb-8 h-6 w-6 shrink-0 text-sign" aria-hidden />
+      <span className="flex flex-col items-center gap-2">
         <Digits value={after} run={run} delay={delay + 380} />
-        <span className="font-display text-sm font-bold uppercase tracking-wider text-ink">{afterLabel}</span>
+        <span className="text-[13px] font-semibold text-ink">{afterLabel}</span>
       </span>
     </span>
   )
 
   return (
-    <section aria-labelledby="board-title" className="bg-paper py-16 sm:py-20">
-      <div className="mx-auto max-w-site px-3 sm:px-6 lg:px-8">
-        <div ref={ref} className="plate p-[16px]">
-          <div className="overflow-hidden rounded-[6px]">
-          <div className="bg-ink px-5 pb-6 pt-7 sm:px-8">
-            <h2 id="board-title" className="font-display text-[clamp(2.4rem,6vw,4.2rem)] font-extrabold uppercase text-sign">
-              {t('board.title')}
-            </h2>
-            <p className="mt-3 max-w-[60ch] text-[1.05rem] text-paper/80">{t('board.lede')}</p>
-          </div>
-          <ul>
-            <Row
+    <section id="board" aria-labelledby="board-title" className="bg-paper py-20 sm:py-28">
+      <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <h2 id="board-title" className="text-[clamp(2.2rem,4.6vw,3.25rem)] font-extrabold text-ink">
+            {t('board.title')}
+          </h2>
+          <p className="mt-4 text-[1.125rem] leading-relaxed text-steel">{t('board.lede')}</p>
+        </div>
+
+        <div ref={ref} className="plate mt-12 overflow-hidden">
+          <ul className="grid divide-y divide-line sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+            <Stat
               label={t('board.reportsLabel')}
               source={t('board.reportsSource')}
               sr={`${t('board.before')} 1, ${t('board.after')} 3`}
             >
               {beforeAfter('1', '3', 0, t('board.before'), t('board.after'))}
-            </Row>
-            <Row
+            </Stat>
+            <Stat
               label={t('board.artLabel')}
               source={t('board.artSource')}
               sr={`${t('board.before')} 5 ${t('board.artBeforeUnit')}, ${t('board.after')} ½ ${t('board.artAfterUnit')}`}
             >
-              {beforeAfter('5', '½', 250, `${t('board.artBeforeUnit')} · ${t('board.before')}`, `${t('board.artAfterUnit')} · ${t('board.after')}`)}
-            </Row>
-            <Row label={t('board.deliveredLabel')} source={t('board.deliveredSource')} sr="10">
+              {beforeAfter('5', '½', 250, `${t('board.artBeforeUnit')}`, `${t('board.artAfterUnit')}`)}
+            </Stat>
+            <Stat label={t('board.deliveredLabel')} source={t('board.deliveredSource')} sr="10">
               <Digits value="10" run={run} delay={500} />
-            </Row>
-            <Row label={t('board.portfolioLabel')} source={t('board.portfolioSource')} sr={total}>
+            </Stat>
+            <Stat label={t('board.portfolioLabel')} source={t('board.portfolioSource')} sr={total}>
               <Digits value={total} run={run} delay={750} />
-            </Row>
+            </Stat>
           </ul>
-          </div>
         </div>
       </div>
     </section>
