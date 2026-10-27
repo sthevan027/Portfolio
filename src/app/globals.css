@@ -3,58 +3,59 @@
 @tailwind utilities;
 
 /*
- * Mundo: sinalização de canteiro (placas NR-26, faixa zebrada, quadro de
- * indicadores). Amarelo em campo cheio, preto de placa, branco esmaltado.
- * Verde de rota é reservado para ação (links, botões, foco) — nunca decoração.
+ * Sistema de design v2 — estúdio de software voltado para clientes.
+ * Branco e cinza claro como base, azul como ação e destaque, texto azul-marinho.
+ * Os nomes dos tokens (sign, ink, paper, steel, route) são mantidos por
+ * compatibilidade com o código; o significado agora é este:
+ *   sign  → cor de destaque e de ação (azul)
+ *   ink   → texto principal e superfícies escuras
+ *   paper → superfície alternada (cinza muito claro)
+ *   steel → texto secundário
+ *   route → ação (igual ao destaque)
  */
 :root {
-  --sign: 37 99 235; /* azul de destaque (troca do amarelo de sinalização) */
-  --sign-ink: 219 234 254; /* texto secundário sobre azul */
-  --ink: 18 18 18; /* preto */
-  --paper: 243 243 240; /* branco esmaltado */
-  --steel: 74 74 70; /* texto secundário sobre branco */
-  --route: 37 99 235; /* ação: mesmo azul de destaque */
-  --route-deep: 29 78 216;
-  --info: 31 79 163; /* azul de placa informativa */
-  --line: 18 18 18;
+  --sign: 37 99 235; /* azul de destaque e ação */
+  --sign-ink: 191 219 254; /* texto secundário sobre fundo azul/escuro */
+  --sign-soft: 239 246 255; /* fundo de selo e de destaque leve */
+  --ink: 15 23 42; /* texto principal (slate-900) */
+  --paper: 248 250 252; /* superfície alternada (slate-50) */
+  --steel: 71 85 105; /* texto secundário (slate-600) */
+  --route: 37 99 235; /* ação */
+  --route-deep: 29 78 216; /* ação em hover */
+  --info: 3 105 161; /* selos informativos */
+  --line: 226 232 240; /* bordas (slate-200) */
+  --surface: 255 255 255;
 
-  /* tokens shadcn (ui/button, ui/card) apontando pro mundo */
-  --background: var(--paper);
+  --background: var(--surface);
   --foreground: var(--ink);
   --card: 255 255 255;
   --card-foreground: var(--ink);
   --popover: 255 255 255;
   --popover-foreground: var(--ink);
-  --primary: var(--ink);
-  --primary-foreground: var(--paper);
-  --secondary: var(--sign);
+  --primary: var(--sign);
+  --primary-foreground: 255 255 255;
+  --secondary: var(--paper);
   --secondary-foreground: var(--ink);
-  --muted: 229 229 224;
+  --muted: var(--paper);
   --muted-foreground: var(--steel);
   --accent: var(--sign);
-  --accent-foreground: var(--ink);
+  --accent-foreground: 255 255 255;
   --destructive: 190 30 30;
   --destructive-foreground: 255 255 255;
-  --border: 18 18 18;
-  --input: 18 18 18;
-  --ring: var(--route);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--sign);
   --radius: 0.75rem;
-
-  --hazard: repeating-linear-gradient(
-    -45deg,
-    rgb(var(--sign)) 0 22px,
-    rgb(var(--ink)) 22px 44px
-  );
 }
 
 @layer base {
   * {
-    border-color: rgb(var(--border) / 0.14);
+    border-color: rgb(var(--line));
   }
 
   html {
     scroll-behavior: smooth;
-    scrollbar-color: rgb(var(--ink)) rgb(var(--paper));
+    -webkit-text-size-adjust: 100%;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -65,34 +66,25 @@
 
   body {
     color: rgb(var(--ink));
-    background: rgb(var(--paper));
+    background: rgb(var(--surface));
     min-height: 100vh;
-    font-feature-settings: 'tnum' 0;
+    font-feature-settings: 'cv11' 1;
   }
 
   ::selection {
     background: rgb(var(--sign));
-    color: rgb(var(--ink));
+    color: #fff;
   }
 
-  ::-webkit-scrollbar {
-    width: 12px;
-  }
-  ::-webkit-scrollbar-track {
-    background: rgb(var(--paper));
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgb(var(--ink));
-    border: 3px solid rgb(var(--paper));
-    border-radius: 999px;
-  }
-
-  h1, h2, h3, h4 {
-    font-family: var(--font-display), 'Arial Narrow', sans-serif;
+  /* títulos em caixa normal, peso forte e espaçamento apertado */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans), system-ui, sans-serif;
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.005em;
-    line-height: 0.92;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
     text-wrap: balance;
   }
 
@@ -106,97 +98,84 @@
   }
 
   :focus-visible {
-    outline: 3px solid rgb(var(--route));
+    outline: 3px solid rgb(var(--sign));
     outline-offset: 3px;
+    border-radius: 4px;
   }
 
-  /* em superfície preta o verde some (≈3:1): o foco vira amarelo de placa */
+  /* em superfície escura o foco vira branco */
   .bg-ink :focus-visible,
-  .plate-ink :focus-visible {
-    outline-color: rgb(var(--sign));
+  .plate-ink :focus-visible,
+  .plate-sign :focus-visible {
+    outline-color: #fff;
   }
 
   input,
   textarea {
-    caret-color: rgb(var(--route));
+    caret-color: rgb(var(--sign));
   }
 
   section[id] {
-    scroll-margin-top: 4.5rem;
+    scroll-margin-top: 5rem;
   }
 }
 
 @layer components {
-  /*
-   * Placa NR-26: a cor do campo vai até a borda e o filete fica recuado
-   * (9px → 12px). --plate-field é a cor do campo; --plate-line o filete.
-   */
+  /* cartão padrão: superfície branca, borda leve, sombra suave */
   .plate {
-    --plate-field: #fff;
-    --plate-line: var(--ink);
-    --screw: 110 110 104;
     position: relative;
-    border-radius: 14px;
-    background: var(--plate-field);
-    box-shadow:
-      inset 0 0 0 9px var(--plate-field),
-      inset 0 0 0 12px rgb(var(--plate-line)),
-      0 0 0 1px rgb(var(--ink) / 0.12),
-      0 22px 40px -24px rgb(0 0 0 / 0.45);
+    border-radius: 16px;
+    border: 1px solid rgb(var(--line));
+    background: rgb(var(--surface));
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -12px rgb(15 23 42 / 0.12);
   }
   .plate-sign {
-    --plate-field: rgb(var(--sign));
+    background: rgb(var(--sign));
+    border-color: rgb(var(--sign));
+    color: #fff;
   }
   .plate-paper {
-    --plate-field: rgb(var(--paper));
+    background: rgb(var(--paper));
   }
   .plate-ink {
-    --plate-field: rgb(var(--ink));
-    --plate-line: var(--sign);
-    --screw: 150 150 144;
+    background: rgb(var(--ink));
+    border-color: rgb(var(--ink));
+    color: #fff;
   }
-
-  /* Moldura de print (cards de projeto): borda preta na beirada, sem filete */
-  .frame {
-    position: relative;
-    border-radius: 14px;
-    box-shadow:
-      inset 0 0 0 4px rgb(var(--ink)),
-      0 22px 40px -24px rgb(0 0 0 / 0.45);
-  }
-
-  /* parafusos chapados nos quatro cantos, dentro do filete */
+  /* parafusos e filete de placa saíram do sistema */
   .plate-screws::before,
   .plate-screws::after {
-    content: '';
-    position: absolute;
-    left: 18px;
-    right: 18px;
-    height: 9px;
-    pointer-events: none;
-    background:
-      radial-gradient(circle 4.5px at 4.5px 50%, rgb(var(--screw)) 96%, transparent 100%),
-      radial-gradient(circle 4.5px at calc(100% - 4.5px) 50%, rgb(var(--screw)) 96%, transparent 100%);
-  }
-  .plate-screws::before {
-    top: 18px;
-  }
-  .plate-screws::after {
-    bottom: 18px;
+    content: none;
   }
 
-  /* faixa de divisa: lisa, sem zebrado de canteiro */
+  /* moldura de imagem (prints e fotos) */
+  .frame {
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid rgb(var(--line));
+    background: rgb(var(--surface));
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -12px rgb(15 23 42 / 0.12);
+  }
+
+  /* divisa entre seções: linha fina, sem zebrado */
   .hazard {
-    background: rgb(var(--sign));
+    height: 1px;
+    background: rgb(var(--line));
+  }
+
+  .eyebrow {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: rgb(var(--sign));
   }
 
   .tabular {
     font-variant-numeric: tabular-nums;
-    font-feature-settings: 'tnum' 1;
   }
 }
 
-/* virada da plaquinha do quadro de resultados */
+/* virada dos dígitos do quadro de resultados */
 @keyframes flip-in {
   from {
     transform: rotateX(-88deg);

@@ -28,18 +28,15 @@ export default function Navbar({ showLanguageSwitch = true }: { showLanguageSwit
   ]
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-ink text-paper">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-white/90 text-ink backdrop-blur">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:rounded-[6px] focus:bg-sign focus:px-4 focus:py-2 focus:font-display focus:font-bold focus:uppercase focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:rounded-lg focus:bg-sign focus:px-4 focus:py-2 focus:font-semibold focus:text-white"
       >
         {t('nav.skip')}
       </a>
       <nav className="mx-auto flex h-16 max-w-site items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className="rounded-[6px] bg-sign px-3 py-1.5 font-display text-lg font-extrabold uppercase leading-none tracking-wide text-white"
-        >
+        <Link href="/" className="text-[17px] font-extrabold tracking-tight text-ink">
           Sthevan Santos
         </Link>
 
@@ -48,7 +45,7 @@ export default function Navbar({ showLanguageSwitch = true }: { showLanguageSwit
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="block px-3 py-2 font-display text-[17px] font-bold uppercase tracking-wide text-paper/85 underline-offset-[10px] transition-colors hover:text-sign hover:underline decoration-sign"
+                className="block rounded-lg px-3 py-2 text-[15px] font-medium text-steel transition-colors hover:bg-paper hover:text-ink"
               >
                 {item.label}
               </Link>
@@ -58,20 +55,20 @@ export default function Navbar({ showLanguageSwitch = true }: { showLanguageSwit
 
         <div className="flex items-center gap-2">
           {showLanguageSwitch && (
-          <button
-            type="button"
-            onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
-            className="flex min-h-[44px] items-center gap-1 px-2 font-display text-[15px] font-bold uppercase tracking-wider"
-          >
-            {/* nome acessível começa pelo texto visível ("PT / EN") e completa com a ação */}
-            <span className={language === 'pt' ? 'text-sign' : 'text-paper/60'}>PT</span>
-            <span className="text-paper/40" aria-hidden>/</span>
-            <span className={language === 'en' ? 'text-sign' : 'text-paper/60'}>EN</span>
-            <span className="sr-only"> — {t('nav.switchLanguage')}</span>
-          </button>
+            <button
+              type="button"
+              onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
+              className="flex min-h-[44px] items-center gap-1 px-2 text-[14px] font-semibold"
+            >
+              {/* nome acessível começa pelo texto visível ("PT / EN") e completa com a ação */}
+              <span className={language === 'pt' ? 'text-sign' : 'text-steel'}>PT</span>
+              <span className="text-line" aria-hidden>/</span>
+              <span className={language === 'en' ? 'text-sign' : 'text-steel'}>EN</span>
+              <span className="sr-only"> — {t('nav.switchLanguage')}</span>
+            </button>
           )}
 
-          <Button asChild variant="sign" size="sm" className="hidden rounded-[6px] sm:inline-flex">
+          <Button asChild variant="route" size="sm" className="hidden sm:inline-flex">
             <Link href="/#contact" onClick={() => trackEvent('quote_click', { location: 'navbar' })}>
               {t('nav.quote')}
             </Link>
@@ -91,21 +88,21 @@ export default function Navbar({ showLanguageSwitch = true }: { showLanguageSwit
       </nav>
 
       {isOpen && (
-        <div id="mobile-menu" className="border-t-4 border-sign bg-ink md:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-white md:hidden">
           <ul className="mx-auto max-w-site px-4 py-3">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex min-h-[52px] items-center border-b border-paper/10 font-display text-2xl font-extrabold uppercase tracking-wide text-paper"
+                  className="flex min-h-[52px] items-center border-b border-line text-lg font-semibold text-ink"
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Button asChild variant="sign" size="lg" className="mt-3 w-full">
+              <Button asChild variant="route" size="lg" className="mt-4 w-full">
                 <Link
                   href="/#contact"
                   onClick={() => {
@@ -122,7 +119,7 @@ export default function Navbar({ showLanguageSwitch = true }: { showLanguageSwit
                 href={SITE.resumeDev}
                 download
                 onClick={() => setIsOpen(false)}
-                className="flex min-h-[48px] items-center font-display text-lg font-bold uppercase tracking-wide text-paper/70"
+                className="flex min-h-[48px] items-center text-[16px] font-medium text-steel"
               >
                 {t('nav.resume')}
               </a>

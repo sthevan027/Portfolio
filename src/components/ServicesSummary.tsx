@@ -7,59 +7,48 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { trackEvent } from '@/lib/analytics'
 
 const ITEMS = [
-  { key: 's1', anchor: 'sistemas-personalizados', plate: 'bg-info text-white' },
-  { key: 's2', anchor: 'automacao-de-processos', plate: 'bg-sign text-white' },
-  { key: 's3', anchor: 'modernizacao-e-melhoria', plate: 'bg-ink text-sign' },
+  { key: 's1', anchor: 'sistemas-personalizados' },
+  { key: 's2', anchor: 'automacao-de-processos' },
+  { key: 's3', anchor: 'modernizacao-e-melhoria' },
 ] as const
 
-/** Resumo dos três serviços na home; o detalhe fica em /servicos. */
+/** Resumo dos serviços na home; o detalhe fica em /servicos. */
 export default function ServicesSummary() {
   const { t } = useLanguage()
 
   return (
-    <section id="services" aria-labelledby="services-title" className="bg-sign py-16 sm:py-24">
-      <div className="mx-auto max-w-site px-3 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2
-            id="services-title"
-            className="font-display text-[clamp(3.2rem,9vw,5.6rem)] font-extrabold uppercase leading-[0.88] text-ink lg:col-span-6"
-          >
+    <section id="services" aria-labelledby="services-title" className="bg-white py-20 sm:py-28">
+      <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="eyebrow">{t('services.eyebrow')}</p>
+          <h2 id="services-title" className="mt-3 text-[clamp(2.2rem,4.6vw,3.25rem)] font-extrabold text-ink">
             {t('services.title')}
           </h2>
-          <p className="max-w-[48ch] text-[1.15rem] leading-relaxed text-sign-ink lg:col-span-6">{t('services.lede')}</p>
+          <p className="mt-4 text-[1.125rem] leading-relaxed text-steel">{t('services.lede')}</p>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-6 lg:grid-cols-3">
           {ITEMS.map((s) => (
-            <article key={s.key} className="frame flex flex-col overflow-hidden bg-white">
-              <div className={`${s.plate} px-5 py-2.5`} aria-hidden>
-                <span className="font-display text-[15px] font-bold uppercase tracking-[0.12em]">
-                  {String(ITEMS.indexOf(s) + 1).padStart(2, '0')}
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col gap-4 p-5 sm:p-7">
-                <h3 className="font-display text-[2rem] font-extrabold uppercase leading-[0.95] text-ink">
-                  {t(`services.${s.key}Title`)}
-                </h3>
-                <p className="text-[1.05rem] leading-relaxed text-steel">{t(`services.${s.key}Text`)}</p>
-                <Link
-                  href={`/servicos#${s.anchor}`}
-                  onClick={() => trackEvent('service_view', { service: s.anchor })}
-                  className="mt-auto inline-flex min-h-[44px] items-center gap-1.5 font-display text-[17px] font-bold uppercase tracking-wide text-ink underline decoration-2 underline-offset-[5px] hover:text-route-deep"
-                >
-                  {t('services.more')}
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
-              </div>
-            </article>
+            <li key={s.key} className="plate flex flex-col p-7 sm:p-8">
+              <h3 className="text-[1.5rem] font-bold leading-tight text-ink">{t(`services.${s.key}Title`)}</h3>
+              <p className="mt-3 flex-1 text-[1.02rem] leading-relaxed text-steel">{t(`services.${s.key}Text`)}</p>
+              <Link
+                href={`/servicos#${s.anchor}`}
+                onClick={() => trackEvent('service_view', { service: s.anchor })}
+                className="mt-6 inline-flex min-h-[44px] items-center gap-1.5 self-start text-[16px] font-semibold text-sign hover:text-route-deep"
+              >
+                {t('services.more')}
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div className="mt-10 flex flex-wrap gap-3">
-          <Button asChild size="lg">
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <Button asChild variant="outlineSign" size="lg">
             <Link href="/servicos">{t('services.all')}</Link>
           </Button>
-          <Button asChild size="lg" variant="plate">
+          <Button asChild size="lg">
             <a href="#contact" onClick={() => trackEvent('quote_click', { location: 'services' })}>
               {t('services.quote')}
             </a>

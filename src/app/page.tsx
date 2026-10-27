@@ -5,6 +5,7 @@ import ServicesSummary from '@/components/ServicesSummary'
 import ResultsBoard from '@/components/ResultsBoard'
 import CasesSection from '@/components/CasesSection'
 import ForWhom from '@/components/ForWhom'
+import Faq from '@/components/Faq'
 import HowIWork from '@/components/HowIWork'
 import Projects from '@/components/Projects'
 import Differentials from '@/components/Differentials'
@@ -34,6 +35,7 @@ export default function Home() {
         <Differentials />
         <Path />
         <Skills />
+        <Faq />
         <Contact />
       </main>
       <Footer />

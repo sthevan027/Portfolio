@@ -25,6 +25,9 @@ export const translations = {
       ctaWhatsapp: 'Pedir orçamento no WhatsApp',
       ctaServices: 'Ver serviços',
       ctaCases: 'Ver casos',
+      proof1: '10 projetos entregues pela Virex',
+      proof2: 'Presencial no Espírito Santo, remoto para o Brasil e o exterior',
+      proof3: 'Orçamento por escrito, com escopo e etapas',
       ctaResume: 'Baixar currículo',
       available: 'Aceitando novos projetos · Virex',
       location: 'Espírito Santo, Brasil · remoto ou híbrido',
@@ -32,6 +35,7 @@ export const translations = {
       whatsappMessage: 'Olá, Sthevan! Vi seu site e quero um orçamento para um site, sistema ou app.',
     },
     problems: {
+      eyebrow: 'Reconhece algum destes?',
       title: 'Problemas que eu resolvo',
       lede: 'Se algum destes pontos é o dia a dia da sua empresa, vale uma conversa.',
       p1: 'Planilhas que cresceram demais e dependem de uma pessoa para funcionar',
@@ -42,6 +46,7 @@ export const translations = {
       p6: 'Ferramentas que não conversam entre si e geram retrabalho',
     },
     services: {
+      eyebrow: 'Serviços',
       title: 'Serviços',
       lede: 'Três frentes de trabalho, todas partindo do processo real da sua empresa.',
       s1Title: 'Sistemas personalizados',
@@ -58,6 +63,7 @@ export const translations = {
       quote: 'Pedir uma avaliação',
     },
     cases: {
+      eyebrow: 'Casos',
       title: 'Casos',
       lede:
         'Problemas reais e como foram resolvidos. Demonstrações e projetos pessoais estão marcados; onde o original tem dado de empresa, o material usa dados de exemplo.',
@@ -73,6 +79,7 @@ export const translations = {
       showLess: 'Ver menos',
     },
     forWhom: {
+      eyebrow: 'Para quem',
       title: 'Para quem eu faço',
       lede: 'Pessoa física, pequeno negócio ou empresa. O que muda é o tamanho do projeto, não o cuidado com ele.',
       g1Label: 'Pessoa física',
@@ -88,7 +95,23 @@ export const translations = {
       g3Text: 'Planilhas que viraram gargalo, relatórios montados à mão e documentos que precisam ser digitados de novo.',
       g3Example: 'Ex.: relatório que saía em um dia e agora sai em minutos.',
     },
+    faq: {
+      eyebrow: 'Perguntas frequentes',
+      title: 'Antes de pedir orçamento',
+      lede: 'As dúvidas que mais aparecem. Se a sua não estiver aqui, é só perguntar no WhatsApp.',
+      q1Q: 'Quanto custa um site ou um sistema?',
+      q1A: 'Depende do que você precisa. Depois da conversa, envio uma proposta por escrito, com escopo, etapas e valor. Não publico tabela de preços, porque cada projeto é diferente.',
+      q2Q: 'Quanto tempo leva?',
+      q2A: 'Também depende do escopo. O prazo aparece na proposta, junto com as etapas de entrega.',
+      q3Q: 'Eu não entendo de tecnologia. Consigo acompanhar?',
+      q3A: 'Sim. Explico cada etapa em linguagem simples e entrego em partes que você pode testar antes da versão final.',
+      q4Q: 'Você atende fora do Espírito Santo?',
+      q4A: 'Sim. Atendo presencialmente no Espírito Santo e à distância para o Brasil e o exterior.',
+      q5Q: 'Depois de pronto, você faz manutenção?',
+      q5A: 'Faço. Também cuido de melhorias e integrações em sistemas que já existem, inclusive os que foram feitos por outra pessoa.',
+    },
     howWork: {
+      eyebrow: 'Processo',
       title: 'Como trabalho',
       lede: 'Três passos, sem surpresa no meio do caminho.',
       s1Title: 'Conversa',
@@ -99,6 +122,7 @@ export const translations = {
       s3Text: 'Entrego em etapas que você pode testar. Ajustes fazem parte do processo até a entrega final.',
     },
     diff: {
+      eyebrow: 'Diferenciais',
       title: 'Por que trabalhar comigo',
       lede: 'Experiência prática em operação e em desenvolvimento.',
       d1Title: 'Conheço o processo de campo',
@@ -128,6 +152,7 @@ export const translations = {
       after: 'depois',
     },
     projects: {
+      eyebrow: 'Projetos',
       title: 'Portfólio completo',
       lede:
         'Outros projetos: sistemas, automações e ferramentas pessoais que mostram como eu trabalho. Onde o original tem dado de empresa, o print usa dados de exemplo.',
@@ -151,6 +176,7 @@ export const translations = {
       previewAlt: 'Tela do projeto',
     },
     path: {
+      eyebrow: 'Trajetória',
       title: 'Sobre mim',
       lede: 'Do quadro elétrico ao código, sem pular etapa.',
       s1Period: '2022 – 2024',
@@ -169,6 +195,7 @@ export const translations = {
       s4Text: 'Graduação em andamento. CS50 (Harvard) concluído em 2026.',
     },
     stack: {
+      eyebrow: 'Tecnologias',
       title: 'Stack',
       lede: 'O que eu uso no dia a dia — sem barra de porcentagem.',
       product: 'Produto',
@@ -179,6 +206,7 @@ export const translations = {
       deliveryText: 'Deploy, versionamento e build.',
     },
     contact: {
+      eyebrow: 'Contato',
       title: 'Solicitar orçamento',
       lede: 'Conte o problema. Respondo em até 24 horas.',
       recruiterTitle: 'Currículo e vagas',
@@ -217,7 +245,8 @@ export const translations = {
       errorFallback: 'Ou fale agora:',
     },
     footer: {
-      line: 'Desenvolvimento de sistemas e automação de processos · Espírito Santo, Brasil',
+      line: 'Sites, sistemas e apps para negócios e projetos pessoais · Espírito Santo, Brasil',
+      navLabel: 'Links do rodapé',
       backToTop: 'Voltar ao topo',
       privacy: 'Privacidade',
       rights: 'Sthevan Santos',
@@ -249,6 +278,9 @@ export const translations = {
       ctaWhatsapp: 'Request a quote on WhatsApp',
       ctaServices: 'See services',
       ctaCases: 'See cases',
+      proof1: '10 projects delivered through Virex',
+      proof2: 'On-site in Espírito Santo, remote for Brazil and abroad',
+      proof3: 'Written quote, with scope and stages',
       ctaResume: 'Download resume',
       available: 'Taking new projects · Virex',
       location: 'Espírito Santo, Brazil · remote or hybrid',
@@ -256,6 +288,7 @@ export const translations = {
       whatsappMessage: 'Hi Sthevan! I saw your website and would like a quote for a website, system or app.',
     },
     problems: {
+      eyebrow: 'Does any of this sound familiar?',
       title: 'Problems I solve',
       lede: 'If any of these is your company’s daily reality, it is worth a conversation.',
       p1: 'Spreadsheets that outgrew themselves and depend on one person to work',
@@ -266,6 +299,7 @@ export const translations = {
       p6: 'Tools that do not talk to each other and cause rework',
     },
     services: {
+      eyebrow: 'Services',
       title: 'Services',
       lede: 'Three lines of work, all starting from your company’s real process.',
       s1Title: 'Custom systems',
@@ -282,6 +316,7 @@ export const translations = {
       quote: 'Ask for an assessment',
     },
     cases: {
+      eyebrow: 'Cases',
       title: 'Cases',
       lede:
         'Real problems and how they were solved. Demos and personal projects are labeled; where the original holds company data, the material uses sample data.',
@@ -297,6 +332,7 @@ export const translations = {
       showLess: 'Show less',
     },
     forWhom: {
+      eyebrow: 'Who it is for',
       title: 'Who I work with',
       lede: 'Individuals, small businesses or companies. What changes is the size of the project, not the care I put into it.',
       g1Label: 'Individual',
@@ -312,7 +348,23 @@ export const translations = {
       g3Text: 'Spreadsheets that became a bottleneck, reports built by hand and documents retyped every time.',
       g3Example: 'E.g.: a report that took a day now takes minutes.',
     },
+    faq: {
+      eyebrow: 'Frequently asked questions',
+      title: 'Before you ask for a quote',
+      lede: 'The questions that come up most. If yours is not here, just ask on WhatsApp.',
+      q1Q: 'How much does a website or system cost?',
+      q1A: 'It depends on what you need. After our conversation I send a written proposal with scope, stages and price. I do not publish a price list, because every project is different.',
+      q2Q: 'How long does it take?',
+      q2A: 'That also depends on the scope. The timeline is in the proposal, together with the delivery stages.',
+      q3Q: 'I don’t know much about technology. Can I follow along?',
+      q3A: 'Yes. I explain each stage in plain language and deliver in parts you can test before the final version.',
+      q4Q: 'Do you work outside Espírito Santo?',
+      q4A: 'Yes. I work on-site in Espírito Santo and remotely for Brazil and abroad.',
+      q5Q: 'Do you provide maintenance after delivery?',
+      q5A: 'Yes. I also handle improvements and integrations in systems that already exist, including ones built by someone else.',
+    },
     howWork: {
+      eyebrow: 'Process',
       title: 'How I work',
       lede: 'Three steps, no surprises along the way.',
       s1Title: 'Conversation',
@@ -323,6 +375,7 @@ export const translations = {
       s3Text: 'I deliver in stages you can test. Adjustments are part of the process until the final delivery.',
     },
     diff: {
+      eyebrow: 'Differentials',
       title: 'Why work with me',
       lede: 'Hands-on experience in operations and in development.',
       d1Title: 'I know the field process',
@@ -352,6 +405,7 @@ export const translations = {
       after: 'after',
     },
     projects: {
+      eyebrow: 'Projects',
       title: 'Full portfolio',
       lede:
         'More projects: systems, automations and personal tools that show how I work. Where the original holds company data, the screenshot uses sample data.',
@@ -375,6 +429,7 @@ export const translations = {
       previewAlt: 'Project screen',
     },
     path: {
+      eyebrow: 'Background',
       title: 'About me',
       lede: 'From the electrical panel to code, one step at a time.',
       s1Period: '2022 – 2024',
@@ -393,6 +448,7 @@ export const translations = {
       s4Text: 'Bachelor’s in progress. Completed CS50 (Harvard) in 2026.',
     },
     stack: {
+      eyebrow: 'Technologies',
       title: 'Stack',
       lede: 'What I use day to day — no percentage bars.',
       product: 'Product',
@@ -403,6 +459,7 @@ export const translations = {
       deliveryText: 'Deploys, version control and builds.',
     },
     contact: {
+      eyebrow: 'Contact',
       title: 'Request a quote',
       lede: 'Tell me the problem. I reply within 24 hours.',
       recruiterTitle: 'Resume and roles',
@@ -440,7 +497,8 @@ export const translations = {
       errorFallback: 'Or reach me now:',
     },
     footer: {
-      line: 'Custom software and process automation · Espírito Santo, Brazil',
+      line: 'Websites, systems and apps for businesses and personal projects · Espírito Santo, Brazil',
+      navLabel: 'Footer links',
       backToTop: 'Back to top',
       privacy: 'Privacy',
       rights: 'Sthevan Santos',

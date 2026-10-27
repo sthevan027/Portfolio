@@ -4,34 +4,27 @@ import { useLanguage } from '@/contexts/LanguageContext'
 
 const STEPS = ['s1', 's2', 's3', 's4'] as const
 
-/** Trajetória como placas de rota: cada etapa aponta para a próxima. */
+/** Trajetória em linha do tempo: a história de campo como prova de experiência. */
 export default function Path() {
   const { t } = useLanguage()
 
   return (
-    <section id="path" className="bg-ink py-20 text-paper sm:py-28">
-      <div className="mx-auto max-w-site px-3 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2 className="font-display text-[clamp(3.6rem,10vw,6rem)] font-extrabold uppercase leading-[0.85] text-sign lg:col-span-6">
+    <section id="path" aria-labelledby="path-title" className="bg-paper py-20 sm:py-28">
+      <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="eyebrow">{t('path.eyebrow')}</p>
+          <h2 id="path-title" className="mt-3 text-[clamp(2.2rem,4.6vw,3.25rem)] font-extrabold text-ink">
             {t('path.title')}
           </h2>
-          <p className="max-w-[48ch] text-[1.2rem] leading-relaxed text-paper/80 lg:col-span-6">{t('path.lede')}</p>
+          <p className="mt-4 text-[1.125rem] leading-relaxed text-steel">{t('path.lede')}</p>
         </div>
 
-        <ol className="mt-12 grid gap-5 lg:grid-cols-4 lg:gap-4">
+        <ol className="mt-12 grid gap-5 lg:grid-cols-4">
           {STEPS.map((s) => (
-            <li key={s} className="flex flex-col">
-              <div
-                className="flex h-16 items-center bg-sign pl-5 pr-10 font-display text-[1.35rem] font-extrabold uppercase tracking-wide text-white [clip-path:polygon(0_0,calc(100%-28px)_0,100%_50%,calc(100%-28px)_100%,0_100%)]"
-              >
-                <span className="tabular">{t(`path.${s}Period`)}</span>
-              </div>
-              <div className="mt-[-1px] flex-1 rounded-b-[10px] border-[3px] border-t-0 border-sign/90 p-5">
-                <h3 className="font-display text-[1.7rem] font-extrabold uppercase leading-[0.95] text-paper">
-                  {t(`path.${s}Title`)}
-                </h3>
-                <p className="mt-3 text-[1rem] leading-relaxed text-paper/75">{t(`path.${s}Text`)}</p>
-              </div>
+            <li key={s} className="plate flex flex-col p-7">
+              <span className="tabular text-[14px] font-semibold text-sign">{t(`path.${s}Period`)}</span>
+              <h3 className="mt-3 text-[1.25rem] font-bold leading-snug text-ink">{t(`path.${s}Title`)}</h3>
+              <p className="mt-3 text-[1rem] leading-relaxed text-steel">{t(`path.${s}Text`)}</p>
             </li>
           ))}
         </ol>

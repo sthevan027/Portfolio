@@ -14,33 +14,29 @@ export default function HowIWork() {
 
   return (
     <section id="how-i-work" aria-labelledby="how-title" className="bg-paper py-20 sm:py-28">
-      <div className="mx-auto max-w-site px-3 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2
-            id="how-title"
-            className="font-display text-[clamp(3.2rem,9vw,5.6rem)] font-extrabold uppercase leading-[0.88] text-ink lg:col-span-6"
-          >
+      <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="eyebrow">{t('howWork.eyebrow')}</p>
+          <h2 id="how-title" className="mt-3 text-[clamp(2.2rem,4.6vw,3.25rem)] font-extrabold text-ink">
             {t('howWork.title')}
           </h2>
-          <p className="max-w-[52ch] text-[1.125rem] leading-relaxed text-steel lg:col-span-6">{t('howWork.lede')}</p>
+          <p className="mt-4 text-[1.125rem] leading-relaxed text-steel">{t('howWork.lede')}</p>
         </div>
 
         <ol className="mt-12 grid gap-5 md:grid-cols-3">
           {STEPS.map((s, i) => (
-            <li key={s} className="plate plate-screws flex flex-col px-6 py-9 sm:px-8">
-              <span className="font-display text-[3.2rem] font-extrabold leading-none text-sign tabular" aria-hidden>
-                {String(i + 1).padStart(2, '0')}
+            <li key={s} className="plate flex flex-col p-7 sm:p-8">
+              <span className="tabular flex h-10 w-10 items-center justify-center rounded-full bg-sign text-[15px] font-bold text-white" aria-hidden>
+                {i + 1}
               </span>
-              <h3 className="mt-4 font-display text-[1.7rem] font-extrabold uppercase leading-[0.95] text-ink">
-                {t(`howWork.${s}Title`)}
-              </h3>
+              <h3 className="mt-5 text-[1.4rem] font-bold leading-tight text-ink">{t(`howWork.${s}Title`)}</h3>
               <p className="mt-3 text-[1.02rem] leading-relaxed text-steel">{t(`howWork.${s}Text`)}</p>
             </li>
           ))}
         </ol>
 
         <div className="mt-12 flex justify-start">
-          <Button asChild size="lg" className="h-auto max-w-full whitespace-normal py-3 text-left text-base sm:text-lg">
+          <Button asChild size="lg" className="h-auto w-full whitespace-normal py-3 text-left sm:w-auto">
             <a
               href={whatsappLink(t('hero.whatsappMessage'))}
               target="_blank"

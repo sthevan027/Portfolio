@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         sign: 'rgb(var(--sign) / <alpha-value>)',
         'sign-ink': 'rgb(var(--sign-ink) / <alpha-value>)',
+        'sign-soft': 'rgb(var(--sign-soft) / <alpha-value>)',
         ink: 'rgb(var(--ink) / <alpha-value>)',
         paper: 'rgb(var(--paper) / <alpha-value>)',
         steel: 'rgb(var(--steel) / <alpha-value>)',
@@ -38,7 +39,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['var(--font-display)', 'Arial Narrow', 'sans-serif'],
+        display: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         plate: '14px',

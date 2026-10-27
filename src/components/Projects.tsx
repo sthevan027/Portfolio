@@ -17,43 +17,39 @@ export default function Projects() {
   const others = projects.filter((p) => !p.featured).slice(0, OTHERS_ON_HOME)
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="bg-paper pb-20 pt-4 sm:pb-28">
-      <div className="mx-auto max-w-site px-3 sm:px-6 lg:px-8">
-        <div className="grid gap-6 pb-10 lg:grid-cols-12 lg:items-end">
-          <h2 id="projects-title" className="font-display text-[clamp(3.2rem,9vw,5.6rem)] font-extrabold uppercase leading-[0.88] text-ink lg:col-span-6">
+    <section id="projects" aria-labelledby="projects-title" className="bg-paper py-20 sm:py-28">
+      <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="eyebrow">{t('projects.eyebrow')}</p>
+          <h2 id="projects-title" className="mt-3 text-[clamp(2.2rem,4.6vw,3.25rem)] font-extrabold text-ink">
             {t('projects.title')}
           </h2>
-          <p className="max-w-[58ch] text-[1.125rem] leading-relaxed text-steel lg:col-span-6">
-            {t('projects.lede')}
-          </p>
+          <p className="mt-4 text-[1.125rem] leading-relaxed text-steel">{t('projects.lede')}</p>
         </div>
 
         {others.length > 0 && (
-          <div>
-            <ul className="border-t-[3px] border-ink">
-              {others.map((p) => (
-                <li
-                  key={p.id}
-                  className="grid gap-3 border-b-2 border-ink/15 py-5 transition-colors hover:bg-white sm:grid-cols-[150px_1fr_auto] sm:items-center sm:gap-6 sm:px-3"
-                >
-                  <CategoryTag category={p.category} className="hidden justify-self-start sm:inline-flex sm:self-center" />
-                  <div>
-                    <h3 className="font-display text-[1.6rem] font-extrabold uppercase leading-none text-ink">
-                      {localized(p, language).title}
-                    </h3>
-                    <p className="mt-1.5 max-w-[70ch] text-[15px] leading-snug text-steel">{localized(p, language).description}</p>
-                    <p className="mt-1.5 text-[14px] font-semibold text-ink/80">{p.technologies.join(' · ')}</p>
-                    <CategoryTag category={p.category} className="mt-3 sm:hidden" />
+          <ul className="plate mt-12 divide-y divide-line">
+            {others.map((p) => (
+              <li
+                key={p.id}
+                className="grid gap-3 p-6 transition-colors hover:bg-paper sm:grid-cols-[1fr_auto] sm:items-center sm:gap-6 sm:p-7"
+              >
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-[1.25rem] font-bold text-ink">{localized(p, language).title}</h3>
+                    <CategoryTag category={p.category} />
                   </div>
-                  <ProjectLinks project={p} />
-                </li>
-              ))}
-            </ul>
-          </div>
+                  <p className="mt-1.5 max-w-[70ch] text-[15px] leading-relaxed text-steel">{localized(p, language).description}</p>
+                  <p className="mt-1.5 text-[14px] font-medium text-ink/70">{p.technologies.join(' · ')}</p>
+                </div>
+                <ProjectLinks project={p} />
+              </li>
+            ))}
+          </ul>
         )}
 
         <div className="mt-10 flex justify-start">
-          <Button asChild size="lg">
+          <Button asChild variant="outlineSign" size="lg">
             <Link href="/projetos">
               {t('projects.viewAll').replace('21', String(projects.length))}
               <ArrowRight aria-hidden />

@@ -25,7 +25,7 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       onClick={() => trackEvent('whatsapp_click', { location: 'floating' })}
       aria-label={t('hero.ctaWhatsapp')}
-      className={`fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-[10px] bg-route text-white shadow-[0_14px_30px_-12px_rgb(0_0_0/0.55)] ring-[3px] ring-inset ring-ink transition-all duration-300 ease-out hover:bg-route-deep ${
+      className={`fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_28px_-10px_rgb(15_23_42/0.5)] transition-all duration-300 ease-out hover:scale-105 ${
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
     >

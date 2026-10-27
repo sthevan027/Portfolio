@@ -3,7 +3,7 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 const fieldBase =
-  "w-full rounded-[6px] border-[3px] border-ink bg-white px-3.5 py-3 text-[1.05rem] text-ink placeholder:text-steel focus:border-route focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 aria-[invalid=true]:border-destructive"
+  "w-full rounded-xl border border-line bg-white px-3.5 py-3 text-[1rem] text-ink placeholder:text-steel/70 focus:border-sign focus:outline-none focus:ring-2 focus:ring-sign/30 disabled:cursor-not-allowed disabled:opacity-60 aria-[invalid=true]:border-destructive"
 
 const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
   ({ className, type = "text", ...props }, ref) => (
