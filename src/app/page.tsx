@@ -7,7 +7,6 @@ import CasesSection from '@/components/CasesSection'
 import ForWhom from '@/components/ForWhom'
 import Faq from '@/components/Faq'
 import HowIWork from '@/components/HowIWork'
-import Projects from '@/components/Projects'
 import Differentials from '@/components/Differentials'
 import Path from '@/components/Path'
 import Skills from '@/components/Skills'
@@ -31,7 +30,6 @@ export default function Home() {
         <CasesSection />
         <ForWhom />
         <HowIWork />
-        <Projects />
         <Differentials />
         <Path />
         <Skills />

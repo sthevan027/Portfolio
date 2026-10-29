@@ -47,14 +47,14 @@ export const CASES: CaseStudy[] = [
     image: '/cases/restaurante-vo-zilda.png',
     tagline: 'Pedidos de marmita direto no site, sem depender de aplicativo',
     summary:
-      'Protótipo de site de pedidos (entrega e retirada) com painel do restaurante, pensado para um restaurante de marmita que ainda não tinha canal próprio.',
+      'Protótipo de um site de pedidos, com entrega e retirada, e um painel para o restaurante acompanhar tudo. Pensado para um restaurante de marmita que ainda não tinha canal próprio.',
     problem:
-      'O restaurante estava abrindo sem nenhum sistema e sem canal próprio de pedidos, dependendo de contato direto para cada pedido.',
+      'O restaurante estava abrindo sem nenhum sistema e sem canal próprio de pedidos: cada pedido dependia de uma conversa direta.',
     solution:
-      'Um site de pedidos com cardápio, carrinho, entrega e retirada, e um painel do restaurante com pedidos ao vivo, produtos, clientes, bairros de entrega e relatórios.',
+      'Um site onde o cliente escolhe no cardápio, monta o pedido e escolhe entrega ou retirada, e um painel onde o restaurante vê os pedidos chegando, cadastra produtos e bairros e acompanha os relatórios.',
     how: [
-      'Cardápio online com produtos e carrinho para entrega ou retirada.',
-      'Painel do restaurante com pedidos em kanban ao vivo.',
+      'Cardápio online com carrinho, para entrega ou retirada.',
+      'Painel do restaurante com os pedidos chegando ao vivo, em colunas por etapa.',
       'Cadastro de produtos, clientes e bairros de entrega, com relatórios.',
     ],
     applications: [
@@ -71,15 +71,15 @@ export const CASES: CaseStudy[] = [
     kind: 'projeto-proprio',
     tagline: 'CLT ou PJ/MEI: quanto sobra de cada proposta',
     summary:
-      'Simulador e comparador de salário CLT contra PJ/MEI, com cálculo de INSS e IRRF e gestão financeira pessoal.',
+      'Ferramenta que compara uma proposta CLT com uma PJ ou MEI e mostra quanto sobra no bolso em cada uma, já com os descontos de INSS e imposto de renda.',
     problem:
-      'Comparar uma proposta CLT com uma PJ ou MEI exige calcular INSS e IRRF e considerar o que muda no mês, o que costuma ser feito à mão.',
+      'Comparar uma proposta CLT com uma PJ ou MEI exige calcular INSS e imposto de renda e entender o que muda no mês. Quase todo mundo faz isso à mão ou no chute.',
     solution:
-      'Um simulador em Next.js e TypeScript, com Supabase, que calcula os dois cenários lado a lado e organiza a gestão financeira pessoal.',
+      'Um site em que você informa os valores e vê os dois cenários lado a lado, e que ainda ajuda a organizar as finanças pessoais com gráficos.',
     how: [
-      'Cálculo de INSS e IRRF para o regime CLT.',
-      'Comparação lado a lado com PJ/MEI.',
-      'Gestão financeira pessoal com gráficos.',
+      'Cálculo dos descontos de INSS e imposto de renda para quem é CLT.',
+      'Comparação lado a lado com PJ ou MEI.',
+      'Controle financeiro pessoal com gráficos.',
     ],
     applications: [
       'Comparação de propostas de trabalho para quem recebe ofertas em regimes diferentes.',
@@ -92,18 +92,18 @@ export const CASES: CaseStudy[] = [
     projectTitle: 'Gerador de Relatório',
     clientType: 'empresa',
     kind: 'projeto-proprio',
-    tagline: 'PDFs de tíquete viram relatório padronizado em Excel',
+    tagline: 'Comprovantes em PDF viram relatório pronto, sem digitação',
     summary:
-      'Aplicativo desktop que lê tíquetes de balança em PDF com OCR e monta o relatório visual de descarte no modelo Excel da obra.',
+      'Aplicativo que lê os comprovantes de pesagem em PDF e monta sozinho o relatório de descarte da obra, no mesmo modelo de Excel que a equipe já usava.',
     problem:
-      'O relatório visual de descarte dependia de transportar para o modelo Excel, tíquete por tíquete, os dados e a foto de cada pesagem. Era um trabalho repetitivo, sujeito a duplicidade e a divergência entre o relatório, o mapa de controle e o status de aprovação.',
+      'Para fechar o relatório de descarte, alguém copiava para o Excel, comprovante por comprovante, os dados e a foto de cada pesagem. Era um trabalho repetitivo, com risco de relatório duplicado e de os controles ficarem desencontrados.',
     solution:
-      'Um aplicativo desktop em Python que recebe os PDFs dos tíquetes, extrai os dados com OCR, preenche o modelo Excel com a foto do tíquete e mantém o mapa de controle e o status de aprovação sincronizados.',
+      'Um aplicativo que lê os PDFs dos comprovantes, preenche o modelo de Excel com os dados e a foto de cada um, avisa quando um relatório já foi feito e mantém a planilha de controle e o status de aprovação sempre em dia.',
     how: [
-      'Leitura dos tíquetes de balança em PDF, com OCR (Tesseract) para extrair os campos.',
-      'Preenchimento automático do modelo Excel do relatório, incluindo a foto do tíquete.',
-      'Verificação para evitar relatórios duplicados.',
-      'Atualização do mapa de controle e do status de aprovação.',
+      'Leitura automática dos comprovantes de pesagem em PDF, inclusive os que chegam como imagem.',
+      'Preenchimento do modelo de Excel do relatório, com a foto de cada comprovante.',
+      'Aviso quando o mesmo relatório já foi feito, para não duplicar.',
+      'Atualização da planilha de controle e do status de aprovação.',
     ],
     result: 'De 1 para 3 relatórios processados por dia',
     resultNote:
@@ -121,17 +121,17 @@ export const CASES: CaseStudy[] = [
     projectTitle: 'Gerador de ART',
     clientType: 'empresa',
     kind: 'projeto-proprio',
-    tagline: 'Documento de segurança montado a partir de um histórico aprovado',
+    tagline: 'Documento de segurança montado a partir do que já foi aprovado',
     summary:
-      'Aplicativo desktop que gera a Análise de Risco da Tarefa (ART) a partir de um histórico de riscos já aprovados.',
+      'Aplicativo que monta a Análise de Risco da Tarefa (ART) reaproveitando os riscos e as medidas que já tinham sido aprovados em tarefas anteriores.',
     problem:
       'Montar uma Análise de Risco da Tarefa (ART) levava 5 dias, e muitos dos riscos e das medidas já tinham sido aprovados em tarefas anteriores. Reaproveitar esse histórico era um trabalho manual.',
     solution:
-      'Um aplicativo desktop em Python que organiza o histórico de riscos aprovados e monta a ART a partir dele, gerando o documento em planilha.',
+      'Um aplicativo que guarda o histórico de riscos aprovados, deixa escolher o que vale para a tarefa e gera o documento pronto em planilha.',
     how: [
-      'Base com o histórico de riscos e medidas já aprovados.',
-      'Seleção do que se aplica à tarefa e geração do documento em Excel (openpyxl).',
-      'Interface desktop simples (pywebview).',
+      'Base com os riscos e as medidas já aprovados.',
+      'Você escolhe o que se aplica à tarefa e o documento sai pronto em Excel.',
+      'Tela simples, que roda direto no computador.',
     ],
     result: 'De 5 dias para meio dia por ART',
     resultNote:
@@ -147,16 +147,16 @@ export const CASES: CaseStudy[] = [
     projectTitle: 'Análise de Medição',
     clientType: 'empresa',
     kind: 'projeto-proprio',
-    tagline: 'Medição mensal calculada a partir de tíquetes e tabela de preços',
+    tagline: 'Medição do mês calculada a partir dos comprovantes e da tabela de preços',
     summary:
-      'Pipeline em Python que lê tíquetes de balança em PDF, cruza com a tabela de preços do contrato e gera o relatório Excel do valor a medir.',
+      'Automação que lê os comprovantes de pesagem em PDF, cruza com a tabela de preços do contrato e entrega pronto o valor a medir no mês.',
     problem:
-      'A medição mensal exigia cruzar os tíquetes de balança, que chegam em PDF, com a tabela de preços do contrato (QQP) para chegar ao valor a medir.',
+      'Para fechar a medição do mês, era preciso cruzar à mão os comprovantes de pesagem, que chegam em PDF, com a tabela de preços do contrato para chegar ao valor a medir.',
     solution:
-      'Um pipeline em Python que extrai os dados dos tíquetes, relaciona cada item com a tabela de preços do contrato e entrega o relatório em Excel com o valor a medir.',
+      'Uma rotina automática que lê os comprovantes, encontra o preço de cada item na tabela do contrato e entrega um relatório em Excel com o valor a medir.',
     how: [
-      'Extração dos tíquetes em PDF com pdfplumber e OCR (Tesseract) quando necessário.',
-      'Cruzamento dos itens com a tabela de preços do contrato (QQP) usando pandas.',
+      'Leitura dos comprovantes em PDF, inclusive os que chegam como imagem.',
+      'Cruzamento de cada item com a tabela de preços do contrato.',
       'Relatório final em Excel com o valor a medir.',
     ],
     applications: [
@@ -171,17 +171,17 @@ export const CASES: CaseStudy[] = [
     projectTitle: 'Painel Gerencial',
     clientType: 'empresa',
     kind: 'projeto-proprio',
-    tagline: 'Acompanhamento físico-financeiro em um painel único',
+    tagline: 'Previsto, medido e cronograma da obra em uma tela só',
     summary:
-      'Painel desktop em Flask que reúne orçado × medido, curva ABC, cronograma e boletins de medição de uma obra.',
+      'Painel que reúne em uma tela o orçado e o medido, os itens que mais pesam no custo, o cronograma e os boletins de medição de uma obra.',
     problem:
-      'Acompanhar uma obra física e financeiramente envolve orçamento, medições e cronograma que costumam viver em planilhas separadas, difíceis de comparar.',
+      'Acompanhar uma obra no físico e no financeiro envolve orçamento, medições e cronograma que costumam ficar em planilhas separadas, difíceis de comparar.',
     solution:
-      'Um painel gerencial desktop (Flask + pywebview) que reúne orçado × medido, curva ABC, cronograma e boletins de medição em um só lugar.',
+      'Um painel que roda no próprio computador e junta tudo: o que foi orçado contra o que foi medido, os itens que mais pesam no custo, o cronograma e os boletins de medição.',
     how: [
-      'Leitura dos dados de orçamento e medição.',
-      'Gráficos e tabelas com Plotly e pandas: orçado × medido, curva ABC, cronograma.',
-      'Aplicativo desktop (pywebview) que roda localmente, sem servidor externo.',
+      'Leitura dos dados de orçamento e medição que já existem nas planilhas.',
+      'Gráficos e tabelas que comparam o previsto com o realizado.',
+      'Funciona direto no computador, sem depender de servidor externo.',
     ],
     applications: [
       'Painéis de acompanhamento para qualquer operação que compare planejado e realizado.',
@@ -195,18 +195,18 @@ export const CASES: CaseStudy[] = [
     projectTitle: 'DashboardCusto',
     clientType: 'empresa',
     kind: 'projeto-proprio',
-    tagline: 'Orçado × realizado com banco de dados, permissões e auditoria',
+    tagline: 'Custo previsto contra gasto real, com controle de quem lançou o quê',
     summary:
-      'Dashboard web de custos de obra (orçado × realizado) por grupo, subgrupo e item, com views no Postgres, RLS e trilha de auditoria.',
+      'Sistema na internet que compara o custo previsto da obra com o gasto real, por grupo e por item, com permissões por usuário e histórico de cada lançamento.',
     problem:
-      'Controlar o custo de uma obra pede comparar o orçado com o realizado em vários níveis (grupo, subgrupo e item), com segurança sobre quem lançou o quê.',
+      'Controlar o custo de uma obra pede comparar o previsto com o realizado em vários níveis, e saber com segurança quem lançou o quê.',
     solution:
-      'Um sistema web em React com Supabase e PostgreSQL, que calcula orçado × realizado por grupo, subgrupo e item e registra cada lançamento em uma trilha de auditoria.',
+      'Um sistema que mostra o previsto e o gasto real por grupo, subgrupo e item, e guarda o histórico de cada lançamento feito.',
     how: [
-      'Views no PostgreSQL consolidam orçado e realizado em cada nível.',
-      'RLS (Row Level Security) do Supabase controla o que cada usuário enxerga e altera.',
-      'Trilha de auditoria registra os lançamentos.',
-      'Interface em React com dashboards e tabelas.',
+      'Painéis e tabelas que consolidam previsto e gasto real em cada nível.',
+      'Cada usuário só vê e altera o que tem permissão.',
+      'Histórico de todos os lançamentos, para saber quem fez o quê.',
+      'Funciona no navegador, de qualquer computador.',
     ],
     applications: [
       'Sistemas internos de controle de custos, estoque ou contratos com perfis de acesso diferentes.',
@@ -220,17 +220,18 @@ export const CASES: CaseStudy[] = [
     projectTitle: 'LaudoFácil',
     clientType: 'empresa',
     kind: 'projeto-proprio',
-    tagline: 'Relatórios técnicos com cálculo automático e exportação',
+    tagline: 'Laudos técnicos com cálculo automático, prontos em PDF e Excel',
     summary:
-      'Aplicação web para relatórios de qualidade elétrica (Megger, hipot, lançamento de cabo, disjuntor) com cálculo automático e exportação em PDF e Excel.',
+      'Aplicação que monta laudos de testes elétricos (Megger, hipot, cabos e disjuntores) com cálculo automático e exportação em PDF e Excel.',
     problem:
-      'Relatórios de testes elétricos, como Megger, microhmímetro, hipot, lançamento de cabo (NBR 5410) e teste de disjuntor, exigem cálculos e formatação repetitivos.',
+      'Os laudos de testes elétricos, como Megger, microhmímetro, hipot, lançamento de cabo e disjuntor, exigem cálculos e formatação repetitivos a cada teste.',
     solution:
-      'Uma aplicação web em React e TypeScript que permite entrada manual ou cálculo automático dos resultados e exporta o laudo em PDF e Excel.',
+      'Uma aplicação no navegador em que você digita os resultados ou deixa o cálculo automático, e exporta o laudo pronto em PDF e Excel.',
     how: [
-      'Formulários por tipo de ensaio, com entrada manual ou cálculo automático.',
-      'Gráficos com Chart.js e armazenamento local no navegador (IndexedDB, via Dexie).',
-      'Exportação do laudo em PDF e Excel.',
+      'Um formulário para cada tipo de teste, com digitação manual ou cálculo automático.',
+      'Gráficos dos resultados.',
+      'Os dados ficam salvos no próprio navegador de quem usa.',
+      'Laudo exportado em PDF e em Excel.',
     ],
     applications: [
       'Laudos, checklists e relatórios técnicos de campo que seguem um modelo fixo.',

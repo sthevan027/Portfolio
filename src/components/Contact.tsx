@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { AlertCircle, ArrowUpRight, CheckCircle2, Download, Loader2, Mail, MessageCircle, Send } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Loader2, Mail, MessageCircle, Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input, Textarea } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -18,8 +18,6 @@ const NEED_KEY = {
   manutencao: 'contact.needManutencao',
   outro: 'contact.needOutro',
 } as const
-
-const linkClass = 'inline-flex min-h-[44px] items-center gap-2 text-[16px] font-semibold text-ink hover:text-sign'
 
 export default function Contact() {
   const { t } = useLanguage()
@@ -59,7 +57,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="bg-paper py-20 sm:py-28">
+    <section id="contact" aria-labelledby="contact-title" className="bg-paper py-12 sm:py-16">
       <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow">{t('contact.eyebrow')}</p>
@@ -96,35 +94,6 @@ export default function Contact() {
                   {SITE.email}
                 </a>
               </p>
-            </div>
-
-            <div className="plate p-7 sm:p-8">
-              <h3 className="text-[1.25rem] font-bold text-ink">{t('contact.recruiterTitle')}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-steel">{t('contact.recruiterText')}</p>
-              <ul className="mt-5 space-y-1">
-                <li>
-                  <a href={SITE.resumeDev} download className={linkClass}>
-                    <Download className="h-5 w-5" aria-hidden />
-                    {t('contact.resumeDev')}
-                  </a>
-                </li>
-                <li>
-                  <a href={SITE.resumeAuto} download className={linkClass}>
-                    <Download className="h-5 w-5" aria-hidden />
-                    {t('contact.resumeAuto')}
-                  </a>
-                </li>
-                <li className="flex flex-wrap gap-x-6">
-                  <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                    LinkedIn
-                    <ArrowUpRight className="h-4 w-4" aria-hidden />
-                  </a>
-                  <a href={SITE.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                    GitHub
-                    <ArrowUpRight className="h-4 w-4" aria-hidden />
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
 

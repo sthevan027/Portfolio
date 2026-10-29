@@ -14,7 +14,7 @@ const manrope = Manrope({
 });
 
 const SITE_URL = "https://sthevandev.vercel.app";
-const TITLE = "Sites, sistemas e apps · Sthevan Santos (ES)";
+const TITLE = "Virex · Sites, sistemas e apps · Sthevan Santos (ES)";
 const DESCRIPTION =
   "Sites, sistemas e apps para negócios e projetos pessoais no Espírito Santo, e à distância para o Brasil e o exterior. Sthevan Santos, desenvolvedor fullstack.";
 

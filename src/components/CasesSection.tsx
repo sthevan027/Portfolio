@@ -25,6 +25,21 @@ const ACCENT_FROM_IMAGE: Record<string, string> = {
   meusalario: '#12BA9C',
 }
 
+/**
+ * Cor de fundo predominante de cada imagem (amostrada das capturas). O card de
+ * texto do carrossel usa essa cor, então o texto e a imagem parecem uma peça só.
+ */
+const SURFACE_FROM_IMAGE: Record<string, string> = {
+  'restaurante-vo-zilda': '#0d0b09',
+  meusalario: '#0e1628',
+  'gerador-de-relatorio': '#f6f7f8',
+  'gerador-de-art': '#f8fafa',
+  'analise-de-medicao': '#0f1011',
+  'painel-gerencial': '#121926',
+  dashboardcusto: '#0f0f0f',
+  laudofacil: '#0f1726',
+}
+
 /** Casos da landing em slideshow, com filtro por tipo de cliente. */
 export default function CasesSection() {
   const { t } = useLanguage()
@@ -40,6 +55,7 @@ export default function CasesSection() {
       subtitle: `${t(`cases.client.${c.clientType}`)} · ${t(`cases.kind.${c.kind}`)}`,
       description: c.summary,
       accent: ACCENT_FROM_IMAGE[c.slug] ?? '#2563EB',
+      surface: SURFACE_FROM_IMAGE[c.slug] ?? '#ffffff',
       imageUrl: project?.previewImage ?? c.image ?? '',
       href: isDemo ? c.demoUrl : `/projetos/${c.slug}`,
       hrefLabel: isDemo ? t('cases.viewDemo') : t('cases.read'),
@@ -49,7 +65,7 @@ export default function CasesSection() {
   })
 
   return (
-    <section id="cases" aria-labelledby="cases-title" className="bg-white py-20 sm:py-28">
+    <section id="cases" aria-labelledby="cases-title" className="bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow">{t('cases.eyebrow')}</p>

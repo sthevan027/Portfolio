@@ -37,7 +37,8 @@ export default function Navbar({ showLanguageSwitch = true }: { showLanguageSwit
       </a>
       <nav className="mx-auto flex h-16 max-w-site items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="text-[17px] font-extrabold tracking-tight text-ink">
-          Sthevan Santos
+          {SITE.brand}
+          <span className="hidden font-medium text-steel sm:inline"> · {SITE.name}</span>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
@@ -113,16 +114,6 @@ export default function Navbar({ showLanguageSwitch = true }: { showLanguageSwit
                   {t('nav.quote')}
                 </Link>
               </Button>
-            </li>
-            <li>
-              <a
-                href={SITE.resumeDev}
-                download
-                onClick={() => setIsOpen(false)}
-                className="flex min-h-[48px] items-center text-[16px] font-medium text-steel"
-              >
-                {t('nav.resume')}
-              </a>
             </li>
           </ul>
         </div>

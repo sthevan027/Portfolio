@@ -8,12 +8,12 @@ import { trackEvent } from '@/lib/analytics'
 
 const STEPS = ['s1', 's2', 's3'] as const
 
-/** Três passos até a entrega. Sem preço nem prazo publicados. */
+/** Três passos até a entrega. Preço e prazo médios ficam no FAQ; o valor exato vem na proposta. */
 export default function HowIWork() {
   const { t } = useLanguage()
 
   return (
-    <section id="how-i-work" aria-labelledby="how-title" className="bg-paper py-20 sm:py-28">
+    <section id="how-i-work" aria-labelledby="how-title" className="bg-paper py-12 sm:py-16">
       <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow">{t('howWork.eyebrow')}</p>

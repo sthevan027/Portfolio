@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { projects } from '@/data/projects'
 
 /**
  * Números medidos, em destaque. Cada dígito gira até o valor quando o bloco
@@ -100,7 +99,6 @@ function Stat({
 export default function ResultsBoard() {
   const { t } = useLanguage()
   const { ref, run } = useInView<HTMLDivElement>()
-  const total = String(projects.length)
 
   const beforeAfter = (before: string, after: string, delay: number, beforeLabel: string, afterLabel: string) => (
     <span className="flex items-end gap-3">
@@ -117,7 +115,7 @@ export default function ResultsBoard() {
   )
 
   return (
-    <section id="board" aria-labelledby="board-title" className="bg-paper py-20 sm:py-28">
+    <section id="board" aria-labelledby="board-title" className="bg-paper py-12 sm:py-16">
       <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <h2 id="board-title" className="text-[clamp(2.2rem,4.6vw,3.25rem)] font-extrabold text-ink">
@@ -127,7 +125,7 @@ export default function ResultsBoard() {
         </div>
 
         <div ref={ref} className="plate mt-12 overflow-hidden">
-          <ul className="grid divide-y divide-line sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+          <ul className="grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             <Stat
               label={t('board.reportsLabel')}
               source={t('board.reportsSource')}
@@ -144,9 +142,6 @@ export default function ResultsBoard() {
             </Stat>
             <Stat label={t('board.deliveredLabel')} source={t('board.deliveredSource')} sr="10">
               <Digits value="10" run={run} delay={500} />
-            </Stat>
-            <Stat label={t('board.portfolioLabel')} source={t('board.portfolioSource')} sr={total}>
-              <Digits value={total} run={run} delay={750} />
             </Stat>
           </ul>
         </div>

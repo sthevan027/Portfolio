@@ -17,7 +17,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative overflow-hidden bg-white pt-28 sm:pt-32">
-      <div className="mx-auto grid max-w-site items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:pb-24">
+      <div className="mx-auto grid max-w-site items-center gap-12 px-4 pb-10 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:pb-14">
         <div className="lg:col-span-7">
           <p className="eyebrow">{t('hero.eyebrow')}</p>
 

@@ -6,6 +6,8 @@ export interface CarouselSlide {
   subtitle: string;
   description: string;
   accent: string;
+  /** cor de fundo predominante da imagem; tinge o card de texto */
+  surface: string;
   imageUrl: string;
   /** link de ação mostrado abaixo da descrição */
   href?: string;
@@ -31,9 +33,21 @@ interface ElegantCarouselProps {
 
 const TRANSITION_DURATION = 800;
 
-/** Cor da imagem escurecida para texto sobre branco (mantém o tom, ganha contraste). */
-const legibleAccent = (hex: string) =>
-  `color-mix(in srgb, ${hex} 62%, #0F172A)`;
+/** Luminância relativa (0 escuro, 1 claro) de uma cor #rrggbb, para escolher texto claro ou escuro. */
+const luminance = (hex: string) => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+
+/** Fundo do card: cor da imagem com um toque do destaque, para não ficar chapado. */
+const cardBackground = (surface: string, accent: string, dark: boolean) =>
+  dark
+    ? `linear-gradient(135deg, color-mix(in srgb, ${surface} 82%, ${accent}) 0%, ${surface} 70%)`
+    : `linear-gradient(135deg, color-mix(in srgb, ${surface} 88%, ${accent}) 0%, ${surface} 70%)`;
+
+/** Destaque legível sobre o fundo do card: escurecido no claro, clareado no escuro. */
+const legibleAccent = (hex: string, dark: boolean) =>
+  dark ? `color-mix(in srgb, ${hex} 70%, #ffffff)` : `color-mix(in srgb, ${hex} 62%, #0F172A)`;
 
 /**
  * Carrossel de casos: texto à esquerda, imagem à direita, troca automática
@@ -112,10 +126,13 @@ export default function ElegantCarousel({ slides, labels, slideDuration = 7000 }
 
   const currentSlide = slides[Math.min(currentIndex, count - 1)];
   const state = isTransitioning ? 'transitioning' : 'visible';
+  const dark = luminance(currentSlide.surface) < 0.5;
 
   return (
     <div
       className="carousel-wrapper"
+      data-tone={dark ? 'dark' : 'light'}
+      style={{ background: cardBackground(currentSlide.surface, currentSlide.accent, dark) }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
@@ -142,7 +159,7 @@ export default function ElegantCarousel({ slides, labels, slideDuration = 7000 }
 
             <h3 className={`carousel-title ${state}`}>{currentSlide.title}</h3>
 
-            <p className={`carousel-subtitle ${state}`} style={{ color: legibleAccent(currentSlide.accent) }}>
+            <p className={`carousel-subtitle ${state}`} style={{ color: legibleAccent(currentSlide.accent, dark) }}>
               {currentSlide.subtitle}
             </p>
 
@@ -160,7 +177,7 @@ export default function ElegantCarousel({ slides, labels, slideDuration = 7000 }
                 href={currentSlide.href}
                 {...(currentSlide.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className={`carousel-link ${state}`}
-                style={{ color: legibleAccent(currentSlide.accent) }}
+                style={{ color: legibleAccent(currentSlide.accent, dark) }}
               >
                 {currentSlide.hrefLabel}
               </a>

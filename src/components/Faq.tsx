@@ -9,7 +9,7 @@ export default function Faq() {
   const { t } = useLanguage()
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="bg-paper py-20 sm:py-28">
+    <section id="faq" aria-labelledby="faq-title" className="bg-paper py-12 sm:py-16">
       <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">

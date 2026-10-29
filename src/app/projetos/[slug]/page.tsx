@@ -36,7 +36,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Início', item: SITE.url },
-      { '@type': 'ListItem', position: 2, name: 'Projetos', item: `${SITE.url}/projetos` },
+      { '@type': 'ListItem', position: 2, name: 'Casos', item: `${SITE.url}/#cases` },
       { '@type': 'ListItem', position: 3, name: c.projectTitle, item: `${SITE.url}/projetos/${c.slug}` },
     ],
   }
@@ -47,7 +47,7 @@ export default function CasePage({ params }: { params: { slug: string } }) {
     <PtShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbs)} />
       <PageHeader
-        back={{ href: '/projetos', label: 'Todos os projetos' }}
+        back={{ href: '/#cases', label: 'Voltar aos casos' }}
         title={c.projectTitle}
         lede={`${c.tagline}. ${c.summary}`}
       />

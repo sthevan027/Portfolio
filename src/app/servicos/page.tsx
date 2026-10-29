@@ -35,7 +35,7 @@ export default function ServicosPage() {
       <PageHeader
         back={{ href: '/', label: 'Voltar ao início' }}
         title="Sites, sistemas e automação sob medida"
-        lede="Para pessoas, pequenos negócios e empresas. Cada projeto começa com uma conversa sobre o problema, e o orçamento chega por escrito."
+        lede="Para pessoas, pequenos negócios e empresas. Cada projeto começa com uma conversa sobre o problema, e o orçamento chega por escrito. Projetos a partir de R$ 500."
       />
 
       <nav aria-label="Serviços" className="border-b border-line bg-white">

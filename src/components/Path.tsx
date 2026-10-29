@@ -9,7 +9,7 @@ export default function Path() {
   const { t } = useLanguage()
 
   return (
-    <section id="path" aria-labelledby="path-title" className="bg-paper py-20 sm:py-28">
+    <section id="path" aria-labelledby="path-title" className="bg-paper py-12 sm:py-16">
       <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow">{t('path.eyebrow')}</p>

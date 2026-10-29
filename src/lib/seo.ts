@@ -85,7 +85,7 @@ export const professionalServiceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   '@id': SERVICE_ID,
-  name: `${SITE.name} — desenvolvimento de sistemas e automação (${SITE.brand})`,
+  name: `${SITE.brand} — desenvolvimento de sistemas e automação (${SITE.name})`,
   url: SITE.url,
   image: `${SITE.url}/sthevan-perfil.jpg`,
   founder: { '@id': PERSON_ID },

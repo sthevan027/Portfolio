@@ -17,7 +17,7 @@ export default function ServicesSummary() {
   const { t } = useLanguage()
 
   return (
-    <section id="services" aria-labelledby="services-title" className="bg-white py-20 sm:py-28">
+    <section id="services" aria-labelledby="services-title" className="bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-site px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow">{t('services.eyebrow')}</p>
